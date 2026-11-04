@@ -1,0 +1,594 @@
+{
+    "menu_navigation": [
+        {
+            "section_principale": "Université",
+            "categories": [
+                {
+                    "sous_categorie": "Présentation de l'UAE",
+                    "liens": [
+                        {
+                            "titre": "Histoire",
+                            "url": "https://www.uae.ac.ma/histoire"
+                        },
+                        {
+                            "titre": "Chronologie",
+                            "url": "https://www.uae.ac.ma/chronologie"
+                        },
+                        {
+                            "titre": "Etablissements",
+                            "url": "https://www.uae.ac.ma/etablissements"
+                        },
+                        {
+                            "titre": "Engagements de l’UAE",
+                            "url": "https://www.uae.ac.ma/engagements-de-luae"
+                        },
+                        {
+                            "titre": "Equipe présidentielle",
+                            "url": "https://www.uae.ac.ma/equipe-presidentielle"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Président",
+                    "liens": [
+                        {
+                            "titre": "Mot du président",
+                            "url": "https://www.uae.ac.ma/mot-du-president"
+                        },
+                        {
+                            "titre": "Biographie",
+                            "url": "https://www.uae.ac.ma/biographie-du-professeur-bouchta-el-moumni"
+                        },
+                        {
+                            "titre": "Projet de développement",
+                            "url": "https://www.uae.ac.ma/projet-de-developpement"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Gouvernance",
+                    "liens": [
+                        {
+                            "titre": "Organigramme",
+                            "url": "https://www.uae.ac.ma/organigramme"
+                        },
+                        {
+                            "titre": "Conseil d'université et commissions",
+                            "url": "https://www.uae.ac.ma/conseils-commissions"
+                        },
+                        {
+                            "titre": "Procès-verbaux",
+                            "url": "https://www.uae.ac.ma/conseils-commissions/1625/pvs"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Communiqués et presse",
+                    "liens": [
+                        {
+                            "titre": "Communiqués de presse",
+                            "url": "https://www.uae.ac.ma/communiques-presse"
+                        },
+                        {
+                            "titre": "UAE dans la presse",
+                            "url": "https://www.uae.ac.ma/presse"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Centres d'innovation",
+                    "liens": [
+                        {
+                            "titre": "Centre de l'innovation pédagogique",
+                            "url": "https://www.uae.ac.ma/centre-de-linnovation-pedagogique"
+                        },
+                        {
+                            "titre": "Centre des langues et power skills",
+                            "url": "https://www.uae.ac.ma/centre-des-langues-et-power-skills"
+                        },
+                        {
+                            "titre": "Centre CODE 212",
+                            "url": "https://www.uae.ac.ma/centre-code-212"
+                        },
+                        {
+                            "titre": "Centre de carrières",
+                            "url": "https://www.uae.ac.ma/centre-de-carrieres"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section_principale": "Formation",
+            "categories": [
+                {
+                    "sous_categorie": "Offre de formation",
+                    "liens": [
+                        {
+                            "titre": "Formation",
+                            "url": "https://www.uae.ac.ma/formations/initiale"
+                        },
+                        {
+                            "titre": "Catalogue formation initiale",
+                            "url": "https://www.uae.ac.ma/guide-pedagogique-de-luae-formation-initiale"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Formation continue",
+                    "liens": [
+                        {
+                            "titre": "Formations diplômantes",
+                            "url": "https://www.uae.ac.ma/formations/continue"
+                        },
+                        {
+                            "titre": "Formations certifiantes",
+                            "url": "https://www.uae.ac.ma/formations-certifiantes"
+                        },
+                        {
+                            "titre": "Catalogue formation continue",
+                            "url": "https://www.uae.ac.ma/guides-pedagogiques-de-luae-formation-continue"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Textes de lois et réglements",
+                    "liens": [
+                        {
+                            "titre": "Réglementaires de formation initiale",
+                            "url": "https://www.uae.ac.ma/reglementaires-de-la-formation-initiale"
+                        },
+                        {
+                            "titre": "Réglementaires de formation continue",
+                            "url": "https://www.uae.ac.ma/reglementaires-de-la-formation-continue"
+                        },
+                        {
+                            "titre": "Référentiel des diplômes",
+                            "url": "https://www.uae.ac.ma/referentiel-des-diplomes"
+                        },
+                        {
+                            "titre": "Référentiel de la formation en temps aménagé",
+                            "url": "https://www.uae.ac.ma/referentiel-de-la-formation-en-temps-amenage"
+                        },
+                        {
+                            "titre": "Stratégie-Pacte ESRI",
+                            "url": "https://www.uae.ac.ma/strategie-pacte-esri"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Plateformes pédagogiques",
+                    "liens": [
+                        {
+                            "titre": "Moodle",
+                            "url": "https://www.uae.ac.ma"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section_principale": "ETUDES DOCTORALES",
+            "categories": [
+                {
+                    "sous_categorie": "Offre en formations doctorales",
+                    "liens": [
+                        {
+                            "titre": "CED & FD",
+                            "url": "https://www.uae.ac.ma/ced-fd-0"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Procédures",
+                    "liens": [
+                        {
+                            "titre": "Plateforme GCDoc",
+                            "url": "https://www.uae.ac.ma/plateforme-gcdoc"
+                        },
+                        {
+                            "titre": "Textes de lois et règlements",
+                            "url": "https://www.uae.ac.ma/textes-de-lois-et-reglements"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Communication",
+                    "liens": [
+                        {
+                            "titre": "Avis de soutenance",
+                            "url": "https://www.uae.ac.ma/avis-de-soutenance"
+                        },
+                        {
+                            "titre": "Activités",
+                            "url": "https://www.uae.ac.ma/activites"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section_principale": "Recherche-Innovation",
+            "categories": [
+                {
+                    "sous_categorie": "Recherche",
+                    "liens": [
+                        {
+                            "titre": "Structures de recherche",
+                            "url": "https://www.uae.ac.ma/structures-de-recherche"
+                        },
+                        {
+                            "titre": "Projets de recherche",
+                            "url": "https://www.uae.ac.ma/projets-de-recherche"
+                        },
+                        {
+                            "titre": "Activités scientifiques",
+                            "url": "https://www.uae.ac.ma/activites-scientifiques"
+                        },
+                        {
+                            "titre": "Textes de lois et règlements",
+                            "url": "https://www.uae.ac.ma/textes-de-lois-et-reglements-0"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Infrastructures et équipements",
+                    "liens": [
+                        {
+                            "titre": "Infrastructures",
+                            "url": "https://www.uae.ac.ma/infrastructures"
+                        },
+                        {
+                            "titre": "Equipements",
+                            "url": "https://www.uae.ac.ma/equipements"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Production scientifique",
+                    "liens": [
+                        {
+                            "titre": "Thèses",
+                            "url": "https://www.uae.ac.ma/theses"
+                        },
+                        {
+                            "titre": "Publications",
+                            "url": "https://www.uae.ac.ma/publications-0"
+                        },
+                        {
+                            "titre": "Ouvrages",
+                            "url": "https://www.uae.ac.ma/ouvrages"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Innovation et valorisation",
+                    "liens": [
+                        {
+                            "titre": "Ecosystème de l'innovation",
+                            "url": "https://www.uae.ac.ma/ecosysteme-de-linnovation"
+                        },
+                        {
+                            "titre": "Valorisation et transfert",
+                            "url": "https://www.uae.ac.ma/valorisation-et-transfert"
+                        },
+                        {
+                            "titre": "Incubateurs et startups",
+                            "url": "https://www.uae.ac.ma/incubateurs-et-startups"
+                        },
+                        {
+                            "titre": "Brevets",
+                            "url": "https://www.uae.ac.ma/brevets"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Habilitation",
+                    "liens": [
+                        {
+                            "titre": "Procédure",
+                            "url": "https://www.uae.ac.ma/procedure"
+                        },
+                        {
+                            "titre": "Avis de soutenance",
+                            "url": "https://www.uae.ac.ma/avis-de-soutenance"
+                        },
+                        {
+                            "titre": "Textes de lois et règlements",
+                            "url": "https://www.uae.ac.ma/textes-de-lois-et-reglements-1"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Ressources électroniques",
+                    "liens": [
+                        {
+                            "titre": "Archive ouverte de l’UAE",
+                            "url": "https://www.uae.ac.ma/archive-ouverte-de-luae"
+                        },
+                        {
+                            "titre": "E-ressources  IMIST",
+                            "url": "https://eressources.imist.ma/login"
+                        },
+                        {
+                            "titre": "Plateforme Outrouhati",
+                            "url": "https://www.uae.ac.ma/plateforme-otrohati"
+                        },
+                        {
+                            "titre": "Catalogue Toubk@l",
+                            "url": "https://www.uae.ac.ma/catalogue-toubkl"
+                        },
+                        {
+                            "titre": "Solution anti-plagiat",
+                            "url": "https://app.ithenticate.com/en_us/login"
+                        },
+                        {
+                            "titre": "Revues scientifiques",
+                            "url": "https://www.uae.ac.ma/revues-scientifiques-de-luae"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section_principale": "Coopération",
+            "categories": [
+                {
+                    "sous_categorie": "Partenariat national",
+                    "liens": [
+                        {
+                            "titre": "Conventions régionales",
+                            "url": "https://www.uae.ac.ma/conventions-regionales"
+                        },
+                        {
+                            "titre": "Conventions nationales",
+                            "url": "https://www.uae.ac.ma/conventions-nationales"
+                        },
+                        {
+                            "titre": "Mobilité nationale",
+                            "url": "https://www.uae.ac.ma/mobilite-nationale"
+                        },
+                        {
+                            "titre": "Actualité partenariat national",
+                            "url": "https://www.uae.ac.ma/actualites/actualite-partenariat-national"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Relation-entreprises",
+                    "liens": [
+                        {
+                            "titre": "Relation de l'UAE avec les entreprises",
+                            "url": "https://www.uae.ac.ma/relation-de-luae-avec-les-entreprises"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Relations internationales",
+                    "liens": [
+                        {
+                            "titre": "Conventions internationales",
+                            "url": "https://www.uae.ac.ma/conventions-internationales"
+                        },
+                        {
+                            "titre": "Réseaux internationaux",
+                            "url": "https://www.uae.ac.ma/reseaux-internationaux"
+                        },
+                        {
+                            "titre": "Mobilité internationale",
+                            "url": "https://www.uae.ac.ma/mobilite-internationale"
+                        },
+                        {
+                            "titre": "Etudiants internationaux",
+                            "url": "https://www.uae.ac.ma/bureau-des-relations-internationales"
+                        },
+                        {
+                            "titre": "Actualité partenariat international",
+                            "url": "https://www.uae.ac.ma/actualites/actualite-partenariat-international"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Programmes internationaux",
+                    "liens": [
+                        {
+                            "titre": "ERASMUS",
+                            "url": "https://www.uae.ac.ma/erasmus"
+                        },
+                        {
+                            "titre": "Horizon Europe / 2020",
+                            "url": "https://www.uae.ac.ma/horizon-europe2020"
+                        },
+                        {
+                            "titre": "PRIMA",
+                            "url": "https://www.uae.ac.ma/prima"
+                        },
+                        {
+                            "titre": "COST",
+                            "url": "https://www.uae.ac.ma/cost"
+                        },
+                        {
+                            "titre": "BIODEVERSA",
+                            "url": "https://www.uae.ac.ma/biodeversa"
+                        },
+                        {
+                            "titre": "TEMPUS",
+                            "url": "https://www.uae.ac.ma/tempus"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section_principale": "Vie estudiantine",
+            "categories": [
+                {
+                    "sous_categorie": "Vie sociale",
+                    "liens": [
+                        {
+                            "titre": "Bourses",
+                            "url": "https://www.uae.ac.ma/bourses"
+                        },
+                        {
+                            "titre": "AMOE",
+                            "url": "https://amo.uae.ac.ma/amo_aa/"
+                        },
+                        {
+                            "titre": "Mobilité",
+                            "url": "https://www.uae.ac.ma/mobilite-internationale"
+                        },
+                        {
+                            "titre": "Inclusion et accessibilité",
+                            "url": "https://www.uae.ac.ma/inclusion-et-accessibilite"
+                        },
+                        {
+                            "titre": "Cités universitaires",
+                            "url": "https://www.uae.ac.ma/cites-universitaires"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Vie sportive & culturelle",
+                    "liens": [
+                        {
+                            "titre": "Événements sportifs",
+                            "url": "https://uae.inventis.ma/evenements/evenements-sportifs"
+                        },
+                        {
+                            "titre": "Événements culturels",
+                            "url": "https://uae.inventis.ma/evenements/evenements-culturels"
+                        },
+                        {
+                            "titre": "Bilans",
+                            "url": "https://www.uae.ac.ma/bilans-sportifs-et-culturels"
+                        },
+                        {
+                            "titre": "Calendrier",
+                            "url": "https://www.uae.ac.ma/calendriers-universitaires"
+                        },
+                        {
+                            "titre": "Textes de lois et règlements",
+                            "url": "https://www.uae.ac.ma"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Vie associative & clubs",
+                    "liens": [
+                        {
+                            "titre": "Centre de Vie Etudiant",
+                            "url": "https://www.uae.ac.ma/centre-de-vie-etudiant"
+                        },
+                        {
+                            "titre": "Clubs",
+                            "url": "https://www.uae.ac.ma/clubs"
+                        },
+                        {
+                            "titre": "Associations",
+                            "url": "https://www.uae.ac.ma/association"
+                        },
+                        {
+                            "titre": "Tiers-lieux",
+                            "url": "https://www.uae.ac.ma/tiers-lieux"
+                        },
+                        {
+                            "titre": "Textes de lois et règlements",
+                            "url": "https://www.uae.ac.ma"
+                        }
+                    ]
+                },
+                {
+                    "sous_categorie": "Orientation et insertion professionelle",
+                    "liens": [
+                        {
+                            "titre": "Orientation",
+                            "url": "https://www.uae.ac.ma/orientation"
+                        },
+                        {
+                            "titre": "Plateforme Khirrij",
+                            "url": "https://khirrij.uae.ac.ma/"
+                        },
+                        {
+                            "titre": "Entrepreneuriat",
+                            "url": "https://www.uae.ac.ma/incubateurs-et-startups"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "etablissements": [
+        {
+            "nom": "Faculté d'Économie et de Gestion",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "École Supérieure de Technologie - EST",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté Oussoul Eddine - FOD",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté des Sciences de Tétouan - FS",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté des Lettres et des Sciences Humaines de Tétouan - FLSH",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Ecole Supérieure Roi Fahd de Traduction - ESRFT",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Ecole Normale Supérieure de  Tétouan - ENS",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Ecole Nationale de Commerce et de Gestion de Tanger - ENCGT",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté des Sciences et Techniques de  Tanger - FSTT",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté des Sciences Juridiques, Economiques et Sociales de Tanger - FSJEST",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Ecole Nationale des Sciences Appliquées de Tanger - ENSAT",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté des Sciences Juridiques, Economiques et Sociales de Tétouan - FSJESTE",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté Polydisciplinaire de Larache - FPL",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Ecole Nationale des Sciences Appliquées d’Al Hoceima - ENSAH",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Ecoles Nationales des Sciences Appliquées de Tétouan - ENSATE",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté des Sciences et Techniques d’Al Hoceima - FSTH",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté de Médecine et de Pharmacie de Tanger – FMPT",
+            "ville": "Non précisée"
+        },
+        {
+            "nom": "Faculté Polydisciplinaire Ksar El Kebir",
+            "ville": "Non précisée"
+        }
+    ]
+}

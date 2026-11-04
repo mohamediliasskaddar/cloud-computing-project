@@ -1,0 +1,382 @@
+stack@ubuntu-server:~/devstack$ openstack compute service list
++--------------------------------------+----------------+---------------+----------+---------+-------+----------------------------+
+| ID                                   | Binary         | Host          | Zone     | Status  | State | Updated At                 |
++--------------------------------------+----------------+---------------+----------+---------+-------+----------------------------+
+| d21c1a73-ab5b-4daa-99bb-f27401f61200 | nova-scheduler | ubuntu-server | internal | enabled | up    | 2026-11-04T20:36:21.000000 |
+| 64eb116d-0eb8-4576-b938-b128c82e5f97 | nova-conductor | ubuntu-server | internal | enabled | up    | 2026-11-04T20:36:22.000000 |
+| a9de01a7-1a00-4fd1-9b49-4b985b0191ab | nova-conductor | ubuntu-server | internal | enabled | up    | 2026-11-04T20:38:10.000000 |
+| 47fb61b8-0dca-4f5f-b700-25c96702c57d | nova-compute   | ubuntu-server | nova     | enabled | up    | 2026-11-04T20:36:25.000000 |
++--------------------------------------+----------------+---------------+----------+---------+-------+----------------------------+
+stack@ubuntu-server:~/devstack$ ip a show br-ex
+5: br-ex: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/ether ce:72:e8:53:f3:4b brd ff:ff:ff:ff:ff:ff
+    inet 172.24.4.1/24 scope global br-ex
+       valid_lft forever preferred_lft forever
+    inet6 fe80::cc72:e8ff:fe53:f34b/64 scope link proto kernel_ll 
+       valid_lft forever preferred_lft forever
+stack@ubuntu-server:~/devstack$ mkdir -p ~/part2 && cd ~/part2
+stack@ubuntu-server:~/part2$ openstack service list | tee service-list.txt
++----------------------------------+-------------+----------------+
+| ID                               | Name        | Type           |
++----------------------------------+-------------+----------------+
+| 00d483d4dae24bb29e2eb37a1380343d | nova        | compute        |
+| 2fc9eaafa3534a73a29ce31a944e9864 | placement   | placement      |
+| 42131b02b9e24b28a1f14bf72000c8c7 | nova_legacy | compute_legacy |
+| 501c5f0b7e384746970815351ab971c4 | keystone    | identity       |
+| 6a773dc63b9b4e6280bde7213b4a45be | glance      | image          |
+| e1f659c0075c49edbd941f34dfd8bd76 | cinder      | block-storage  |
+| fd4e20afa9a94e08a8cd609fc62842c1 | neutron     | network        |
++----------------------------------+-------------+----------------+
+stack@ubuntu-server:~/part2$ ls
+service-list.txt
+stack@ubuntu-server:~/part2$ openstack compute service list | tee compute-list.txt
++--------------------------------------+----------------+---------------+----------+---------+-------+----------------------------+
+| ID                                   | Binary         | Host          | Zone     | Status  | State | Updated At                 |
++--------------------------------------+----------------+---------------+----------+---------+-------+----------------------------+
+| d21c1a73-ab5b-4daa-99bb-f27401f61200 | nova-scheduler | ubuntu-server | internal | enabled | up    | 2026-11-04T20:40:21.000000 |
+| 64eb116d-0eb8-4576-b938-b128c82e5f97 | nova-conductor | ubuntu-server | internal | enabled | up    | 2026-11-04T20:40:22.000000 |
+| a9de01a7-1a00-4fd1-9b49-4b985b0191ab | nova-conductor | ubuntu-server | internal | enabled | up    | 2026-11-04T20:41:31.000000 |
+| 47fb61b8-0dca-4f5f-b700-25c96702c57d | nova-compute   | ubuntu-server | nova     | enabled | up    | 2026-11-04T20:40:25.000000 |
++--------------------------------------+----------------+---------------+----------+---------+-------+----------------------------+
+stack@ubuntu-server:~/part2$ openstack network agent list | tee agent-list.txt
++--------------------------------------+------------------------------+---------------+-------------------+-------+-------+-------------------+
+| ID                                   | Agent Type                   | Host          | Availability Zone | Alive | State | Binary            |
++--------------------------------------+------------------------------+---------------+-------------------+-------+-------+-------------------+
+| 89d6de14-2606-5627-b0f3-6ce189a3ace2 | OVN Neutron agent            | ubuntu-server |                   | :-)   | UP    | neutron-ovn-agent |
+| f4460503-f194-417b-b8a0-3d4dc404ed1d | OVN Controller Gateway agent | ubuntu-server |                   | :-)   | UP    | ovn-controller    |
++--------------------------------------+------------------------------+---------------+-------------------+-------+-------+-------------------+
+stack@ubuntu-server:~/part2$ openstack image list
++--------------------------------------+--------------------------+--------+
+| ID                                   | Name                     | Status |
++--------------------------------------+--------------------------+--------+
+| 9c1d5e46-17d3-4e8a-a6fb-40f325d36a1c | cirros-0.6.3-x86_64-disk | active |
++--------------------------------------+--------------------------+--------+
+stack@ubuntu-server:~/part2$ openstack flavor list
++----+-----------+-------+------+-----------+-------+-----------+
+| ID | Name      |   RAM | Disk | Ephemeral | VCPUs | Is Public |
++----+-----------+-------+------+-----------+-------+-----------+
+| 1  | m1.tiny   |   512 |    1 |         0 |     1 | True      |
+| 2  | m1.small  |  2048 |   20 |         0 |     1 | True      |
+| 3  | m1.medium |  4096 |   40 |         0 |     2 | True      |
+| 4  | m1.large  |  8192 |   80 |         0 |     4 | True      |
+| 42 | m1.nano   |   192 |    1 |         0 |     1 | True      |
+| 5  | m1.xlarge | 16384 |  160 |         0 |     8 | True      |
+| 84 | m1.micro  |   256 |    1 |         0 |     1 | True      |
+| c1 | cirros256 |   256 |    1 |         0 |     1 | True      |
+| d1 | ds512M    |   512 |    5 |         0 |     1 | True      |
+| d2 | ds1G      |  1024 |   10 |         0 |     1 | True      |
+| d3 | ds2G      |  2048 |   10 |         0 |     2 | True      |
+| d4 | ds4G      |  4096 |   20 |         0 |     4 | True      |
++----+-----------+-------+------+-----------+-------+-----------+
+stack@ubuntu-server:~/part2$ openstack network create net-tp
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | UP                                   |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2026-11-04T20:42:52Z                 |
+| description               |                                      |
+| dns_domain                | None                                 |
+| id                        | ef5dff71-6e9e-4893-8019-d444965e54f3 |
+| ipv4_address_scope        | None                                 |
+| ipv6_address_scope        | None                                 |
+| is_default                | False                                |
+| is_vlan_qinq              | None                                 |
+| is_vlan_transparent       | False                                |
+| mtu                       | 1442                                 |
+| name                      | net-tp                               |
+| port_security_enabled     | True                                 |
+| project_id                | c30752b2358045aaadb2a2d18752b60b     |
+| provider:network_type     | geneve                               |
+| provider:physical_network | None                                 |
+| provider:segmentation_id  | 54192                                |
+| pvlan                     | None                                 |
+| qinq                      | False                                |
+| qos_policy_id             | None                                 |
+| revision_number           | 1                                    |
+| router:external           | Internal                             |
+| segments                  | None                                 |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tags                      |                                      |
+| updated_at                | 2026-11-04T20:42:52Z                 |
++---------------------------+--------------------------------------+
+stack@ubuntu-server:~/part2$ openstack subnet create subnet-tp --network net-tp \
+  --subnet-range 10.10.10.0/24 --dns-nameserver 8.8.8.8
++----------------------+--------------------------------------+
+| Field                | Value                                |
++----------------------+--------------------------------------+
+| allocation_pools     | 10.10.10.2-10.10.10.254              |
+| cidr                 | 10.10.10.0/24                        |
+| created_at           | 2026-11-04T20:43:34Z                 |
+| description          |                                      |
+| dns_nameservers      | 8.8.8.8                              |
+| dns_publish_fixed_ip | None                                 |
+| enable_dhcp          | True                                 |
+| gateway_ip           | 10.10.10.1                           |
+| host_routes          |                                      |
+| id                   | 50f0e349-0ae0-4a28-b886-66d8d379bfd9 |
+| ip_version           | 4                                    |
+| ipv6_address_mode    | None                                 |
+| ipv6_ra_mode         | None                                 |
+| name                 | subnet-tp                            |
+| network_id           | ef5dff71-6e9e-4893-8019-d444965e54f3 |
+| project_id           | c30752b2358045aaadb2a2d18752b60b     |
+| revision_number      | 0                                    |
+| router:external      | False                                |
+| segment_id           | None                                 |
+| service_types        |                                      |
+| subnetpool_id        | None                                 |
+| tags                 |                                      |
+| updated_at           | 2026-11-04T20:43:34Z                 |
++----------------------+--------------------------------------+
+stack@ubuntu-server:~/part2$ openstack router create router-tp
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | UP                                   |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2026-11-04T20:43:53Z                 |
+| description               |                                      |
+| enable_default_route_bfd  | False                                |
+| enable_default_route_ecmp | False                                |
+| enable_ndp_proxy          | None                                 |
+| enable_snat               | True                                 |
+| external_gateway_info     | null                                 |
+| external_gateways         | []                                   |
+| flavor_id                 | None                                 |
+| ha                        | True                                 |
+| id                        | ca28c561-994e-4ba6-9a48-06887a7d639d |
+| name                      | router-tp                            |
+| project_id                | c30752b2358045aaadb2a2d18752b60b     |
+| revision_number           | 1                                    |
+| routes                    |                                      |
+| status                    | ACTIVE                               |
+| tags                      |                                      |
+| updated_at                | 2026-11-04T20:43:53Z                 |
++---------------------------+--------------------------------------+
+stack@ubuntu-server:~/part2$ openstack router set router-tp --external-gateway public
+stack@ubuntu-server:~/part2$ openstack router add subnet router-tp subnet-tp
+stack@ubuntu-server:~/part2$ openstack security group create sg-tp --description "SSH and ICMP"
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field           | Value                                                                                                                                                                    |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| created_at      | 2026-11-04T20:44:37Z                                                                                                                                                     |
+| description     | SSH and ICMP                                                                                                                                                             |
+| id              | 0cc3c4fc-e641-4744-aaff-aadeb36e88b7                                                                                                                                     |
+| is_shared       | False                                                                                                                                                                    |
+| name            | sg-tp                                                                                                                                                                    |
+| project_id      | c30752b2358045aaadb2a2d18752b60b                                                                                                                                         |
+| revision_number | 1                                                                                                                                                                        |
+| rules           | created_at='2026-11-04T20:44:38Z', direction='egress', ethertype='IPv4', id='59937bad-95bd-4f0f-b56c-d9faece5b212', standard_attr_id='44',                               |
+|                 | updated_at='2026-11-04T20:44:38Z'                                                                                                                                        |
+|                 | created_at='2026-11-04T20:44:38Z', direction='egress', ethertype='IPv6', id='8d4359b3-4191-4330-8b28-521b3dd89f35', standard_attr_id='45',                               |
+|                 | updated_at='2026-11-04T20:44:38Z'                                                                                                                                        |
+| stateful        | True                                                                                                                                                                     |
+| tags            | []                                                                                                                                                                       |
+| updated_at      | 2026-11-04T20:44:38Z                                                                                                                                                     |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+stack@ubuntu-server:~/part2$ openstack security group rule create --proto icmp sg-tp
++-------------------------+--------------------------------------+
+| Field                   | Value                                |
++-------------------------+--------------------------------------+
+| belongs_to_default_sg   | False                                |
+| created_at              | 2026-11-04T20:44:48Z                 |
+| description             |                                      |
+| direction               | ingress                              |
+| ether_type              | IPv4                                 |
+| id                      | 5f62a2cc-2c20-4439-ac9d-1e6b233102c2 |
+| normalized_cidr         | 0.0.0.0/0                            |
+| port_range_max          | None                                 |
+| port_range_min          | None                                 |
+| project_id              | c30752b2358045aaadb2a2d18752b60b     |
+| protocol                | icmp                                 |
+| remote_address_group_id | None                                 |
+| remote_group_id         | None                                 |
+| remote_ip_prefix        | 0.0.0.0/0                            |
+| revision_number         | 0                                    |
+| security_group_id       | 0cc3c4fc-e641-4744-aaff-aadeb36e88b7 |
+| updated_at              | 2026-11-04T20:44:48Z                 |
++-------------------------+--------------------------------------+
+stack@ubuntu-server:~/part2$ openstack security group rule create --proto tcp --dst-port 22 sg-tp
++-------------------------+--------------------------------------+
+| Field                   | Value                                |
++-------------------------+--------------------------------------+
+| belongs_to_default_sg   | False                                |
+| created_at              | 2026-11-04T20:45:00Z                 |
+| description             |                                      |
+| direction               | ingress                              |
+| ether_type              | IPv4                                 |
+| id                      | 6909f97b-bbc3-4386-aa82-9b825fb82377 |
+| normalized_cidr         | 0.0.0.0/0                            |
+| port_range_max          | 22                                   |
+| port_range_min          | 22                                   |
+| project_id              | c30752b2358045aaadb2a2d18752b60b     |
+| protocol                | tcp                                  |
+| remote_address_group_id | None                                 |
+| remote_group_id         | None                                 |
+| remote_ip_prefix        | 0.0.0.0/0                            |
+| revision_number         | 0                                    |
+| security_group_id       | 0cc3c4fc-e641-4744-aaff-aadeb36e88b7 |
+| updated_at              | 2026-11-04T20:45:00Z                 |
++-------------------------+--------------------------------------+
+stack@ubuntu-server:~/part2$ openstack keypair create key-tp > ~/key-tp.pem
+stack@ubuntu-server:~/part2$ chmod 600 ~/key-tp.pem
+stack@ubuntu-server:~/part2$ ls
+agent-list.txt  compute-list.txt  service-list.txt
+stack@ubuntu-server:~/part2$ openstack server create --image cirros-0.6.3-x86_64-disk --flavor cirros256 \
+  --network net-tp --security-group sg-tp --key-name key-tp vm-cirros
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field                               | Value                                                                                                                                                |
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+| OS-DCF:diskConfig                   | MANUAL                                                                                                                                               |
+| OS-EXT-AZ:availability_zone         | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:host                | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:hostname            | vm-cirros                                                                                                                                            |
+| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:instance_name       | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:kernel_id           | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:launch_index        | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:ramdisk_id          | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:reservation_id      | r-o0nkbzcl                                                                                                                                           |
+| OS-EXT-SRV-ATTR:root_device_name    | None                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:user_data           | None                                                                                                                                                 |
+| OS-EXT-STS:power_state              | N/A                                                                                                                                                  |
+| OS-EXT-STS:task_state               | scheduling                                                                                                                                           |
+| OS-EXT-STS:vm_state                 | building                                                                                                                                             |
+| OS-SRV-USG:launched_at              | None                                                                                                                                                 |
+| OS-SRV-USG:terminated_at            | None                                                                                                                                                 |
+| accessIPv4                          | None                                                                                                                                                 |
+| accessIPv6                          | None                                                                                                                                                 |
+| addresses                           | N/A                                                                                                                                                  |
+| adminPass                           | 43RP6FV9jsZC                                                                                                                                         |
+| config_drive                        | None                                                                                                                                                 |
+| created                             | 2026-11-04T21:16:11Z                                                                                                                                 |
+| description                         | None                                                                                                                                                 |
+| flavor                              | description=, disk='1', ephemeral='0', extra_specs.hw_rng:allowed='True', id='cirros256', is_disabled=, is_public='True', location=,                 |
+|                                     | name='cirros256', original_name='cirros256', ram='256', rxtx_factor=, swap='0', vcpus='1'                                                            |
+| hostId                              | None                                                                                                                                                 |
+| host_status                         | None                                                                                                                                                 |
+| id                                  | 5e18f6fc-8a35-43f8-b2c8-10b6d58a30dc                                                                                                                 |
+| image                               | cirros-0.6.3-x86_64-disk (9c1d5e46-17d3-4e8a-a6fb-40f325d36a1c)                                                                                      |
+| key_name                            | key-tp                                                                                                                                               |
+| locked                              | None                                                                                                                                                 |
+| locked_reason                       | None                                                                                                                                                 |
+| name                                | vm-cirros                                                                                                                                            |
+| pinned_availability_zone            | None                                                                                                                                                 |
+| progress                            | None                                                                                                                                                 |
+| project_id                          | c30752b2358045aaadb2a2d18752b60b                                                                                                                     |
+| properties                          | None                                                                                                                                                 |
+| scheduler_hints                     |                                                                                                                                                      |
+| security_groups                     | name='0cc3c4fc-e641-4744-aaff-aadeb36e88b7'                                                                                                          |
+| server_groups                       | None                                                                                                                                                 |
+| status                              | BUILD                                                                                                                                                |
+| tags                                |                                                                                                                                                      |
+| trusted_image_certificates          | None                                                                                                                                                 |
+| updated                             | 2026-11-04T21:16:11Z                                                                                                                                 |
+| user_id                             | fdcf071062a142f5a140749f96c6a167                                                                                                                     |
+| volumes_attached                    |                                                                                                                                                      |
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+stack@ubuntu-server:~/part2$ openstack server list
++--------------------------------------+-----------+--------+---------------------+--------------------------+-----------+
+| ID                                   | Name      | Status | Networks            | Image                    | Flavor    |
++--------------------------------------+-----------+--------+---------------------+--------------------------+-----------+
+| 5e18f6fc-8a35-43f8-b2c8-10b6d58a30dc | vm-cirros | ACTIVE | net-tp=10.10.10.101 | cirros-0.6.3-x86_64-disk | cirros256 |
++--------------------------------------+-----------+--------+---------------------+--------------------------+-----------+
+stack@ubuntu-server:~/part2$ openstack server show vm-cirros
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field                               | Value                                                                                                                                                |
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+| OS-DCF:diskConfig                   | MANUAL                                                                                                                                               |
+| OS-EXT-AZ:availability_zone         | nova                                                                                                                                                 |
+| OS-EXT-SRV-ATTR:host                | ubuntu-server                                                                                                                                        |
+| OS-EXT-SRV-ATTR:hostname            | vm-cirros                                                                                                                                            |
+| OS-EXT-SRV-ATTR:hypervisor_hostname | ubuntu-server                                                                                                                                        |
+| OS-EXT-SRV-ATTR:instance_name       | instance-00000001                                                                                                                                    |
+| OS-EXT-SRV-ATTR:kernel_id           |                                                                                                                                                      |
+| OS-EXT-SRV-ATTR:launch_index        | 0                                                                                                                                                    |
+| OS-EXT-SRV-ATTR:ramdisk_id          |                                                                                                                                                      |
+| OS-EXT-SRV-ATTR:reservation_id      | r-o0nkbzcl                                                                                                                                           |
+| OS-EXT-SRV-ATTR:root_device_name    | /dev/vda                                                                                                                                             |
+| OS-EXT-SRV-ATTR:user_data           | None                                                                                                                                                 |
+| OS-EXT-STS:power_state              | Running                                                                                                                                              |
+| OS-EXT-STS:task_state               | None                                                                                                                                                 |
+| OS-EXT-STS:vm_state                 | active                                                                                                                                               |
+| OS-SRV-USG:launched_at              | 2026-11-04T21:16:17.000000                                                                                                                           |
+| OS-SRV-USG:terminated_at            | None                                                                                                                                                 |
+| accessIPv4                          |                                                                                                                                                      |
+| accessIPv6                          |                                                                                                                                                      |
+| addresses                           | net-tp=10.10.10.101                                                                                                                                  |
+| config_drive                        |                                                                                                                                                      |
+| created                             | 2026-11-04T21:16:11Z                                                                                                                                 |
+| description                         | None                                                                                                                                                 |
+| flavor                              | description=, disk='1', ephemeral='0', extra_specs.hw_rng:allowed='True', id='cirros256', is_disabled=, is_public='True', location=,                 |
+|                                     | name='cirros256', original_name='cirros256', ram='256', rxtx_factor=, swap='0', vcpus='1'                                                            |
+| hostId                              | 376fb423fc6b3e8994b5bcb06072be0819cfcdbfc80dcb95bc78dd07                                                                                             |
+| host_status                         | UP                                                                                                                                                   |
+| id                                  | 5e18f6fc-8a35-43f8-b2c8-10b6d58a30dc                                                                                                                 |
+| image                               | cirros-0.6.3-x86_64-disk (9c1d5e46-17d3-4e8a-a6fb-40f325d36a1c)                                                                                      |
+| key_name                            | key-tp                                                                                                                                               |
+| locked                              | False                                                                                                                                                |
+| locked_reason                       | None                                                                                                                                                 |
+| name                                | vm-cirros                                                                                                                                            |
+| pinned_availability_zone            | None                                                                                                                                                 |
+| progress                            | 0                                                                                                                                                    |
+| project_id                          | c30752b2358045aaadb2a2d18752b60b                                                                                                                     |
+| properties                          |                                                                                                                                                      |
+| scheduler_hints                     |                                                                                                                                                      |
+| security_groups                     | name='sg-tp'                                                                                                                                         |
+| server_groups                       | None                                                                                                                                                 |
+| status                              | ACTIVE                                                                                                                                               |
+| tags                                |                                                                                                                                                      |
+| trusted_image_certificates          | None                                                                                                                                                 |
+| updated                             | 2026-11-04T21:16:18Z                                                                                                                                 |
+| user_id                             | fdcf071062a142f5a140749f96c6a167                                                                                                                     |
+| volumes_attached                    |                                                                                                                                                      |
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+stack@ubuntu-server:~/part2$ 
+stack@ubuntu-server:~/part2$ FLOATING_IP=$(openstack floating ip create public -f value -c floating_ip_address)
+stack@ubuntu-server:~/part2$ echo "Your Floating IP is: $FLOATING_IP"
+Your Floating IP is: 172.24.4.201
+stack@ubuntu-server:~/part2$ openstack server add floating ip vm-cirros $FLOATING_IP
+stack@ubuntu-server:~/part2$ ping -c 3 $FLOATING_IP
+PING 172.24.4.201 (172.24.4.201) 56(84) bytes of data.
+64 bytes from 172.24.4.201: icmp_seq=1 ttl=63 time=15.7 ms
+64 bytes from 172.24.4.201: icmp_seq=2 ttl=63 time=3.35 ms
+64 bytes from 172.24.4.201: icmp_seq=3 ttl=63 time=1.55 ms
+
+--- 172.24.4.201 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2016ms
+rtt min/avg/max/mdev = 1.551/6.878/15.731/6.302 ms
+stack@ubuntu-server:~/part2$ ssh -i ~/key-tp.pem cirros@$FLOATING_IP
+The authenticity of host '172.24.4.201 (172.24.4.201)' can't be established.
+ED25519 key fingerprint is: SHA256:2ZkdI/cPvvxR41wvMpjWHC+56vxda56pqSIVvZppE+w
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '172.24.4.201' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+$ whoami
+cirros
+$ pwd
+/home/cirros
+$ hostname
+vm-cirros
+$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1442 qdisc pfifo_fast qlen 1000
+    link/ether fa:16:3e:bd:d1:d2 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.101/24 brd 10.10.10.255 scope global dynamic noprefixroute eth0
+       valid_lft 42902sec preferred_lft 37502sec
+    inet6 fe80::f816:3eff:febd:d1d2/64 scope link 
+       valid_lft forever preferred_lft forever
+$ 
