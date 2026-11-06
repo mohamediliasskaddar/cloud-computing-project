@@ -1,0 +1,1819 @@
+mk@iliass-dev:~$ ssh imk@192.168.56.101
+imk@192.168.56.101's password: 
+Welcome to Ubuntu 26.04.1 LTS (GNU/Linux 7.0.0-42-generic x86_64)
+
+ * Documentation:  https://docs.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Nov  5 06:57:45 PM UTC 2026
+
+  System load:             0.68
+  Usage of /:              24.5% of 68.35GB
+  Memory usage:            87%
+  Swap usage:              2%
+  Processes:               277
+  Users logged in:         1
+  IPv4 address for enp0s3: 10.0.2.15
+  IPv6 address for enp0s3: fd17:625c:f037:2:a00:27ff:fe1c:9f
+
+  => There are 2 zombie processes.
+
+ * Canonical Workshop gives developers fast, composable, reproducible, and
+   secure developer environments that are perfect for agentic workflows.
+
+   https://ubuntu.com/workshop
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+2 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+Last login: Thu Nov  5 18:57:46 2026 from 192.168.56.1
+imk@ubuntu-server:~$ sudo -u stack -i
+[sudo: authenticate] Password:    
+stack@ubuntu-server:~$ ~/fix-net.sh
+net.ipv4.ip_forward = 1
+Done. br-ex:
+br-ex            UNKNOWN        172.24.4.1/24 fe80::cc72:e8ff:fe53:f34b/64 
+stack@ubuntu-server:~$ cd ~/devstack && source openrc admin admin
+Device "fe80::2" does not exist.
+stack@ubuntu-server:~/devstack$ grep virt_type /etc/nova/nova-cpu.conf 
+virt_type = qemu
+stack@ubuntu-server:~/devstack$ openstack server stop vm-saas vm-cirros       # free RAM for the new instance
+^CTraceback (most recent call last):
+  File "/usr/local/bin/openstack", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/openstackclient/shell.py", line 216, in main
+    return OpenStackShell().run(argv)
+           ~~~~~~~~~~~~~~^^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/openstackclient/shell.py", line 55, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        description=__doc__.strip(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        deferred_help=True,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/osc_lib/shell.py", line 117, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        description=description or __doc__.strip(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        deferred_help=deferred_help,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/cliff/app.py", line 96, in __init__
+    self.parser = self.build_option_parser(description, version)
+                  ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/openstackclient/shell.py", line 81, in build_option_parser
+    parser = auth.build_auth_plugins_option_parser(parser)
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/osc_lib/api/auth.py", line 168, in build_auth_plugins_option_parser
+    available_plugins = list(get_plugin_list())
+                             ~~~~~~~~~~~~~~~^^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/osc_lib/api/auth.py", line 51, in get_plugin_list
+    PLUGIN_LIST = base.get_available_plugin_names()
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/keystoneauth1/loading/base.py", line 90, in get_available_plugin_names
+    mgr = stevedore.EnabledExtensionManager(
+        namespace=PLUGIN_NAMESPACE,
+    ...<3 lines>...
+        conflict_resolver=_prefer_out_of_tree_plugin,
+    )
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/stevedore/enabled.py", line 79, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        namespace,
+        ^^^^^^^^^^
+    ...<6 lines>...
+        conflict_resolver=conflict_resolver,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/stevedore/extension.py", line 196, in __init__
+    extensions = self._load_plugins(
+        invoke_on_load, invoke_args, invoke_kwds
+    )
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/stevedore/extension.py", line 300, in _load_plugins
+    ext = self._load_one_plugin(
+        ep, invoke_on_load, invoke_args, invoke_kwds
+    )
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/stevedore/enabled.py", line 97, in _load_one_plugin
+    ext = super()._load_one_plugin(
+        ep, invoke_on_load, invoke_args, invoke_kwds
+    )
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/stevedore/extension.py", line 336, in _load_one_plugin
+    plugin = ep.load()
+  File "/usr/lib/python3.14/importlib/metadata/__init__.py", line 179, in load
+    module = import_module(match.group('module'))
+  File "/usr/lib/python3.14/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1314, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/keystoneauth1/extras/_saml2/__init__.py", line 13, in <module>
+    from keystoneauth1.extras._saml2 import v3
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/keystoneauth1/extras/_saml2/v3/__init__.py", line 13, in <module>
+    from keystoneauth1.extras._saml2.v3 import adfs
+  File "/opt/stack/data/venv/lib/python3.14/site-packages/keystoneauth1/extras/_saml2/v3/adfs.py", line 26, in <module>
+    from keystoneauth1.extras._saml2.v3 import base
+  File "<frozen importlib._bootstrap>", line 474, in _lock_unlock_module
+  File "<frozen importlib._bootstrap>", line 311, in acquire
+  File "<frozen importlib._bootstrap>", line 170, in __enter__
+  File "<frozen importlib._bootstrap>", line 132, in setdefault
+  File "<frozen importlib._bootstrap>", line 74, in __new__
+KeyboardInterrupt
+
+stack@ubuntu-server:~/devstack$ openstack server stop vm-saas vm-cirros 
+ConflictException: 409: Client Error for url: http://192.168.56.101/compute/v2.1/servers/31902bf2-9ce7-48b0-bbf3-a05f79447e61/action, Cannot 'stop' instance 31902bf2-9ce7-48b0-bbf3-a05f79447e61 while it is in vm_state stopped
+stack@ubuntu-server:~/devstack$ mkdir -p ~/part3/terraform ~/part3/ansible
+stack@ubuntu-server:~/devstack$ openstack compute service list
++---------------+---------------+---------------+----------+---------+-------+---------------+
+| ID            | Binary        | Host          | Zone     | Status  | State | Updated At    |
++---------------+---------------+---------------+----------+---------+-------+---------------+
+| d21c1a73-     | nova-         | ubuntu-server | internal | enabled | up    | 2026-11-      |
+| ab5b-4daa-    | scheduler     |               |          |         |       | 06T22:40:15.0 |
+| 99bb-         |               |               |          |         |       | 00000         |
+| f27401f61200  |               |               |          |         |       |               |
+| 64eb116d-     | nova-         | ubuntu-server | internal | enabled | up    | 2026-11-      |
+| 0eb8-4576-    | conductor     |               |          |         |       | 06T22:40:16.0 |
+| b938-         |               |               |          |         |       | 00000         |
+| b128c82e5f97  |               |               |          |         |       |               |
+| a9de01a7-     | nova-         | ubuntu-server | internal | enabled | up    | 2026-11-      |
+| 1a00-4fd1-    | conductor     |               |          |         |       | 06T22:41:04.0 |
+| 9b49-         |               |               |          |         |       | 00000         |
+| 4b985b0191ab  |               |               |          |         |       |               |
+| 47fb61b8-     | nova-compute  | ubuntu-server | nova     | enabled | up    | 2026-11-      |
+| 0dca-4f5f-    |               |               |          |         |       | 06T22:40:32.0 |
+| b700-         |               |               |          |         |       | 00000         |
+| 25c96702c57d  |               |               |          |         |       |               |
++---------------+---------------+---------------+----------+---------+-------+---------------+
+stack@ubuntu-server:~/devstack$ sudo apt update
+Hit:1 http://archive.ubuntu.com/ubuntu resolute InRelease                  
+Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+Get:4 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+Get:5 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [844 kB]
+Get:6 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [656 kB]
+Get:7 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [192 kB]
+Get:8 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Components [110 kB]
+Get:9 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [571 kB]   
+Get:10 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [119 kB]  
+Get:11 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [376 kB]    
+Get:12 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Components [201 kB]
+Get:13 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Components [1,056 B]
+Get:14 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [148 kB]
+Get:15 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Components [46.8 kB]
+Get:16 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Components [62.9 kB]
+Fetched 3,739 kB in 5s (816 kB/s)                                            
+15 packages can be upgraded. Run 'apt list --upgradable' to see them.
+stack@ubuntu-server:~/devstack$ sudo apt install -y unzip jq curl ansible
+unzip is already the newest version (6.0-29ubuntu1).
+jq is already the newest version (1.8.1-4ubuntu2).
+jq set to manually installed.
+curl is already the newest version (8.18.0-1ubuntu2.8).
+Installing:                 
+  ansible
+
+Installing dependencies:
+  ansible-core         python3-gssapi    python3-requests-ntlm  python3-xmltodict
+  python3-argcomplete  python3-kerberos  python3-resolvelib
+  python3-decorator    python3-libcloud  python3-selinux
+  python3-dnspython    python3-pyspnego  python3-winrm
+
+Suggested packages:
+  cowsay   python3-aioquic  python3-httpcore  python3-trio
+  sshpass  python3-h2       python3-httpx
+
+Summary:
+  Upgrading: 0, Installing: 14, Removing: 0, Not Upgrading: 15
+  Download size: 22.4 MB
+  Space needed: 245 MB / 51.6 GB available
+
+Get:1 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-resolvelib all 1.2.1-2 [26.1 kB]
+Get:2 http://archive.ubuntu.com/ubuntu resolute/main amd64 python3-dnspython all 2.8.0-1ubuntu1 [178 kB]
+Get:3 http://archive.ubuntu.com/ubuntu resolute/universe amd64 ansible-core all 2.20.1-1 [1,379 kB]
+Get:4 http://archive.ubuntu.com/ubuntu resolute/universe amd64 ansible all 13.1.0+dfsg-1ubuntu1 [19.1 MB]
+Get:5 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-argcomplete all 3.6.3-1 [36.1 kB]
+Get:6 http://archive.ubuntu.com/ubuntu resolute/main amd64 python3-decorator all 5.2.1-2 [28.1 kB]
+Get:7 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-gssapi amd64 1.10.1-1build1 [501 kB]
+Get:8 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-kerberos amd64 1.1.14-3.1build13 [20.9 kB]
+Get:9 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-libcloud all 3.8.0+repack-5ubuntu1 [827 kB]
+Get:10 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-pyspnego all 0.10.2-3 [96.4 kB]
+Get:11 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-requests-ntlm all 1.3.0-1 [7,652 B]
+Get:12 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-selinux amd64 3.9-4build1 [171 kB]
+Get:13 http://archive.ubuntu.com/ubuntu resolute/main amd64 python3-xmltodict all 1.0.3-1 [19.4 kB]
+Get:14 http://archive.ubuntu.com/ubuntu resolute/universe amd64 python3-winrm all 0.5.0-2build1 [37.7 kB]
+Fetched 22.4 MB in 13s (1,764 kB/s)                                                          
+Selecting previously unselected package python3-resolvelib.
+(Reading database… 127429 files and directories currently installed.)
+Preparing to unpack …/00-python3-resolvelib_1.2.1-2_all.deb…
+Unpacking python3-resolvelib (1.2.1-2)…
+Selecting previously unselected package python3-dnspython.
+Preparing to unpack …/01-python3-dnspython_2.8.0-1ubuntu1_all.deb…
+Unpacking python3-dnspython (2.8.0-1ubuntu1)…
+Selecting previously unselected package ansible-core.
+Preparing to unpack …/02-ansible-core_2.20.1-1_all.deb…
+Unpacking ansible-core (2.20.1-1)…
+Selecting previously unselected package ansible.
+Preparing to unpack …/03-ansible_13.1.0+dfsg-1ubuntu1_all.deb…
+Unpacking ansible (13.1.0+dfsg-1ubuntu1)…
+Selecting previously unselected package python3-argcomplete.
+Preparing to unpack …/04-python3-argcomplete_3.6.3-1_all.deb…
+Unpacking python3-argcomplete (3.6.3-1)…
+Selecting previously unselected package python3-decorator.
+Preparing to unpack …/05-python3-decorator_5.2.1-2_all.deb…
+Unpacking python3-decorator (5.2.1-2)…
+Selecting previously unselected package python3-gssapi.
+Preparing to unpack …/06-python3-gssapi_1.10.1-1build1_amd64.deb…
+Unpacking python3-gssapi (1.10.1-1build1)…
+Selecting previously unselected package python3-kerberos.
+Preparing to unpack …/07-python3-kerberos_1.1.14-3.1build13_amd64.deb…
+Unpacking python3-kerberos (1.1.14-3.1build13)…
+Selecting previously unselected package python3-libcloud.
+Preparing to unpack …/08-python3-libcloud_3.8.0+repack-5ubuntu1_all.deb…
+Unpacking python3-libcloud (3.8.0+repack-5ubuntu1)…
+Selecting previously unselected package python3-pyspnego.
+Preparing to unpack …/09-python3-pyspnego_0.10.2-3_all.deb…
+Unpacking python3-pyspnego (0.10.2-3)…
+Selecting previously unselected package python3-requests-ntlm.
+Preparing to unpack …/10-python3-requests-ntlm_1.3.0-1_all.deb…
+Unpacking python3-requests-ntlm (1.3.0-1)…
+Selecting previously unselected package python3-selinux.
+Preparing to unpack …/11-python3-selinux_3.9-4build1_amd64.deb…
+Unpacking python3-selinux (3.9-4build1)…
+Selecting previously unselected package python3-xmltodict.
+Preparing to unpack …/12-python3-xmltodict_1.0.3-1_all.deb…
+Unpacking python3-xmltodict (1.0.3-1)…
+Selecting previously unselected package python3-winrm.
+Preparing to unpack …/13-python3-winrm_0.5.0-2build1_all.deb…
+Unpacking python3-winrm (0.5.0-2build1)…
+Setting up python3-resolvelib (1.2.1-2)…
+Setting up python3-kerberos (1.1.14-3.1build13)…
+Setting up python3-libcloud (3.8.0+repack-5ubuntu1)…
+Setting up python3-decorator (5.2.1-2)…
+Setting up python3-xmltodict (1.0.3-1)…
+Setting up python3-gssapi (1.10.1-1build1)…
+Setting up python3-pyspnego (0.10.2-3)…
+Setting up python3-dnspython (2.8.0-1ubuntu1)…
+Setting up python3-selinux (3.9-4build1)…
+Setting up python3-argcomplete (3.6.3-1)…
+Setting up python3-requests-ntlm (1.3.0-1)…
+Setting up ansible-core (2.20.1-1)…
+Setting up python3-winrm (0.5.0-2build1)…
+Setting up ansible (13.1.0+dfsg-1ubuntu1)…
+Processing triggers for man-db (2.13.1-1build1)…
+Scanning processes...                                                                         
+Scanning linux images...                                                                      
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+stack@ubuntu-server:~/devstack$ VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r .current_version)
+stack@ubuntu-server:~/devstack$ echo "Terraform version: $VER"
+Terraform version: 1.17.1
+stack@ubuntu-server:~/devstack$ cd /tmp
+stack@ubuntu-server:/tmp$ curl -LO https://releases.hashicorp.com/terraform/${VER}/terraform_${VER}_linux_amd64.zip
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+100 36.45M 100 36.45M   0      0  1.23M      0   00:29   00:29          1.47M
+stack@ubuntu-server:/tmp$ unzip -o terraform_${VER}_linux_amd64.zip
+Archive:  terraform_1.17.1_linux_amd64.zip
+  inflating: LICENSE.txt             
+  inflating: terraform               
+stack@ubuntu-server:/tmp$ sudo mv terraform /usr/local/bin/
+stack@ubuntu-server:/tmp$ terraform version
+Terraform v1.17.1
+on linux_amd64
+
+stack@ubuntu-server:/tmp$ ansible --version | head -1
+ansible [core 2.20.1]
+stack@ubuntu-server:/tmp$ openstack --os-cloud devstack-admin token issue -c expires -f value
+2026-11-06T23:49:33+0000
+stack@ubuntu-server:/tmp$ cat /etc/openstack/clouds.yaml
+clouds:
+  devstack:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: demo
+      user_domain_id: default
+      username: demo
+    region_name: RegionOne
+  devstack-admin:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: admin
+      user_domain_id: default
+      username: admin
+    region_name: RegionOne
+  devstack-admin-demo:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: demo
+      user_domain_id: default
+      username: admin
+    region_name: RegionOne
+  devstack-alt:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: alt_demo
+      user_domain_id: default
+      username: alt_demo
+    region_name: RegionOne
+  devstack-alt-member:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: alt_demo
+      user_domain_id: default
+      username: alt_demo_member
+    region_name: RegionOne
+  devstack-alt-reader:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: alt_demo
+      user_domain_id: default
+      username: alt_demo_reader
+    region_name: RegionOne
+  devstack-reader:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: demo
+      user_domain_id: default
+      username: demo_reader
+    region_name: RegionOne
+  devstack-system-admin:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      system_scope: all
+      user_domain_id: default
+      username: admin
+    region_name: RegionOne
+  devstack-system-member:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      system_scope: all
+      user_domain_id: default
+      username: system_member
+    region_name: RegionOne
+  devstack-system-reader:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      system_scope: all
+      user_domain_id: default
+      username: system_reader
+    region_name: RegionOne
+functional:
+  image_name: cirros-0.6.3-x86_64-disk
+functional:
+  image_name: cirros-0.6.3-x86_64-disk
+stack@ubuntu-server:/tmp$ cd ~/part3/terraform
+stack@ubuntu-server:~/part3/terraform$ cat > variables.tf <<'EOF'
+variable "instance_name" { default = "vm-terraform" }
+variable "image_name"    { default = "ubuntu-noble" }
+variable "flavor_name"   { default = "m1.saas" }
+variable "network_name"  { default = "net-tp" }
+variable "key_pair"      { default = "key-tp" }
+variable "external_pool" { default = "public" }
+EOF
+stack@ubuntu-server:~/part3/terraform$ cat > variables.tf 
+^C
+stack@ubuntu-server:~/part3/terraform$ cat  variables.tf 
+stack@ubuntu-server:~/part3/terraform$ cat ~/part3/terraform/variables.tf 
+stack@ubuntu-server:~/part3/terraform$ cat variables.tf 
+stack@ubuntu-server:~/part3/terraform$ cat > variables.tf <<'EOF'
+variable "instance_name" { default = "vm-terraform" }
+variable "image_name"    { default = "ubuntu-noble" }
+variable "flavor_name"   { default = "m1.saas" }
+variable "network_name"  { default = "net-tp" }
+variable "key_pair"      { default = "key-tp" }
+variable "external_pool" { default = "public" }
+EOF
+stack@ubuntu-server:~/part3/terraform$ cat variables.tf 
+variable "instance_name" { default = "vm-terraform" }
+variable "image_name"    { default = "ubuntu-noble" }
+variable "flavor_name"   { default = "m1.saas" }
+variable "network_name"  { default = "net-tp" }
+variable "key_pair"      { default = "key-tp" }
+variable "external_pool" { default = "public" }
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_networking_secgroup_v2.web.id]
+  admin_state_up     = true
+}
+
+# Ubuntu instance
+resource "openstack_compute_instance_v2" "vm" {
+  name        = var.instance_name
+  image_name  = var.image_name
+  flavor_name = var.flavor_name
+  key_pair    = var.key_pair
+
+  network {
+    port = openstack_networking_port_v2.vm.id
+  }
+}
+
+# Floating IP + association
+resource "openstack_networking_floatingip_v2" "fip" {
+  pool = var.external_pool
+}
+
+resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+  floating_ip = openstack_networking_floatingip_v2.fip.address
+  port_id     = openstack_networking_port_v2.vm.id
+}
+EOF
+stack@ubuntu-server:~/part3/terraform$ ^C
+stack@ubuntu-server:~/part3/terraform$ ^[[200~cat > main.tf <<'EOF'
+> terraform {
+>   required_providers {
+>     openstack = {
+>       source  = "terraform-provider-openstack/openstack"
+>       version = ">= 3.0.0"
+>     }
+>   }
+> }
+> 
+> # Credentials are read from /etc/openstack/clouds.yaml
+> provider "openstack" {
+>   cloud = "devstack-admin"
+> }
+> 
+> # Existing private network
+> data "openstack_networking_network_v2" "private" {
+>   name = var.network_name
+> }
+> 
+> # Security group: SSH + HTTP
+> resource "openstack_networking_secgroup_v2" "web" {
+>   name        = "sg-terraform"
+>   description = "SSH and HTTP (managed by Terraform)"
+> }
+> 
+> resource "openstack_networking_secgroup_rule_v2" "ssh" {
+>   direction         = "ingress"
+>   ethertype         = "IPv4"
+>   protocol          = "tcp"
+>   port_range_min    = 22
+>   port_range_max    = 22
+>   remote_ip_prefix  = "0.0.0.0/0"
+>   security_group_id = openstack_networking_secgroup_v2.web.id
+> }
+> 
+> resource "openstack_networking_secgroup_rule_v2" "http" {
+>   direction         = "ingress"
+>   ethertype         = "IPv4"
+>   protocol          = "tcp"
+>   port_range_min    = 80
+>   port_range_max    = 80
+>   remote_ip_prefix  = "0.0.0.0/0"
+>   security_group_id = openstack_networking_secgroup_v2.web.id
+> }
+> 
+> # Network port carrying the security group
+> resource "openstack_networking_port_v2" "vm" {
+>   name               = "${var.instance_name}-port"
+>   network_id         = data.openstack_networking_network_v2.private.id
+>   security_group_ids = [openstack_networking_secgroup_v2.web.id]
+>   admin_state_up     = true
+> }
+> 
+> # Ubuntu instance
+> resource "openstack_compute_instance_v2" "vm" {
+>   name        = var.instance_name
+>   image_name  = var.image_name
+>   flavor_name = var.flavor_name
+>   key_pair    = var.key_pair
+> 
+>   network {
+>     port = openstack_networking_port_v2.vm.id
+>   }
+> }
+> 
+> # Floating IP + association
+> resource "openstack_networking_floatingip_v2" "fip" {
+>   pool = var.external_pool
+> }
+> 
+> resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+>   floating_ip = openstack_networking_floatingip_v2.fip.address
+>   port_id     = openstack_networking_port_v2.vm.id
+> }
+> EOF
+cat: command not found
+stack@ubuntu-server:~/part3/terraform$ ~
+stack@ubuntu-server:~/part3/terraform$ ~cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_networking_secgroup_v2.web.id]
+  admin_state_up     = true
+}
+
+# Ubuntu instance
+resource "openstack_compute_instance_v2" "vm" {
+  name        = var.instance_name
+  image_name  = var.image_name
+  flavor_name = var.flavor_name
+  key_pair    = var.key_pair
+
+  network {
+    port = openstack_networking_port_v2.vm.id
+  }
+}
+
+# Floating IP + association
+resource "openstack_networking_floatingip_v2" "fip" {
+  pool = var.external_pool
+}
+
+resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+  floating_ip = openstack_networking_floatingip_v2.fip.address
+  port_id     = openstack_networking_port_v2.vm.id
+}
+EOF
+^C
+stack@ubuntu-server:~/part3/terraform$ cat > outputs.tf <<'EOF'
+output "instance_name" {
+  value = openstack_compute_instance_v2.vm.name
+}
+
+output "floating_ip" {
+  value = openstack_networking_floatingip_v2.fip.address
+}
+EOF
+stack@ubuntu-server:~/part3/terraform$ cat main.tf 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_networking_secgroup_v2.web.id]
+  admin_state_up     = true
+}
+
+# Ubuntu instance
+resource "openstack_compute_instance_v2" "vm" {
+  name        = var.instance_name
+  image_name  = var.image_name
+  flavor_name = var.flavor_name
+  key_pair    = var.key_pair
+
+  network {
+    port = openstack_networking_port_v2.vm.id
+  }
+}
+
+# Floating IP + association
+resource "openstack_networking_floatingip_v2" "fip" {
+  pool = var.external_pool
+}
+
+resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+  floating_ip = openstack_networking_floatingip_v2.fip.address
+  port_id     = openstack_networking_port_v2.vm.id
+}
+EOF
+stack@ubuntu-server:~/part3/terraform$ cat main.tf 
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_networking_secgroup_v2.web.id]
+  admin_state_up     = true
+}
+
+# Ubuntu instance
+resource "openstack_compute_instance_v2" "vm" {
+  name        = var.instance_name
+  image_name  = var.image_name
+  flavor_name = var.flavor_name
+  key_pair    = var.key_pair
+
+  network {
+    port = openstack_networking_port_v2.vm.id
+  }
+}
+
+# Floating IP + association
+resource "openstack_networking_floatingip_v2" "fip" {
+  pool = var.external_pool
+}
+
+resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+  floating_ip = openstack_networking_floatingip_v2.fip.address
+  port_id     = openstack_networking_port_v2.vm.id
+}
+stack@ubuntu-server:~/part3/terraform$ ls
+main.tf  outputs.tf  variables.tf
+stack@ubuntu-server:~/part3/terraform$ cat variables.tf 
+variable "instance_name" { default = "vm-terraform" }
+variable "image_name"    { default = "ubuntu-noble" }
+variable "flavor_name"   { default = "m1.saas" }
+variable "network_name"  { default = "net-tp" }
+variable "key_pair"      { default = "key-tp" }
+variable "external_pool" { default = "public" }
+stack@ubuntu-server:~/part3/terraform$ cat outputs.tf 
+output "instance_name" {
+  value = openstack_compute_instance_v2.vm.name
+}
+
+output "floating_ip" {
+  value = openstack_networking_floatingip_v2.fip.address
+}
+stack@ubuntu-server:~/part3/terraform$ cat main
+cat: main: No such file or directory
+stack@ubuntu-server:~/part3/terraform$ cat main.tf 
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_networking_secgroup_v2.web.id]
+  admin_state_up     = true
+}
+
+# Ubuntu instance
+resource "openstack_compute_instance_v2" "vm" {
+  name        = var.instance_name
+  image_name  = var.image_name
+  flavor_name = var.flavor_name
+  key_pair    = var.key_pair
+
+  network {
+    port = openstack_networking_port_v2.vm.id
+  }
+}
+
+# Floating IP + association
+resource "openstack_networking_floatingip_v2" "fip" {
+  pool = var.external_pool
+}
+
+resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+  floating_ip = openstack_networking_floatingip_v2.fip.address
+  port_id     = openstack_networking_port_v2.vm.id
+}
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ terraform init
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding terraform-provider-openstack/openstack versions matching ">= 3.0.0"...
+- Installing terraform-provider-openstack/openstack v3.4.0...
+- Installed terraform-provider-openstack/openstack v3.4.0 (self-signed, key ID 4F80527A391BEFD2)
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://developer.hashicorp.com/terraform/cli/plugins/signing
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+stack@ubuntu-server:~/part3/terraform$ terraform validate 
+Success! The configuration is valid.
+
+stack@ubuntu-server:~/part3/terraform$ terraform plan | tee plan.txt
+
+Planning failed. Terraform encountered an error while generating this plan.
+
+╷
+│ Error: unable to load clouds.yaml: failed to unmarshal yaml: yaml: unmarshal errors:
+│   line 91: mapping key "functional" already defined at line 89
+│ 
+│   with provider["registry.terraform.io/terraform-provider-openstack/openstack"],
+│   on main.tf line 11, in provider "openstack":
+│   11: provider "openstack" {
+│ 
+╵
+stack@ubuntu-server:~/part3/terraform$ cat main.tf 
+stack@ubuntu-server:~/part3/terraform$ cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+                                           main.tf 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           > outputs.tf <<'EOF'
+output "instance_name" {
+  value = openstack_compute_instance_v2.vm.name
+}
+
+output "floating_ip" {
+  value = openstack_networking_floatingip_v2.fip.address
+}
+EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stack@ubuntu-server:~/part3/terraform$ ^[[200~cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_networkinvariables.tf .id]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                       cat variables.tf 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stack@ubuntu-server:~/part3/terraform$ cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+                                       ^[[200~
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web.id
+}
+
+# Network port carrying the security group
+resource "openstack_networking_port_v2" "vm" {
+  name               = "${var.instance_name}-port"
+  network_id         = data.openstack_networking_network_v2.private.id
+  security_group_ids = [openstack_netwocat > outputs.web.id]
+output "instance_name"tate_up     = true
+} value = openstack_compute_instance_v2.vm.name
+}                
+                                                        
+output "floating_ip" {e_instance_v2" "vm" {
+  value = openstack_networking_floatingip_v2.fip.address
+}mage_name  = var.image_name
+EOFlavor_name = var.flavor_name
+  key_pair    = var.key_pair
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           main.tf 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stack@ubuntu-server:~/part3/terraform$ cat > main.tf <<'EOF'
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+# Credentials are read from /etc/openstack/clouds.yaml
+provider "openstack" {
+  cloud = "devstack-admin"
+}
+
+# Existing private network
+data "openstack_networking_network_v2" "private" {
+  name = var.network_name
+}
+
+# Security group: SSH + HTTP
+resource "openstack_networking_secgroup_v2" "web" {
+  name        = "sg-terraform"
+  description = "SSH and HTTP (managed by Terraform)"
+}
+                                           main.tf 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                       ^C
+stack@ubuntu-server:~/part3/terraform$ terraform plan | tee plan.txt
+
+Planning failed. Terraform encountered an error while generating this plan.
+
+╷
+│ Error: unable to load clouds.yaml: failed to unmarshal yaml: yaml: unmarshal errors:
+│   line 91: mapping key "functional" already defined at line 89
+│ 
+│   with provider["registry.terraform.io/terraform-provider-openstack/openstack"],
+│   on main.tf line 11, in provider "openstack":
+│   11: provider "openstack" {
+│ 
+╵
+stack@ubuntu-server:~/part3/terraform$ cat /etc/openstack/clouds.yaml
+clouds:
+  devstack:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: demo
+      user_domain_id: default
+      username: demo
+    region_name: RegionOne
+  devstack-admin:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: admin
+      user_domain_id: default
+      username: admin
+    region_name: RegionOne
+  devstack-admin-demo:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: demo
+      user_domain_id: default
+      username: admin
+    region_name: RegionOne
+  devstack-alt:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: alt_demo
+      user_domain_id: default
+      username: alt_demo
+    region_name: RegionOne
+  devstack-alt-member:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: alt_demo
+      user_domain_id: default
+      username: alt_demo_member
+    region_name: RegionOne
+  devstack-alt-reader:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: alt_demo
+      user_domain_id: default
+      username: alt_demo_reader
+    region_name: RegionOne
+  devstack-reader:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      project_domain_id: default
+      project_name: demo
+      user_domain_id: default
+      username: demo_reader
+    region_name: RegionOne
+  devstack-system-admin:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      system_scope: all
+      user_domain_id: default
+      username: admin
+    region_name: RegionOne
+  devstack-system-member:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      system_scope: all
+      user_domain_id: default
+      username: system_member
+    region_name: RegionOne
+  devstack-system-reader:
+    auth:
+      auth_url: http://192.168.56.101/identity
+      password: secret
+      system_scope: all
+      user_domain_id: default
+      username: system_reader
+    region_name: RegionOne
+functional:
+  image_name: cirros-0.6.3-x86_64-disk
+functional:
+  image_name: cirros-0.6.3-x86_64-disk
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ 
+stack@ubuntu-server:~/part3/terraform$ mkdir -p ~/.config/openstack
+stack@ubuntu-server:~/part3/terraform$ python3 - <<'EOF'
+import yaml, os
+src = yaml.safe_load(open('/etc/openstack/clouds.yaml'))
+keep = {k: v for k, v in src['clouds'].items() if k in ('devstack', 'devstack-admin')}
+p = os.path.expanduser('~/.config/openstack/clouds.yaml')
+yaml.safe_dump({'clouds': keep}, open(p, 'w'), default_flow_style=False)
+os.chmod(p, 0o600)
+print("kept clouds:", list(keep))
+EOF^C
+stack@ubuntu-server:~/part3/terraform$ python3 - <<'EOF'
+import yaml, os
+src = yaml.safe_load(open('/etc/openstack/clouds.yaml'))
+keep = {k: v for k, v in src['clouds'].items() if k in ('devstack', 'devstack-admin')}
+p = os.path.expanduser('~/.config/openstack/clouds.yaml')
+yaml.safe_dump({'clouds': keep}, open(p, 'w'), default_flow_style=False)
+os.chmod(p, 0o600)
+print("kept clouds:", list(keep))
+EOF
+kept clouds: ['devstack', 'devstack-admin']
+stack@ubuntu-server:~/part3/terraform$ openstack --os-cloud devstack-admin token issue -c expires -f value
+2026-11-06T23:58:35+0000
+stack@ubuntu-server:~/part3/terraform$ cd ~/part3/terraform
+stack@ubuntu-server:~/part3/terraform$ terraform plan | tee plan.txt
+data.openstack_networking_network_v2.private: Reading...
+data.openstack_networking_network_v2.private: Read complete after 1s [id=ef5dff71-6e9e-4893-8019-d444965e54f3]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # openstack_compute_instance_v2.vm will be created
+  + resource "openstack_compute_instance_v2" "vm" {
+      + access_ip_v4        = (known after apply)
+      + access_ip_v6        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = (known after apply)
+      + created             = (known after apply)
+      + flavor_id           = (known after apply)
+      + flavor_name         = "m1.saas"
+      + force_delete        = false
+      + hypervisor_hostname = (known after apply)
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = "ubuntu-noble"
+      + key_pair            = "key-tp"
+      + name                = "vm-terraform"
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_groups     = (known after apply)
+      + stop_before_destroy = false
+      + updated             = (known after apply)
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + fixed_ip_v6    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # openstack_networking_floatingip_associate_v2.fip_assoc will be created
+  + resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+      + fixed_ip    = (known after apply)
+      + floating_ip = (known after apply)
+      + id          = (known after apply)
+      + port_id     = (known after apply)
+      + region      = (known after apply)
+    }
+
+  # openstack_networking_floatingip_v2.fip will be created
+  + resource "openstack_networking_floatingip_v2" "fip" {
+      + address    = (known after apply)
+      + all_tags   = (known after apply)
+      + dns_domain = (known after apply)
+      + dns_name   = (known after apply)
+      + fixed_ip   = (known after apply)
+      + id         = (known after apply)
+      + pool       = "public"
+      + port_id    = (known after apply)
+      + region     = (known after apply)
+      + subnet_id  = (known after apply)
+      + tenant_id  = (known after apply)
+    }
+
+  # openstack_networking_port_v2.vm will be created
+  + resource "openstack_networking_port_v2" "vm" {
+      + admin_state_up         = true
+      + all_fixed_ips          = (known after apply)
+      + all_security_group_ids = (known after apply)
+      + all_tags               = (known after apply)
+      + device_id              = (known after apply)
+      + device_owner           = (known after apply)
+      + dns_assignment         = (known after apply)
+      + dns_name               = (known after apply)
+      + id                     = (known after apply)
+      + mac_address            = (known after apply)
+      + name                   = "vm-terraform-port"
+      + network_id             = "ef5dff71-6e9e-4893-8019-d444965e54f3"
+      + port_security_enabled  = (known after apply)
+      + qos_policy_id          = (known after apply)
+      + region                 = (known after apply)
+      + security_group_ids     = (known after apply)
+      + tenant_id              = (known after apply)
+
+      + binding (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.http will be created
+  + resource "openstack_networking_secgroup_rule_v2" "http" {
+      + direction               = "ingress"
+      + ethertype               = "IPv4"
+      + id                      = (known after apply)
+      + port_range_max          = 80
+      + port_range_min          = 80
+      + protocol                = "tcp"
+      + region                  = (known after apply)
+      + remote_address_group_id = (known after apply)
+      + remote_group_id         = (known after apply)
+      + remote_ip_prefix        = "0.0.0.0/0"
+      + security_group_id       = (known after apply)
+      + tenant_id               = (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.ssh will be created
+  + resource "openstack_networking_secgroup_rule_v2" "ssh" {
+      + direction               = "ingress"
+      + ethertype               = "IPv4"
+      + id                      = (known after apply)
+      + port_range_max          = 22
+      + port_range_min          = 22
+      + protocol                = "tcp"
+      + region                  = (known after apply)
+      + remote_address_group_id = (known after apply)
+      + remote_group_id         = (known after apply)
+      + remote_ip_prefix        = "0.0.0.0/0"
+      + security_group_id       = (known after apply)
+      + tenant_id               = (known after apply)
+    }
+
+  # openstack_networking_secgroup_v2.web will be created
+  + resource "openstack_networking_secgroup_v2" "web" {
+      + all_tags    = (known after apply)
+      + description = "SSH and HTTP (managed by Terraform)"
+      + id          = (known after apply)
+      + name        = "sg-terraform"
+      + region      = (known after apply)
+      + stateful    = (known after apply)
+      + tenant_id   = (known after apply)
+    }
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + floating_ip   = (known after apply)
+  + instance_name = "vm-terraform"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
+stack@ubuntu-server:~/part3/terraform$ ls
+main.tf  outputs.tf  plan.txt  variables.tf
+stack@ubuntu-server:~/part3/terraform$ terraform apply -auto-approve | tee apply.txt
+data.openstack_networking_network_v2.private: Reading...
+data.openstack_networking_network_v2.private: Read complete after 0s [id=ef5dff71-6e9e-4893-8019-d444965e54f3]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # openstack_compute_instance_v2.vm will be created
+  + resource "openstack_compute_instance_v2" "vm" {
+      + access_ip_v4        = (known after apply)
+      + access_ip_v6        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = (known after apply)
+      + created             = (known after apply)
+      + flavor_id           = (known after apply)
+      + flavor_name         = "m1.saas"
+      + force_delete        = false
+      + hypervisor_hostname = (known after apply)
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = "ubuntu-noble"
+      + key_pair            = "key-tp"
+      + name                = "vm-terraform"
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_groups     = (known after apply)
+      + stop_before_destroy = false
+      + updated             = (known after apply)
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + fixed_ip_v6    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # openstack_networking_floatingip_associate_v2.fip_assoc will be created
+  + resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+      + fixed_ip    = (known after apply)
+      + floating_ip = (known after apply)
+      + id          = (known after apply)
+      + port_id     = (known after apply)
+      + region      = (known after apply)
+    }
+
+  # openstack_networking_floatingip_v2.fip will be created
+  + resource "openstack_networking_floatingip_v2" "fip" {
+      + address    = (known after apply)
+      + all_tags   = (known after apply)
+      + dns_domain = (known after apply)
+      + dns_name   = (known after apply)
+      + fixed_ip   = (known after apply)
+      + id         = (known after apply)
+      + pool       = "public"
+      + port_id    = (known after apply)
+      + region     = (known after apply)
+      + subnet_id  = (known after apply)
+      + tenant_id  = (known after apply)
+    }
+
+  # openstack_networking_port_v2.vm will be created
+  + resource "openstack_networking_port_v2" "vm" {
+      + admin_state_up         = true
+      + all_fixed_ips          = (known after apply)
+      + all_security_group_ids = (known after apply)
+      + all_tags               = (known after apply)
+      + device_id              = (known after apply)
+      + device_owner           = (known after apply)
+      + dns_assignment         = (known after apply)
+      + dns_name               = (known after apply)
+      + id                     = (known after apply)
+      + mac_address            = (known after apply)
+      + name                   = "vm-terraform-port"
+      + network_id             = "ef5dff71-6e9e-4893-8019-d444965e54f3"
+      + port_security_enabled  = (known after apply)
+      + qos_policy_id          = (known after apply)
+      + region                 = (known after apply)
+      + security_group_ids     = (known after apply)
+      + tenant_id              = (known after apply)
+
+      + binding (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.http will be created
+  + resource "openstack_networking_secgroup_rule_v2" "http" {
+      + direction               = "ingress"
+      + ethertype               = "IPv4"
+      + id                      = (known after apply)
+      + port_range_max          = 80
+      + port_range_min          = 80
+      + protocol                = "tcp"
+      + region                  = (known after apply)
+      + remote_address_group_id = (known after apply)
+      + remote_group_id         = (known after apply)
+      + remote_ip_prefix        = "0.0.0.0/0"
+      + security_group_id       = (known after apply)
+      + tenant_id               = (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.ssh will be created
+  + resource "openstack_networking_secgroup_rule_v2" "ssh" {
+      + direction               = "ingress"
+      + ethertype               = "IPv4"
+      + id                      = (known after apply)
+      + port_range_max          = 22
+      + port_range_min          = 22
+      + protocol                = "tcp"
+      + region                  = (known after apply)
+      + remote_address_group_id = (known after apply)
+      + remote_group_id         = (known after apply)
+      + remote_ip_prefix        = "0.0.0.0/0"
+      + security_group_id       = (known after apply)
+      + tenant_id               = (known after apply)
+    }
+
+  # openstack_networking_secgroup_v2.web will be created
+  + resource "openstack_networking_secgroup_v2" "web" {
+      + all_tags    = (known after apply)
+      + description = "SSH and HTTP (managed by Terraform)"
+      + id          = (known after apply)
+      + name        = "sg-terraform"
+      + region      = (known after apply)
+      + stateful    = (known after apply)
+      + tenant_id   = (known after apply)
+    }
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + floating_ip   = (known after apply)
+  + instance_name = "vm-terraform"
+openstack_networking_floatingip_v2.fip: Creating...
+openstack_networking_secgroup_v2.web: Creating...
+openstack_networking_secgroup_v2.web: Creation complete after 0s [id=db749411-92b8-4e87-9944-b58c4e3e488e]
+openstack_networking_secgroup_rule_v2.ssh: Creating...
+openstack_networking_secgroup_rule_v2.http: Creating...
+openstack_networking_port_v2.vm: Creating...
+openstack_networking_secgroup_rule_v2.ssh: Creation complete after 2s [id=69c6d4de-791b-438b-aa85-97a57046c3dc]
+openstack_networking_floatingip_v2.fip: Creation complete after 2s [id=6178aa92-3452-4d26-86be-8e855f8dba98]
+openstack_networking_secgroup_rule_v2.http: Creation complete after 2s [id=8195c9ff-b468-485f-bf7d-c48587aa4e3a]
+openstack_networking_port_v2.vm: Creation complete after 2s [id=5da3c6ff-3ae4-476b-9bce-84cbd954d806]
+openstack_networking_floatingip_associate_v2.fip_assoc: Creating...
+openstack_compute_instance_v2.vm: Creating...
+openstack_networking_floatingip_associate_v2.fip_assoc: Creation complete after 2s [id=6178aa92-3452-4d26-86be-8e855f8dba98]
+openstack_compute_instance_v2.vm: Still creating... [00m10s elapsed]
+openstack_compute_instance_v2.vm: Creation complete after 13s [id=d94d99df-0af5-4bf0-b623-b3a51a9b2594]
+
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+floating_ip = "172.24.4.84"
+instance_name = "vm-terraform"
+stack@ubuntu-server:~/part3/terraform$ 
+
