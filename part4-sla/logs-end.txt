@@ -1,0 +1,39 @@
+stack@ubuntu-server:~/part4$ nohup ./outage.sh > outage-run.log 2>&1 &
+[1] 7414
+stack@ubuntu-server:~/part4$ PY=/opt/stack/data/venv/bin/python3
+stack@ubuntu-server:~/part4$ $PY monitor.py --interval 300 --duration 7200 --csv measurements.csv | tee monitor-output.txt
+[2026-11-07 21:15:26] Authenticated with Keystone, cloud=devstack-admin
+[2026-11-07 21:15:27] cycle 1: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:20:29] cycle 2: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:25:28] cycle 3: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:30:31] cycle 4: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:35:28] cycle 5: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:40:28] cycle 6: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:45:29] cycle 7: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:50:29] cycle 8: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 21:55:28] cycle 9: cirros-mon-1=UP(ACTIVE), cirros-mon-2=DOWN(SHUTOFF), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:00:28] cycle 10: cirros-mon-1=UP(ACTIVE), cirros-mon-2=DOWN(SHUTOFF), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:05:27] cycle 11: cirros-mon-1=UP(ACTIVE), cirros-mon-2=DOWN(SHUTOFF), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:10:30] cycle 12: cirros-mon-1=UP(ACTIVE), cirros-mon-2=DOWN(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:15:28] cycle 13: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:20:28] cycle 14: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:25:27] cycle 15: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:30:27] cycle 16: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:35:27] cycle 17: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:40:28] cycle 18: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:45:27] cycle 19: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:50:27] cycle 20: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 22:55:28] cycle 21: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 23:00:27] cycle 22: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 23:05:27] cycle 23: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+[2026-11-07 23:10:28] cycle 24: cirros-mon-1=UP(ACTIVE), cirros-mon-2=UP(ACTIVE), cirros-mon-3=UP(ACTIVE)
+
+=== SLA MONITORING REPORT ===
+Period      : 2026-11-07 21:15:27 -> 2026-11-07 23:10:28
+Objective   : 99.5% availability
+instance         measures available  failed  availability  objective
+cirros-mon-1           24        24       0       100.00%  MET
+cirros-mon-2           24        20       4        83.33%  NOT MET
+cirros-mon-3           24        24       0       100.00%  MET
+[1]+  Done                       nohup ./outage.sh > outage-run.log 2>&1
+stack@ubuntu-server:~/part4$
