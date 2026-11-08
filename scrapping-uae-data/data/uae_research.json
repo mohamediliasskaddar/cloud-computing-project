@@ -1,0 +1,2311 @@
+{
+  "schema_version": 1,
+  "scraped_at_utc": "2026-11-08T15:17:14.951387+00:00",
+  "source_base_url": "https://www.uae.ac.ma",
+  "tls_verification_enabled": false,
+  "university_statistics": [
+    {
+      "value": 1357,
+      "value_display": "1.357",
+      "label": "Enseignants-Chercheurs Permanents",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 598,
+      "value_display": "598",
+      "label": "Staff Administratif et Technique",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 130750,
+      "value_display": "130.750",
+      "label": "Étudiants (Doctorants Inclus)",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 61,
+      "value_display": "61",
+      "label": "Nationalités",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 200,
+      "value_display": "200",
+      "label": "Clubs et associations",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 21469,
+      "value_display": "21.469",
+      "label": "Boursiers",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 16220,
+      "value_display": "16.220",
+      "label": "Diplômés",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 6,
+      "value_display": "6",
+      "label": "Provinces et Préfectures",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 10,
+      "value_display": "10",
+      "label": "Facultés",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    },
+    {
+      "value": 7,
+      "value_display": "7",
+      "label": "Ecoles",
+      "source_url": "https://www.uae.ac.ma/",
+      "reference_date": null
+    }
+  ],
+  "establishments": [
+    {
+      "name": "Faculté des Sciences Juridiques et Politiques de ksar el Kebir",
+      "city": "ksar el Kebir",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+          "reference_date": null
+        },
+        {
+          "value": 835,
+          "value_display": "835",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+          "reference_date": null
+        },
+        {
+          "value": 12,
+          "value_display": "12",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjpk",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences Juridiques et Politiques de Tanger",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 26,
+          "value_display": "26",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 2431,
+          "value_display": "2.431",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 12148,
+          "value_display": "12.148",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 82,
+          "value_display": "82",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 48,
+          "value_display": "48",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 5,
+          "value_display": "5",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tanger",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences Juridiques et Politiques de Tétouan",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 20,
+          "value_display": "20",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 2388,
+          "value_display": "2.388",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 11165,
+          "value_display": "11.165",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 73,
+          "value_display": "73",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 39,
+          "value_display": "39",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 3,
+          "value_display": "3",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjp-tetouan",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences Juridiques et Politiques",
+      "city": "Al Hoceima",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsjph",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjph",
+          "reference_date": null
+        },
+        {
+          "value": 507,
+          "value_display": "507",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjph",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjph",
+          "reference_date": null
+        },
+        {
+          "value": 1,
+          "value_display": "1",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjph",
+          "reference_date": null
+        },
+        {
+          "value": 1,
+          "value_display": "1",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjph",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjph",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté d’Économie et de Gestion",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 9,
+          "value_display": "9",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 2828,
+          "value_display": "2.828",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 8820,
+          "value_display": "8.820",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 51,
+          "value_display": "51",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 15,
+          "value_display": "15",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+          "reference_date": null
+        },
+        {
+          "value": 3,
+          "value_display": "3",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tanger",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté d’Économie et de Gestion",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 12,
+          "value_display": "12",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 1570,
+          "value_display": "1.570",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 7524,
+          "value_display": "7.524",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 34,
+          "value_display": "34",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 9,
+          "value_display": "9",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+          "reference_date": null
+        },
+        {
+          "value": 2,
+          "value_display": "2",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/feg-tetouan",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "École Supérieure de Technologie",
+      "city": "Al Hoceima",
+      "profile_url": "https://www.uae.ac.ma/etablissements/esth",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 2,
+          "value_display": "2",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/esth",
+          "reference_date": null
+        },
+        {
+          "value": 90,
+          "value_display": "90",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/esth",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/esth",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/esth",
+          "reference_date": null
+        },
+        {
+          "value": 1,
+          "value_display": "1",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/esth",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/esth",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "École Nationale de Commerce et de Gestion",
+      "city": "Al Hoceima",
+      "profile_url": "https://www.uae.ac.ma/etablissements/encgh",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 1,
+          "value_display": "1",
+          "label": "Filières accréditées",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgh",
+          "reference_date": null
+        },
+        {
+          "value": 93,
+          "value_display": "93",
+          "label": "Nouveaux inscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgh",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Réinscrits",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgh",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Corps pédagogiques",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgh",
+          "reference_date": null
+        },
+        {
+          "value": 1,
+          "value_display": "1",
+          "label": "Corps Administratifs et Techniques",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgh",
+          "reference_date": null
+        },
+        {
+          "value": 0,
+          "value_display": "0",
+          "label": "Structures de recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgh",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté d'Économie et de Gestion",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/feg",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "École Supérieure de Technologie - EST",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/est",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 1580,
+          "value_display": "1.580",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/est",
+          "reference_date": null
+        },
+        {
+          "value": 75,
+          "value_display": "75",
+          "label": "Enseignants",
+          "source_url": "https://www.uae.ac.ma/etablissements/est",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/est",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Départements",
+          "source_url": "https://www.uae.ac.ma/etablissements/est",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté Oussoul Eddine - FOD",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fod",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 55,
+          "value_display": "55",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 11,
+          "value_display": "11",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 1390,
+          "value_display": "1.390",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 11,
+          "value_display": "11",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 25,
+          "value_display": "25",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 15,
+          "value_display": "15",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        },
+        {
+          "value": 13500,
+          "value_display": "13.500",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fod",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences de Tétouan - FS",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fs",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 73,
+          "value_display": "73",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 1620,
+          "value_display": "1.620",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 18,
+          "value_display": "18",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 25,
+          "value_display": "25",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 19,
+          "value_display": "19",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 7,
+          "value_display": "7",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        },
+        {
+          "value": 16300,
+          "value_display": "16.300",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fs",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Lettres et des Sciences Humaines de Tétouan - FLSH",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/flsh",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 90,
+          "value_display": "90",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 14,
+          "value_display": "14",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 1520,
+          "value_display": "1.520",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 20,
+          "value_display": "20",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 6,
+          "value_display": "6",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        },
+        {
+          "value": 14500,
+          "value_display": "14.500",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/flsh",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Ecole Supérieure Roi Fahd de Traduction - ESRFT",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/esrft",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 62,
+          "value_display": "62",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 10,
+          "value_display": "10",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 1290,
+          "value_display": "1.290",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 9,
+          "value_display": "9",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 19,
+          "value_display": "19",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 20,
+          "value_display": "20",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 3,
+          "value_display": "3",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        },
+        {
+          "value": 10500,
+          "value_display": "10.500",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/esrft",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Ecole Normale Supérieure de  Tétouan - ENS",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/ens",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 1580,
+          "value_display": "1.580",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ens",
+          "reference_date": null
+        },
+        {
+          "value": 75,
+          "value_display": "75",
+          "label": "Enseignants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ens",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/ens",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Départements",
+          "source_url": "https://www.uae.ac.ma/etablissements/ens",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Ecole Nationale de Commerce et de Gestion de Tanger - ENCGT",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/encgt",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 27269,
+          "value_display": "27.269",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 4407,
+          "value_display": "4.407",
+          "label": "Lauréats",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 25,
+          "value_display": "25",
+          "label": "D'existence",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 65,
+          "value_display": "65",
+          "label": "Enseignants Universitaires",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 39,
+          "value_display": "39",
+          "label": "Personnels Administratifs",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Départements",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 9,
+          "value_display": "9",
+          "label": "Formations Initales",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        },
+        {
+          "value": 8,
+          "value_display": "8",
+          "label": "Formation Continue",
+          "source_url": "https://www.uae.ac.ma/etablissements/encgt",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences et Techniques de  Tanger - FSTT",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fstt",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 151,
+          "value_display": "151",
+          "label": "Enseignants chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 55,
+          "value_display": "55",
+          "label": "Administratifs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 15,
+          "value_display": "15",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 26,
+          "value_display": "26",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 19,
+          "value_display": "19",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 1520,
+          "value_display": "1.520",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        },
+        {
+          "value": 14400,
+          "value_display": "14.400",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fstt",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences Juridiques, Economiques et Sociales de Tanger - FSJEST",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsjest",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 49,
+          "value_display": "49",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 8,
+          "value_display": "8",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 980,
+          "value_display": "980",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 7,
+          "value_display": "7",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 21,
+          "value_display": "21",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 18,
+          "value_display": "18",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        },
+        {
+          "value": 9900,
+          "value_display": "9.900",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjest",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Ecole Nationale des Sciences Appliquées de Tanger - ENSAT",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/ensat",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 58,
+          "value_display": "58",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 11,
+          "value_display": "11",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 1290,
+          "value_display": "1.290",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 13,
+          "value_display": "13",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 24,
+          "value_display": "24",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 30,
+          "value_display": "30",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        },
+        {
+          "value": 14500,
+          "value_display": "14.500",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensat",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences Juridiques, Economiques et Sociales de Tétouan - FSJESTE",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 74,
+          "value_display": "74",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 11,
+          "value_display": "11",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 1240,
+          "value_display": "1.240",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 10,
+          "value_display": "10",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 17,
+          "value_display": "17",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 21,
+          "value_display": "21",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        },
+        {
+          "value": 12500,
+          "value_display": "12.500",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsjeste",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté Polydisciplinaire de Larache - FPL",
+      "city": "Larache",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fpl",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 9835,
+          "value_display": "9.835",
+          "label": "Etudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpl",
+          "reference_date": null
+        },
+        {
+          "value": 3969,
+          "value_display": "3.969",
+          "label": "Luréats",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpl",
+          "reference_date": null
+        },
+        {
+          "value": 354,
+          "value_display": "354",
+          "label": "Modules",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpl",
+          "reference_date": null
+        },
+        {
+          "value": 83,
+          "value_display": "83",
+          "label": "Enseignants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpl",
+          "reference_date": null
+        },
+        {
+          "value": 5,
+          "value_display": "5",
+          "label": "Masters",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpl",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Formations Continues",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpl",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Ecole Nationale des Sciences Appliquées d’Al Hoceima - ENSAH",
+      "city": "Al Hoceima",
+      "profile_url": "https://www.uae.ac.ma/etablissements/ensah",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 55,
+          "value_display": "55",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 16,
+          "value_display": "16",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 1290,
+          "value_display": "1.290",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 11,
+          "value_display": "11",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 17,
+          "value_display": "17",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 21,
+          "value_display": "21",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 3,
+          "value_display": "3",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        },
+        {
+          "value": 12350,
+          "value_display": "12.350",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensah",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Ecoles Nationales des Sciences Appliquées de Tétouan - ENSATE",
+      "city": "Tétouan",
+      "profile_url": "https://www.uae.ac.ma/etablissements/ensate",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 65,
+          "value_display": "65",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 10,
+          "value_display": "10",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 1530,
+          "value_display": "1.530",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 17,
+          "value_display": "17",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 19,
+          "value_display": "19",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 23,
+          "value_display": "23",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 5,
+          "value_display": "5",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        },
+        {
+          "value": 10000,
+          "value_display": "10.000",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/ensate",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté des Sciences et Techniques d’Al Hoceima - FSTH",
+      "city": "Al Hoceima",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fsth",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 57,
+          "value_display": "57",
+          "label": "Enseignants chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 14,
+          "value_display": "14",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 1150,
+          "value_display": "1.150",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 9,
+          "value_display": "9",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 18,
+          "value_display": "18",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 27,
+          "value_display": "27",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        },
+        {
+          "value": 11500,
+          "value_display": "11.500",
+          "label": "M² De Locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fsth",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté de Médecine et de Pharmacie de Tanger – FMPT",
+      "city": "Tanger",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fmpt",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 80,
+          "value_display": "80",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 12,
+          "value_display": "12",
+          "label": "Filières",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 1340,
+          "value_display": "1.340",
+          "label": "Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 15,
+          "value_display": "15",
+          "label": "Centres De Recherche",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 23,
+          "value_display": "23",
+          "label": "Natonalités",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 26,
+          "value_display": "26",
+          "label": "Clubs Étudiants",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 4,
+          "value_display": "4",
+          "label": "Bâtiments",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        },
+        {
+          "value": 15000,
+          "value_display": "15.000",
+          "label": "M² de locaux",
+          "source_url": "https://www.uae.ac.ma/etablissements/fmpt",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    },
+    {
+      "name": "Faculté Polydisciplinaire Ksar El Kebir",
+      "city": "ksar el Kebir",
+      "profile_url": "https://www.uae.ac.ma/etablissements/fpk",
+      "source_url": "https://www.uae.ac.ma/etablissements",
+      "statistics": [
+        {
+          "value": 10,
+          "value_display": "10",
+          "label": "Enseignants Chercheurs",
+          "source_url": "https://www.uae.ac.ma/etablissements/fpk",
+          "reference_date": null
+        }
+      ],
+      "profile_http_status": 200,
+      "profile_error": null
+    }
+  ],
+  "menu_navigation": [
+    {
+      "section": "Université",
+      "categories": [
+        {
+          "category": "Présentation de l'UAE",
+          "links": [
+            {
+              "title": "Histoire",
+              "url": "https://www.uae.ac.ma/histoire"
+            },
+            {
+              "title": "Chronologie",
+              "url": "https://www.uae.ac.ma/chronologie"
+            },
+            {
+              "title": "Etablissements",
+              "url": "https://www.uae.ac.ma/etablissements"
+            },
+            {
+              "title": "Engagements de l’UAE",
+              "url": "https://www.uae.ac.ma/engagements-de-luae"
+            },
+            {
+              "title": "Equipe présidentielle",
+              "url": "https://www.uae.ac.ma/equipe-presidentielle"
+            }
+          ]
+        },
+        {
+          "category": "Président",
+          "links": [
+            {
+              "title": "Mot du président",
+              "url": "https://www.uae.ac.ma/mot-du-president"
+            },
+            {
+              "title": "Biographie",
+              "url": "https://www.uae.ac.ma/biographie-du-professeur-bouchta-el-moumni"
+            },
+            {
+              "title": "Projet de développement",
+              "url": "https://www.uae.ac.ma/projet-de-developpement"
+            }
+          ]
+        },
+        {
+          "category": "Gouvernance",
+          "links": [
+            {
+              "title": "Organigramme",
+              "url": "https://www.uae.ac.ma/organigramme"
+            },
+            {
+              "title": "Conseil d'université et commissions",
+              "url": "https://www.uae.ac.ma/conseils-commissions"
+            },
+            {
+              "title": "Procès-verbaux",
+              "url": "https://www.uae.ac.ma/conseils-commissions/1625/pvs"
+            }
+          ]
+        },
+        {
+          "category": "Communiqués et presse",
+          "links": [
+            {
+              "title": "Communiqués de presse",
+              "url": "https://www.uae.ac.ma/communiques-presse"
+            },
+            {
+              "title": "UAE dans la presse",
+              "url": "https://www.uae.ac.ma/presse"
+            }
+          ]
+        },
+        {
+          "category": "Centres d'innovation",
+          "links": [
+            {
+              "title": "Centre de l'innovation pédagogique",
+              "url": "https://www.uae.ac.ma/centre-de-linnovation-pedagogique"
+            },
+            {
+              "title": "Centre des langues et power skills",
+              "url": "https://www.uae.ac.ma/centre-des-langues-et-power-skills"
+            },
+            {
+              "title": "Centre CODE 212",
+              "url": "https://www.uae.ac.ma/centre-code-212"
+            },
+            {
+              "title": "Centre de carrières",
+              "url": "https://www.uae.ac.ma/centre-de-carrieres"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Formation",
+      "categories": [
+        {
+          "category": "Offre de formation",
+          "links": [
+            {
+              "title": "Formation",
+              "url": "https://www.uae.ac.ma/formations/initiale"
+            },
+            {
+              "title": "Catalogue formation initiale",
+              "url": "https://www.uae.ac.ma/guide-pedagogique-de-luae-formation-initiale"
+            }
+          ]
+        },
+        {
+          "category": "Formation continue",
+          "links": [
+            {
+              "title": "Formations diplômantes",
+              "url": "https://www.uae.ac.ma/formations/continue"
+            },
+            {
+              "title": "Formations certifiantes",
+              "url": "https://www.uae.ac.ma/formations-certifiantes"
+            },
+            {
+              "title": "Catalogue formation continue",
+              "url": "https://www.uae.ac.ma/guides-pedagogiques-de-luae-formation-continue"
+            }
+          ]
+        },
+        {
+          "category": "Textes de lois et réglements",
+          "links": [
+            {
+              "title": "Réglementaires de formation initiale",
+              "url": "https://www.uae.ac.ma/reglementaires-de-la-formation-initiale"
+            },
+            {
+              "title": "Réglementaires de formation continue",
+              "url": "https://www.uae.ac.ma/reglementaires-de-la-formation-continue"
+            },
+            {
+              "title": "Référentiel des diplômes",
+              "url": "https://www.uae.ac.ma/referentiel-des-diplomes"
+            },
+            {
+              "title": "Référentiel de la formation en temps aménagé",
+              "url": "https://www.uae.ac.ma/referentiel-de-la-formation-en-temps-amenage"
+            },
+            {
+              "title": "Stratégie-Pacte ESRI",
+              "url": "https://www.uae.ac.ma/strategie-pacte-esri"
+            }
+          ]
+        },
+        {
+          "category": "Plateformes pédagogiques",
+          "links": [
+            {
+              "title": "Moodle",
+              "url": "https://www.uae.ac.ma"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "ETUDES DOCTORALES",
+      "categories": [
+        {
+          "category": "Offre en formations doctorales",
+          "links": [
+            {
+              "title": "CED & FD",
+              "url": "https://www.uae.ac.ma/ced-fd-0"
+            }
+          ]
+        },
+        {
+          "category": "Procédures",
+          "links": [
+            {
+              "title": "Plateforme GCDoc",
+              "url": "https://www.uae.ac.ma/plateforme-gcdoc"
+            },
+            {
+              "title": "Textes de lois et règlements",
+              "url": "https://www.uae.ac.ma/textes-de-lois-et-reglements"
+            }
+          ]
+        },
+        {
+          "category": "Communication",
+          "links": [
+            {
+              "title": "Avis de soutenance",
+              "url": "https://www.uae.ac.ma/avis-de-soutenance"
+            },
+            {
+              "title": "Activités",
+              "url": "https://www.uae.ac.ma/activites"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Recherche-Innovation",
+      "categories": [
+        {
+          "category": "Recherche",
+          "links": [
+            {
+              "title": "Structures de recherche",
+              "url": "https://www.uae.ac.ma/structures-de-recherche"
+            },
+            {
+              "title": "Projets de recherche",
+              "url": "https://www.uae.ac.ma/projets-de-recherche"
+            },
+            {
+              "title": "Activités scientifiques",
+              "url": "https://www.uae.ac.ma/activites-scientifiques"
+            },
+            {
+              "title": "Textes de lois et règlements",
+              "url": "https://www.uae.ac.ma/textes-de-lois-et-reglements-0"
+            }
+          ]
+        },
+        {
+          "category": "Infrastructures et équipements",
+          "links": [
+            {
+              "title": "Infrastructures",
+              "url": "https://www.uae.ac.ma/infrastructures"
+            },
+            {
+              "title": "Equipements",
+              "url": "https://www.uae.ac.ma/equipements"
+            }
+          ]
+        },
+        {
+          "category": "Production scientifique",
+          "links": [
+            {
+              "title": "Thèses",
+              "url": "https://www.uae.ac.ma/theses"
+            },
+            {
+              "title": "Publications",
+              "url": "https://www.uae.ac.ma/publications-0"
+            },
+            {
+              "title": "Ouvrages",
+              "url": "https://www.uae.ac.ma/ouvrages"
+            }
+          ]
+        },
+        {
+          "category": "Innovation et valorisation",
+          "links": [
+            {
+              "title": "Ecosystème de l'innovation",
+              "url": "https://www.uae.ac.ma/ecosysteme-de-linnovation"
+            },
+            {
+              "title": "Valorisation et transfert",
+              "url": "https://www.uae.ac.ma/valorisation-et-transfert"
+            },
+            {
+              "title": "Incubateurs et startups",
+              "url": "https://www.uae.ac.ma/incubateurs-et-startups"
+            },
+            {
+              "title": "Brevets",
+              "url": "https://www.uae.ac.ma/brevets"
+            }
+          ]
+        },
+        {
+          "category": "Habilitation",
+          "links": [
+            {
+              "title": "Procédure",
+              "url": "https://www.uae.ac.ma/procedure"
+            },
+            {
+              "title": "Avis de soutenance",
+              "url": "https://www.uae.ac.ma/avis-de-soutenance"
+            },
+            {
+              "title": "Textes de lois et règlements",
+              "url": "https://www.uae.ac.ma/textes-de-lois-et-reglements-1"
+            }
+          ]
+        },
+        {
+          "category": "Ressources électroniques",
+          "links": [
+            {
+              "title": "Archive ouverte de l’UAE",
+              "url": "https://www.uae.ac.ma/archive-ouverte-de-luae"
+            },
+            {
+              "title": "E-ressources  IMIST",
+              "url": "https://eressources.imist.ma/login"
+            },
+            {
+              "title": "Plateforme Outrouhati",
+              "url": "https://www.uae.ac.ma/plateforme-otrohati"
+            },
+            {
+              "title": "Catalogue Toubk@l",
+              "url": "https://www.uae.ac.ma/catalogue-toubkl"
+            },
+            {
+              "title": "Solution anti-plagiat",
+              "url": "https://app.ithenticate.com/en_us/login"
+            },
+            {
+              "title": "Revues scientifiques",
+              "url": "https://www.uae.ac.ma/revues-scientifiques-de-luae"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Coopération",
+      "categories": [
+        {
+          "category": "Partenariat national",
+          "links": [
+            {
+              "title": "Conventions régionales",
+              "url": "https://www.uae.ac.ma/conventions-regionales"
+            },
+            {
+              "title": "Conventions nationales",
+              "url": "https://www.uae.ac.ma/conventions-nationales"
+            },
+            {
+              "title": "Mobilité nationale",
+              "url": "https://www.uae.ac.ma/mobilite-nationale"
+            },
+            {
+              "title": "Actualité partenariat national",
+              "url": "https://www.uae.ac.ma/actualites/actualite-partenariat-national"
+            }
+          ]
+        },
+        {
+          "category": "Relation-entreprises",
+          "links": [
+            {
+              "title": "Relation de l'UAE avec les entreprises",
+              "url": "https://www.uae.ac.ma/relation-de-luae-avec-les-entreprises"
+            }
+          ]
+        },
+        {
+          "category": "Relations internationales",
+          "links": [
+            {
+              "title": "Conventions internationales",
+              "url": "https://www.uae.ac.ma/conventions-internationales"
+            },
+            {
+              "title": "Réseaux internationaux",
+              "url": "https://www.uae.ac.ma/reseaux-internationaux"
+            },
+            {
+              "title": "Mobilité internationale",
+              "url": "https://www.uae.ac.ma/mobilite-internationale"
+            },
+            {
+              "title": "Etudiants internationaux",
+              "url": "https://www.uae.ac.ma/bureau-des-relations-internationales"
+            },
+            {
+              "title": "Actualité partenariat international",
+              "url": "https://www.uae.ac.ma/actualites/actualite-partenariat-international"
+            }
+          ]
+        },
+        {
+          "category": "Programmes internationaux",
+          "links": [
+            {
+              "title": "ERASMUS",
+              "url": "https://www.uae.ac.ma/erasmus"
+            },
+            {
+              "title": "Horizon Europe / 2020",
+              "url": "https://www.uae.ac.ma/horizon-europe2020"
+            },
+            {
+              "title": "PRIMA",
+              "url": "https://www.uae.ac.ma/prima"
+            },
+            {
+              "title": "COST",
+              "url": "https://www.uae.ac.ma/cost"
+            },
+            {
+              "title": "BIODEVERSA",
+              "url": "https://www.uae.ac.ma/biodeversa"
+            },
+            {
+              "title": "TEMPUS",
+              "url": "https://www.uae.ac.ma/tempus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Vie estudiantine",
+      "categories": [
+        {
+          "category": "Vie sociale",
+          "links": [
+            {
+              "title": "Bourses",
+              "url": "https://www.uae.ac.ma/bourses"
+            },
+            {
+              "title": "AMOE",
+              "url": "https://amo.uae.ac.ma/amo_aa/"
+            },
+            {
+              "title": "Mobilité",
+              "url": "https://www.uae.ac.ma/mobilite-internationale"
+            },
+            {
+              "title": "Inclusion et accessibilité",
+              "url": "https://www.uae.ac.ma/inclusion-et-accessibilite"
+            },
+            {
+              "title": "Cités universitaires",
+              "url": "https://www.uae.ac.ma/cites-universitaires"
+            }
+          ]
+        },
+        {
+          "category": "Vie sportive & culturelle",
+          "links": [
+            {
+              "title": "Événements sportifs",
+              "url": "https://uae.inventis.ma/evenements/evenements-sportifs"
+            },
+            {
+              "title": "Événements culturels",
+              "url": "https://uae.inventis.ma/evenements/evenements-culturels"
+            },
+            {
+              "title": "Bilans",
+              "url": "https://www.uae.ac.ma/bilans-sportifs-et-culturels"
+            },
+            {
+              "title": "Calendrier",
+              "url": "https://www.uae.ac.ma/calendriers-universitaires"
+            },
+            {
+              "title": "Textes de lois et règlements",
+              "url": "https://www.uae.ac.ma"
+            }
+          ]
+        },
+        {
+          "category": "Vie associative & clubs",
+          "links": [
+            {
+              "title": "Centre de Vie Etudiant",
+              "url": "https://www.uae.ac.ma/centre-de-vie-etudiant"
+            },
+            {
+              "title": "Clubs",
+              "url": "https://www.uae.ac.ma/clubs"
+            },
+            {
+              "title": "Associations",
+              "url": "https://www.uae.ac.ma/association"
+            },
+            {
+              "title": "Tiers-lieux",
+              "url": "https://www.uae.ac.ma/tiers-lieux"
+            },
+            {
+              "title": "Textes de lois et règlements",
+              "url": "https://www.uae.ac.ma"
+            }
+          ]
+        },
+        {
+          "category": "Orientation et insertion professionelle",
+          "links": [
+            {
+              "title": "Orientation",
+              "url": "https://www.uae.ac.ma/orientation"
+            },
+            {
+              "title": "Plateforme Khirrij",
+              "url": "https://khirrij.uae.ac.ma/"
+            },
+            {
+              "title": "Entrepreneuriat",
+              "url": "https://www.uae.ac.ma/incubateurs-et-startups"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "background_pages": [
+    {
+      "title": "Histoire | UAE",
+      "url": "https://www.uae.ac.ma/histoire",
+      "text": "Histoire L’histoire d’une université est indissociable de son parcours marquant son évolution et déclinant toutes les étapes de sa transformation. Celle de l’Université Abdelmalek Essaâdi ne déroge pas à cette règle. C’est donc un établissement qui a su se positionner dès sa création comme une référence en matière d’enseignement universitaire, proposant des formations qui répondent à un besoin de plus en plus exprimé et voulu par son environnement. L’histoire de l’Université Abdelmalek Essaâdi a commencé en 1982 dans la ville de Tétouan qui a vu la naissance de deux établissements formant le noyau de ce qui sera après l’université que nous connaissons aujourd’hui. Ces deux établissements à l’origine de la création de notre université, y seront affiliés à partir de 1989. La région du nord du Royaume s’en enrichira pour enfin pouvoir disposer d’une institution universitaire digne de son nom. Le nom de l’université a été donné en l'honneur du Sultan Saâdien Abu Marwan Abd al-Malik dont les troupes furent victorieuses à la bataille de l’Oued El-Makhazine aussi appelée Bataille des Trois Rois contre le Roi du Portugal Sébastien 1er et ses alliés. Aujourd’hui, la région du nord occupe une position stratégique face à deux mers : la mer Méditerranée et l’océan Atlantique et se situe à seulement 14 kilomètres de l’Espagne. Elle représente le deuxième pôle industriel du Maroc, ainsi que des puissants attraits pour les investissements internationaux et détient le meilleur taux de croissance du pays. Au fil des années, l’Université Abdelmalek Essaâdi s’est développée pour compter à ce jour (17) établissements répartis sur cinq villes de la région : Tétouan, Tanger, Larache, Ksar El kebir et Al Hoceima. L'Université Abdelmalek Essaâdi a été fondée en vertu du Dahir n°189-144 en date du 23 Rabia Ier 1410 (23 octobre 1989) complété par le Dahir no 177-398 du 16 octobre 1975 relatif à la création des universités."
+    },
+    {
+      "title": "Chronologie | UAE",
+      "url": "https://www.uae.ac.ma/chronologie",
+      "text": "Chronologie Créée en 1989, l' Université Abdelmalek Essaâdi est la seule université publique du nord du Maroc. Elle est composée actuellement de (17) établissements universitaires, répartis sur six villes de la Région Tanger-Tétouan-Al Hoceima. Ces établissements ont été créés selon la chronologie suivante :"
+    }
+  ],
+  "academic_calendar": {
+    "url": "https://www.uae.ac.ma/calendriers-universitaires",
+    "status": "under_construction",
+    "page_text": "Calendriers universitaires En cours de construction."
+  },
+  "digital_platform_evidence": {
+    "menu_links": [
+      {
+        "title": "Moodle",
+        "url": "https://www.uae.ac.ma"
+      }
+    ],
+    "pedagogical_innovation_page": {
+      "url": "https://www.uae.ac.ma/centre-de-linnovation-pedagogique",
+      "text": "Centre de l'innovation pédagogique Le centre d’innovation pédagogique de l’Université Abdelmalek Essaâdi est une structure d’appui au développement de la qualité de la formation au sein de l’université. Il vise à instaurer une politique d’innovation dans les différents pôles liés à la formation et à la recherche scientifique. Les missions du centre de l’innovation pédagogique : Production des plateformes de cours (LMS) ; Instauration des cours à distances/en ligne ; Production des cours scénarisés ; Accompagnement technique des activités pédagogiques."
+    },
+    "deployment_model": null
+  },
+  "digital_strategy_pages": [
+    {
+      "title": "Stratégie-Pacte ESRI | UAE",
+      "url": "https://www.uae.ac.ma/strategie-pacte-esri",
+      "text": "Stratégie-Pacte ESRI Architecture stratégique PACTE ESRI Visualiser Région Tanger-Tétouan-Al-Hoceima Visualiser"
+    },
+    {
+      "title": "Projet de développement | UAE",
+      "url": "https://www.uae.ac.ma/projet-de-developpement",
+      "text": "Projet de développement Le présent projet de développement de l’Université Abdelmalek Essaâdi (UAE) est un programme politique et stratégique. Il se veut ambitieux et vise à améliorer le positionnement à l’international de l’université, développer sa recherche scientifique, améliorer l’offre de sa formation, renforcer et développer le partenariat public-privé, instaurer une bonne gouvernance et opter pour l’approche qualité par une évaluation multidimensionnelle. L’Université Abdelmalek Essaâdi est appelée au final à contribuer au bien-être du citoyen et à améliorer le contexte socioéconomique et culturel pour un meilleur taux d’insertion professionnelle de ses lauréats. Pour atteindre ces objectifs, ce projet se focalise sur les 2 principaux acteurs : l’enseignant-chercheur et l’étudiant. Par ailleurs, l’Université Abdelmalek Essaâdi est appelée à accompagner la dynamique que connait la région Tanger-Tétouan-Al Hoceima suite à un développement socioéconomique sans précédent. Cette dynamique nécessite ainsi un accompagnement universitaire en matière de formation et de recherche adapté. A cet effet, le projet de développement de l’Université Abdelmalek Essaâdi se base sur sept leviers à savoir : Offre de formation riche et diversifiée visant l’insertion professionnelle ; Recherche scientifique appliquée et innovante ; Gouvernance rationnelle et transparente ; Partenariat public-privé multidimensionnel ; Amélioration des conditions socioéconomiques du corps enseignant et administratif ; Amélioration des conditions sociales des étudiants ; Accompagnement des étudiants pour l’orientation, la réorientation et l’insertion. La détermination de ces leviers vient en étroite cohérence avec le contexte de l’Université Abdelmalek Essaâdi. En effet, une analyse SWOT du contexte de l’université a permis de faire ressortir un certain nombre d’éléments de ses forces, de ses faiblesses, des opportunités ainsi que des menaces qu’elle risque. Résumé du projet de développement - Président Visualiser"
+    }
+  ],
+  "infrastructure_page": {
+    "url": "https://www.uae.ac.ma/infrastructures",
+    "text": "Infrastructures Pour le développement de la recherche et de l’innovation, l’Université Abdelmalek Essaâdi compte dans son actif : (10) principales plateformes opérationnelles au service de la communauté scientifique de l’université : Centre de Développement et d’Innovation, Tanger ; Centre de Fabrication Additive et de Prototypage, Tanger ; Centre de Plasturgie, Tanger ; Techno-Centre, Tétouan ; Plateforme d’Essais Mécaniques, Tétouan ; Observatoire Digital de l’Environnement, Tanger ; Laboratoire de Biologie Moléculaire et Epidémiologie, Tanger ; Centre de Simulation Clinique et d’Innovation Pédagogique en Science de la Santé, Tanger ; Centre des Etudes Stratégiques, Sciences Juridiques, Economiques et Gestion, Tanger ; Maison de l’Homme, Tétouan. (03) Grands projets innovants pour le développement à court et à moyen terme la recherche scientifique et l’innovation : Centre Régional pour la Recherche sur les PAM / Cannabis, Al-Hoceima ; Institut Africain pour les Sciences et Technologie de la Mer, Tanger ; Cité d’Innovation à Tanger et son annexe à Tétouan."
+  },
+  "enrollment_evidence": [
+    {
+      "excerpt": "Signature de convention de partenariat entre l'Université Abdelmalek Essaâdi et l'Université de Mons En savoir plus حفل اختتام برنامج \"Masterful Influencers En savoir plus Avis d'inscription et de réinscription au cycle doctoral pour l'année universitaire 2026 - 2027 En savoir plus لقاء علمي حول موضوع: هيئات الحكامة والجامعة المغربية: أي أدوار في ترسيخ الحكامة وتعزيز الثقة En savoir plus Session inaugurale du colloque international intitulé : « L",
+      "source_url": "https://www.uae.ac.ma/"
+    },
+    {
+      "excerpt": "tion de partenariat entre l'Université Abdelmalek Essaâdi et l'Université de Mons En savoir plus حفل اختتام برنامج \"Masterful Influencers En savoir plus Avis d'inscription et de réinscription au cycle doctoral pour l'année universitaire 2026 - 2027 En savoir plus لقاء علمي حول موضوع: هيئات الحكامة والجامعة المغربية: أي أدوار في ترسيخ الحكامة وتعزيز الثقة En savoir plus Session inaugurale du colloque international intitulé : « Les juridictions cons",
+      "source_url": "https://www.uae.ac.ma/"
+    },
+    {
+      "excerpt": "ment du programme \"Droit par l'art\" Télécharger Mars 23, 2023 بلاغ صحفي 23 مارس 2023 Télécharger Novembre 06, 2022 COP 27 Sharm El-Sheikh Egypt 2022 Télécharger Septembre 01, 2022 Rentrée Scolaire 2022 - 2023 Télécharger Afficher plus",
+      "source_url": "https://www.uae.ac.ma/communiques-presse?page=1"
+    }
+  ],
+  "documents": [
+    {
+      "title": "Communique De Presse Fitut 2024",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-10/communique-de-presse-fitut-2024.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "408786274 691096006457643 3652610111430516644 N",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/408786274_691096006457643_3652610111430516644_n.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "Fidec",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/fidec.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "Cp Congres International",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/cp-congres-international.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "Bayan",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/bayan.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "Mongoos 1",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/mongoos-1.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "Mongoos Cp Arabe",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/mongoos-cp-arabe.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "399252321 675072021393375 213930506518136787 N",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/399252321_675072021393375_213930506518136787_n.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "381123713 651002810466963 4180040782310986657 N",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/381123713_651002810466963_4180040782310986657_n.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "373543762 642713801295864 431614785319745254 N",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/373543762_642713801295864_431614785319745254_n.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse"
+    },
+    {
+      "title": "Architecture Strategique Pacte ",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-03/architecture-strategique-pacte-.pdf",
+      "source_page": "https://www.uae.ac.ma/strategie-pacte-esri"
+    },
+    {
+      "title": "Region Tanger Tetouan Al Hoceima",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-03/region-tanger-tetouan-al-hoceima.pdf",
+      "source_page": "https://www.uae.ac.ma/strategie-pacte-esri"
+    },
+    {
+      "title": "Resume Pd De President",
+      "url": "https://www.uae.ac.ma/sites/default/files/2022-05/resume-pd-de-president.pdf",
+      "source_page": "https://www.uae.ac.ma/projet-de-developpement"
+    },
+    {
+      "title": "Screenshot 20230902 191543 Adobe Acrobat 1",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/screenshot_20230902_191543_adobe-acrobat-1.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Cp Francais Agora",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/cp-francais-agora.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Presse Release Agora",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/presse-release-agora.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Cp Agora Action Climat Arabe",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/cp-agora-action-climat-arabe.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Communique De Presse The Francais",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-06/communique-de-presse-the-francais.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Conference Nationale Espagnol",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/conference-nationale-espagnol.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Conference Nationale Anglais",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/conference-nationale-anglais.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Conference Nationale Francais",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/conference-nationale-francais.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Droit Par Lart Espagnol",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/droit-par-lart-espagnol.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Droit Par Lart Francais",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/droit-par-lart-francais.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Droit Par Lart Arabr",
+      "url": "https://www.uae.ac.ma/sites/default/files/2024-01/droit-par-lart-arabr.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Blagh Shfy 23 Mars 2023",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-05/blagh-shfy-23-mars-2023.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Cp 2",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-02/cp-2.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Cp 4",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-02/cp-4.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=1"
+    },
+    {
+      "title": "Cp 11",
+      "url": "https://www.uae.ac.ma/sites/default/files/2023-02/cp-11.pdf",
+      "source_page": "https://www.uae.ac.ma/communiques-presse?page=2"
+    }
+  ],
+  "page_status": [
+    {
+      "title": "Université Abdelmalek Essaâdi",
+      "url": "https://www.uae.ac.ma/",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Établissements | UAE",
+      "url": "https://www.uae.ac.ma/etablissements",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Histoire | UAE",
+      "url": "https://www.uae.ac.ma/histoire",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Chronologie | UAE",
+      "url": "https://www.uae.ac.ma/chronologie",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Calendriers universitaires | UAE",
+      "url": "https://www.uae.ac.ma/calendriers-universitaires",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Communiqués de presse | UAE",
+      "url": "https://www.uae.ac.ma/communiques-presse",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Centre de l'innovation pédagogique | UAE",
+      "url": "https://www.uae.ac.ma/centre-de-linnovation-pedagogique",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Stratégie-Pacte ESRI | UAE",
+      "url": "https://www.uae.ac.ma/strategie-pacte-esri",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Projet de développement | UAE",
+      "url": "https://www.uae.ac.ma/projet-de-developpement",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Infrastructures | UAE",
+      "url": "https://www.uae.ac.ma/infrastructures",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Communiqués de presse | UAE",
+      "url": "https://www.uae.ac.ma/communiques-presse?page=1",
+      "http_status": 200,
+      "error": null
+    },
+    {
+      "title": "Communiqués de presse | UAE",
+      "url": "https://www.uae.ac.ma/communiques-presse?page=2",
+      "http_status": 200,
+      "error": null
+    }
+  ],
+  "gaps": [
+    "University-wide and establishment statistics have no publication/reference date on the source pages.",
+    "Student/staff counts by establishment are included only when a profile publishes a numeric statistic; no value is inferred.",
+    "The academic-calendar page is under construction.",
+    "Registration/application volumes require confirmation from a relevant dated release; excerpts and official document links are provided as leads.",
+    "The public pages do not establish whether Moodle is one central instance or one instance per establishment.",
+    "The infrastructure page is not treated as evidence of server, datacenter, or network specifications.",
+    "TLS certificate verification was disabled for this scrape; confirm critical values against the official site."
+  ]
+}

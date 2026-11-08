@@ -149,8 +149,9 @@
 - [Plateforme Khirrij](https://khirrij.uae.ac.ma/)
 - [Entrepreneuriat](https://www.uae.ac.ma/incubateurs-et-startups)
 
-## 2. Établissements
-
+## 2. Établissements 
+(note: pour les villes on peut les extraire depuis les noms des etablissment il sont deja mentionner dedans)
+ 
 | Ville | Nom de l'Établissement |
 | --- | --- |
 | Non précisée | Faculté d'Économie et de Gestion |
