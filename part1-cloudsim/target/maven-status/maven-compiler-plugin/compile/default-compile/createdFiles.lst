@@ -1,1 +1,5 @@
-ma/uae/HelloCloud.class
+ma/uae/model/CloudletFactory.class
+ma/uae/UAECloudSimulation.class
+ma/uae/util/BenchmarkExporter.class
+ma/uae/config/UAECloudConfig.class
+ma/uae/scaling/AutoScaler.class

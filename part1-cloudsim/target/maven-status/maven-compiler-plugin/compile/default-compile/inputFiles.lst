@@ -1,1 +1,5 @@
-/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/HelloCloud.java
+/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/UAECloudSimulation.java
+/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/config/UAECloudConfig.java
+/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/model/CloudletFactory.java
+/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/scaling/AutoScaler.java
+/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/util/BenchmarkExporter.java
