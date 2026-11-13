@@ -87,7 +87,6 @@ public class UAECloudSimulation {
         System.out.printf(">> Temps moyen d'exécution CPU : %.2f secondes\n", avgCpuTime);
 
         // Sauvegarde automatique des métriques dans le fichier CSV
-        // BenchmarkExporter.exportToCsv(title, finishedCloudlets, totalVms, avgCpuTime);
         BenchmarkExporter.exportToCsv(title, finishedCloudlets, totalVms);
     }
 

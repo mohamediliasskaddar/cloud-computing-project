@@ -1,0 +1,7 @@
+=== SLA MONITORING REPORT ===
+Period      : 2026-11-07 21:15:27 -> 2026-11-07 23:10:28
+Objective   : 99.5% availability
+instance         measures available  failed  availability  objective
+cirros-mon-1           24        24       0       100.00%  MET
+cirros-mon-2           24        20       4        83.33%  NOT MET
+cirros-mon-3           24        24       0       100.00%  MET

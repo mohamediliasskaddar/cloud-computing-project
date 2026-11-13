@@ -1,9 +1,8 @@
 package ma.uae.config;
 
 public class UAECloudConfig {
-    // -------------------------------------------------------------
+    
     // Matériel des Data Centers (Tanger & Tétouan)
-    // -------------------------------------------------------------
     public static final int HOST_PES = 16;             // 16 cœurs CPU par hôte
     public static final int HOST_MIPS = 10000;         // Capacité par cœur (MIPS)
     public static final int HOST_RAM = 64536;          // 64 GB RAM
