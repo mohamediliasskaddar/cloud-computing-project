@@ -8,7 +8,7 @@ Cette fiche résume les incohérences observées dans les données publiques de 
 
 | Indicateur | Valeur brute | Problème détecté | Règle appliquée | Valeur retenue |
 |---|---:|---|---|---:|
-| Nombre total d'étudiants | 130 750 | Aucune incohérence majeure ; donnée officielle de la page d'accueil | Le chiffre est cohérent avec la croissance historique (environ 126 000 en 2022) | 130 750 étudiants |
+| Nombre total d'étudiants | 130 750 | Chiffre de la page d'accueil, sans date de référence affichée | À utiliser comme valeur publiée, à confirmer auprès de la source | 130 750 étudiants |
 | Enseignants et personnel | 1 357 enseignants / 598 administratifs | Aucune incohérence majeure | Utilisé comme estimation des utilisateurs de la plateforme (personnel + enseignants) | 1 955 utilisateurs staff |
 
 ### Calcul du volume total d'utilisateurs
@@ -18,7 +18,7 @@ On estime le nombre total d'utilisateurs potentiels comme suit :
 - étudiants : 130 750
 - enseignants : 1 357
 - administratifs : 598
-- total approximatif : 132 705 utilisateurs
+- total estimé : 132 705 utilisateurs potentiels
 
 Ce total sert de base pour la modélisation de la charge et des scénarios de simulation.
 
@@ -26,7 +26,7 @@ Ce total sert de base pour la modélisation de la charge et des scénarios de si
 
 | Établissement / indicateur | Valeur brute | Problème détecté | Règle appliquée | Valeur retenue |
 |---|---:|---|---|---:|
-| ENCG Tanger | 27 269 étudiants / 65 enseignants | Ratio impossible : 419 étudiants par enseignant | Le chiffre est lu comme un cumul sur 25 ans ; le site indique aussi 4 407 diplômés | ~1 100 étudiants par an, soit ~4 400 inscrits au total |
+| ENCG Tanger | 27 269 étudiants / 65 enseignants | Valeur d'étudiants étonnamment élevée et difficile à réconcilier avec les autres indicateurs de la page | Ne pas transformer cette valeur en effectif annuel ou inscrit sans confirmation indépendante | Valeur exclue des totaux par établissement |
 | EST & ENS Tétouan | 1 580 étudiants (valeur identique) | Copie-collage de template HTML sur le site de l'UAE | Les chiffres sont marqués comme "faible confiance" et lissés par pôle géographique | Ventilation par pôle géographique |
 | FSJES vs FSJP / FEG (Tanger / Tétouan) | Doublons d'anciens intitulés de facultés | Anciennes pages non supprimées sur le site officiel | Exclusion des doublons pour éviter de compter deux fois les mêmes étudiants | Données nettoyées |
 
@@ -45,5 +45,4 @@ Les données de l'UAE sont exploitables pour la simulation si elles sont traité
 - corriger les anomalies structurelles ;
 - répartir les utilisateurs entre deux pôles selon des estimations documentées ;
 - tester la robustesse du modèle avec plusieurs scénarios de charge.
-
 

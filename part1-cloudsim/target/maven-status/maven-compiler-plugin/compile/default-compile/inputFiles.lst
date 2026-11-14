@@ -3,3 +3,4 @@
 /home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/model/CloudletFactory.java
 /home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/scaling/AutoScaler.java
 /home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/util/BenchmarkExporter.java
+/home/imk/web/cloud-computing-project/part1-cloudsim/src/main/java/ma/uae/util/BenchmarkResult.java

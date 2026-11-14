@@ -1,27 +1,58 @@
 package ma.uae.scaling;
 
 import ma.uae.config.UAECloudConfig;
-import org.cloudbus.cloudsim.brokers.DatacenterBroker;
-import org.cloudbus.cloudsim.schedulers.cloudlet.CloudletSchedulerTimeShared;
+import org.cloudbus.cloudsim.schedulers.cloudlet.CloudletScheduler;
 import org.cloudbus.cloudsim.vms.Vm;
 import org.cloudbus.cloudsim.vms.VmSimple;
+import org.cloudsimplus.autoscaling.HorizontalVmScalingSimple;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
 
-public class AutoScaler {
+public final class AutoScaler {
+    private AutoScaler() {}
 
-    public static List<Vm> scaleUp(DatacenterBroker broker, int extraVmCount) {
-        List<Vm> extraVms = new ArrayList<>();
-        for (int i = 0; i < extraVmCount; i++) {
-            Vm vm = new VmSimple(UAECloudConfig.VM_MIPS, UAECloudConfig.VM_PES)
-                    .setRam(UAECloudConfig.VM_RAM)
-                    .setBw(UAECloudConfig.VM_BW)
-                    .setSize(UAECloudConfig.VM_SIZE)
-                    .setCloudletScheduler(new CloudletSchedulerTimeShared());
-            extraVms.add(vm);
+    public static Vm createVm(
+            String datacenterName,
+            Supplier<CloudletScheduler> schedulerSupplier,
+            AtomicInteger totalVmCount,
+            boolean enableAutoscaling) {
+        Vm vm = new VmSimple(UAECloudConfig.VM_MIPS_PER_PE, UAECloudConfig.VM_PES)
+                .setRam(UAECloudConfig.VM_RAM_MIB)
+                .setBw(UAECloudConfig.VM_BW_MBPS)
+                .setSize(UAECloudConfig.VM_STORAGE_MB)
+                .setDescription(datacenterName)
+                .setCloudletScheduler(schedulerSupplier.get());
+
+        if (enableAutoscaling) {
+            attachHorizontalScaling(vm, datacenterName, schedulerSupplier, totalVmCount);
         }
-        broker.submitVmList(extraVms);
-        return extraVms;
+        return vm;
+    }
+
+    private static void attachHorizontalScaling(
+            Vm vm,
+            String datacenterName,
+            Supplier<CloudletScheduler> schedulerSupplier,
+            AtomicInteger totalVmCount) {
+        HorizontalVmScalingSimple scaling = new HorizontalVmScalingSimple();
+        scaling.setOverloadPredicate(candidate ->
+                candidate.getCpuPercentUtilization() >= UAECloudConfig.AUTOSCALING_CPU_THRESHOLD
+                        && totalVmCount.get() < UAECloudConfig.MAX_VMS);
+        scaling.setVmSupplier(() -> {
+            int count = totalVmCount.incrementAndGet();
+            if (count > UAECloudConfig.MAX_VMS) {
+                totalVmCount.decrementAndGet();
+                throw new IllegalStateException("Autoscaling exceeded the configured VM limit");
+            }
+            System.out.printf(
+                    "AUTOSCALE time=%.2fs dc=%s vm_count=%d cpu=%.1f%%%n",
+                    vm.getSimulation().clock(),
+                    datacenterName,
+                    count,
+                    vm.getCpuPercentUtilization() * 100);
+            return createVm(datacenterName, schedulerSupplier, totalVmCount, true);
+        });
+        vm.setHorizontalScaling(scaling);
     }
 }

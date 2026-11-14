@@ -13,9 +13,9 @@
 | Hypervisor | Oracle VirtualBox (local VM) |
 | DevStack VM | Ubuntu Server 26.04.1 LTS, 4 vCPU, **12 GB RAM** (raised from about 9 GB during this part), DevStack `stable/2026.2` |
 | Where I ran the tools | Inside the DevStack VM (Linux), as the `stack` user |
-| Terraform | official binary from releases.hashicorp.com, version: `<paste output of terraform version>` |
+| Terraform | official binary from releases.hashicorp.com, version: `v1.17.1` |
 | Terraform provider | `terraform-provider-openstack/openstack` (>= 3.0.0), downloaded by `terraform init` |
-| Ansible | installed with `apt install ansible`, version: `<paste first line of ansible --version>` |
+| Ansible | installed with `apt install ansible`, version: `[core 2.20.1]` (as shown in the captured version output) |
 | OpenStack credentials | read from `clouds.yaml` (cloud `devstack-admin`), **no password in any `.tf` file** |
 | Nova virtualization | `virt_type = qemu` (software emulation, set in Part 2 to avoid the nested-KVM crash) |
 
@@ -201,7 +201,7 @@ Result: `Destroy complete! Resources: 7 destroyed.` Only `vm-saas` and `vm-cirro
 | 2 | `p3-02-terraform-plan.png` | End of `terraform plan` (`Plan: 7 to add`) |
 | 3 | `p3-03-terraform-apply.png` | End of `terraform apply` with the outputs (floating IP) |
 | 4 | `p3-04-horizon-instances.png` | Horizon: **Compute, Instances** showing `vm-terraform` with its floating IP |
-| 5 | `p3-05-horizon-secgroup.png` | Horizon: **Network, Security Groups, sg-terraform** (rules SSH 22, HTTP 80) |
+| 5 | `p3-05-horizon-secgroup.png` | Horizon: **Network, Networks, vm-terraform-port** with `sg-terraform` rules for SSH 22 and HTTP 80 |
 | 6 | `p3-06-terraform-destroy.png` | `terraform destroy` finished (`7 destroyed`) |
 
 ### 1.6 Points to explain orally
@@ -308,7 +308,9 @@ ansible-playbook playbook.yml | tee playbook-output-run2.txt
 ansible-playbook playbook.yml | tee playbook-output-run3.txt
 ```
 
-Run 2: `<paste PLAY RECAP>` (the proxy file is created). Run 3: `<paste PLAY RECAP>`, with **`changed=0`** expected. This shows the playbook is **idempotent**.
+> Run 2: `ok=5 changed=1 unreachable=0 failed=0` (the proxy file is created). Run 3: `ok=5 changed=0 unreachable=0 failed=0`. This shows the playbook is **idempotent**.
+
+![Rerun Ansible et preuve d'idempotence](../screenshots/part3-iac/p3-09-playbook-idempotent.png)
 
 ### 2.3 Screenshots to include
 
@@ -317,7 +319,7 @@ Run 2: `<paste PLAY RECAP>` (the proxy file is created). Run 3: `<paste PLAY REC
 | 7 | `p3-07-ansible-ping.png` | `ansible web -m ping` returning `pong` |
 | 8 | `p3-08-playbook-run.png` | `ansible-playbook` output with the `PLAY RECAP` (`failed=0`) |
 | 9 | `p3-09-playbook-idempotent.png` | Re-run showing `changed=0` |
-| 10 | `p3-10-web-page.png` | **Browser at `http://localhost:8081`** showing the page (name, student ID, instance name, URL bar visible) |
+| 10 | `p3-10-deployed-webpage.png` | **Browser at `http://localhost:8081`** showing the page (name, student ID, instance name, URL bar visible) |
 
 How I opened the page from my host (SSH tunnel, run on the **host**):
 
@@ -381,5 +383,5 @@ ssh -L 8081:172.24.4.84:80 imk@192.168.56.101
 - [ ] `playbook-output.txt` (and the idempotent re-run)
 - [ ] Screenshot of the web page (name, student ID, instance name, URL bar visible)
 - [ ] Do **not** submit `clouds.yaml` (it contains passwords)
-- [ ] Replace the `<paste ...>` placeholders (Terraform and Ansible versions, run 2 and run 3 recaps)
+- [x] Record Terraform/Ansible versions and run 2/run 3 recaps.
 - [ ] Section 3 reworded in my own words

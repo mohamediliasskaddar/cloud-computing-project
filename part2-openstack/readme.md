@@ -1,8 +1,4 @@
 # Part 2: OpenStack, IaaS and SaaS
-
-**Student:** <YOUR NAME> · **Student ID:** <YOUR ID>
-**Module:** Cloud Intelligence · **Prof.:** C. EL AMRANI
-
 ---
 
 ## 0. Environment (say this first to the teacher)
@@ -53,10 +49,10 @@ openstack network agent list
 
 | # | File name | What it must show |
 |---|---|---|
-| 1 | `01-horizon-overview.png` | Horizon dashboard after login (URL bar visible) |
-| 2 | `02-service-list.png` | Output of `openstack service list` |
-| 3 | `03-compute-service-list.png` | Output of `openstack compute service list` (all `up`) |
-| 4 | `04-network-agent-list.png` | Output of `openstack network agent list` (`:-)` / `UP`) |
+| 1 | `p2-01-horizon-overview.png` | Horizon dashboard after login (URL bar visible) |
+| 2 | `p2-02-service-list.png` | Output of `openstack service list` |
+| 3 | `p2-03-compute-service-list.png` | Output of `openstack compute service list` (all `up`) |
+| 4 | `p2-11-network-agent-list.png` | Output of `openstack network agent list` (`:-)` / `UP`) |
 
 ### Role of each service (reword in your own words)
 
@@ -140,10 +136,10 @@ ssh -i ~/key-tp.pem cirros@$FLOATING_IP
 
 | # | File name | What it must show |
 |---|---|---|
-| 5 | `05-network-topology.png` | Horizon: **Project → Network → Network Topology** (`net-tp`, `router-tp`, `public`, instance) |
-| 6 | `06-instances.png` | Horizon: **Compute → Instances** with floating IPs |
-| 7 | `07-ping-ssh-cirros.png` | Terminal: ping 0% loss + SSH session with `hostname` and `ip a` |
-| 8 | `08-security-group.png` | Horizon: **Network → Security Groups → sg-tp** rules (SSH, ICMP) |
+| 5 | `p2-04-network-topology.png` | Horizon: **Project → Network → Network Topology** (`net-tp`, `router-tp`, `public`, instance) |
+| 6 | `p2-05-instances.png` | Horizon: **Compute → Instances** with floating IPs |
+| 7 | `p2-06-ping-ssh-cirros.png` | Terminal: ping 0% loss + SSH session with `hostname` and `ip a` |
+| 8 | `p2-07-security-group-rule.png` | Terminal output showing ICMP and TCP/22 rules created for `sg-tp` |
 
 ### Points to explain orally
 
@@ -229,7 +225,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return f"<h1>Hello from my OpenStack SaaS app</h1><p><YOUR NAME> - Cloud Intelligence project</p><p>Served by instance: {socket.gethostname()}</p>"
+    return f"<h1>Hello from my OpenStack SaaS app</h1><p>Mohamed Iliass KADDAR - Cloud Intelligence project</p><p>Served by instance: {socket.gethostname()}</p>"
 
 app.run(host="0.0.0.0", port=5000)
 EOF
@@ -248,11 +244,10 @@ ssh -L 8080:172.24.4.40:5000 imk@192.168.56.101
 
 | # | File name | What it must show |
 |---|---|---|
-| 9 | `09-flavor-image.png` | `openstack flavor list` (m1.saas) and `openstack image list` (ubuntu-noble active) |
-| 10 | `10-vm-saas-active.png` | `openstack server list` with `vm-saas` ACTIVE + floating IP |
-| 11 | `11-ssh-vm-saas.png` | SSH session into `vm-saas` (Ubuntu 24.04 welcome banner) |
-| 12 | `12-flask-browser.png` | **Browser at `http://localhost:8080`** showing the app (URL bar visible) |
-| 13 | `13-flask-curl.png` | `curl http://localhost:5000` inside the instance (optional) |
+| 9 | `p2-08-ubuntu-image.png` | Horizon image list showing `ubuntu-noble` active |
+| 10 | `p2-05-instances.png` | `vm-saas` and its floating IP in Horizon |
+| 11 | `p2-09-ssh-vm-saas.png` | SSH session into `vm-saas` (Ubuntu 24.04 welcome banner) |
+| 12 | `p2-10-flask-browser.png` | **Browser at `http://localhost:8080`** showing the app (URL bar visible) |
 
 ### Points to explain orally
 
@@ -282,11 +277,3 @@ ssh -L 8080:172.24.4.40:5000 imk@192.168.56.101
 - After every reboot I run `~/fix-net.sh` and `source ~/devstack/openrc admin admin`
 
 ---
-
-## 6. Quick checklist before submitting
-
-- [ ] Replace `<YOUR NAME>` and `<YOUR ID>` everywhere
-- [ ] 13 screenshots saved with the file names above
-- [ ] The Flask page screenshot shows the URL bar
-- [ ] Service roles reworded in my own words
-- [ ] Commands copied into the final report (this file is the source)

@@ -1,50 +1,80 @@
 package ma.uae.util;
 
-import org.cloudbus.cloudsim.cloudlets.Cloudlet;
+import ma.uae.config.UAECloudConfig;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
+import java.util.Locale;
 
-public class BenchmarkExporter {
-
+public final class BenchmarkExporter {
     private static final String CSV_FILE = "benchmark_results.csv";
+    private static final String HEADER = String.join(",",
+            "RunTimestampUtc",
+            "Scenario",
+            "Period",
+            "CloudletScheduler",
+            "VmAllocationPolicy",
+            "Autoscaling",
+            "AutoscalingCpuThresholdPercent",
+            "SubmittedCloudlets",
+            "FinishedCloudlets",
+            "LightCloudlets",
+            "MediumCloudlets",
+            "HeavyCloudlets",
+            "WestCloudlets",
+            "EastCloudlets",
+            "InitialVms",
+            "CreatedVms",
+            "AverageCpuTimeSeconds",
+            "AverageQueueWaitSeconds",
+            "AverageResponseTimeSeconds",
+            "MakespanSeconds",
+            "AverageHostCpuUtilizationPercent",
+            "EstimatedCostUsd");
 
-    public static void exportToCsv(String scenarioName, List<Cloudlet> cloudlets, int vmCount) {
-        boolean fileExists = new java.io.File(CSV_FILE).exists();
+    private BenchmarkExporter() {}
 
-        try (FileWriter fw = new FileWriter(CSV_FILE, true);
-             PrintWriter pw = new PrintWriter(fw)) {
-
-            if (!fileExists) {
-                pw.println("Timestamp,Scenario,CloudletCount,VmCount,AvgCpuTime,AvgWaitTime,AvgFinishTime,MakeSpan");
+    public static void exportToCsv(List<BenchmarkResult> results) throws IOException {
+        Path output = Path.of(CSV_FILE);
+        try (var writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8)) {
+            writer.write(HEADER);
+            writer.newLine();
+            String timestamp = Instant.now().toString();
+            for (BenchmarkResult result : results) {
+                writer.write(String.format(Locale.ROOT,
+                        "%s,%s,%s,%s,%s,%s,%.0f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.4f,%.4f,%.4f,%.4f,%.2f,%.8f",
+                        timestamp,
+                        result.scenario(),
+                        result.period(),
+                        result.scheduler(),
+                        "VmAllocationPolicyBestFit",
+                        result.autoscaling(),
+                        result.autoscaling()
+                                ? UAECloudConfig.AUTOSCALING_CPU_THRESHOLD * 100
+                                : 0,
+                        result.submittedCloudlets(),
+                        result.finishedCloudlets(),
+                        result.lightCloudlets(),
+                        result.mediumCloudlets(),
+                        result.heavyCloudlets(),
+                        result.westCloudlets(),
+                        result.eastCloudlets(),
+                        result.initialVms(),
+                        result.createdVms(),
+                        result.averageCpuTimeSeconds(),
+                        result.averageQueueWaitSeconds(),
+                        result.averageResponseTimeSeconds(),
+                        result.makespanSeconds(),
+                        result.averageHostCpuUtilizationPercent(),
+                        result.estimatedCostUsd()));
+                writer.newLine();
             }
-
-            String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-
-            // Temps moyen CPU pur
-            double avgCpuTime = cloudlets.stream().mapToDouble(Cloudlet::getActualCpuTime).average().orElse(0);
-            
-            // Temps moyen d'attente dans la file
-            double avgWaitTime = cloudlets.stream().mapToDouble(Cloudlet::getWaitingTime).average().orElse(0);
-            
-            // Temps moyen total ressenti par l'utilisateur (Attente + Exec)
-            double avgFinishTime = cloudlets.stream().mapToDouble(Cloudlet::getFinishTime).average().orElse(0);
-
-            // Temps total pour terminer tout le lot (Makespan)
-            double maxFinishTime = cloudlets.stream().mapToDouble(Cloudlet::getFinishTime).max().orElse(0);
-
-            pw.printf("%s,\"%s\",%d,%d,%.2f,%.2f,%.2f,%.2f\n",
-                    timestamp, scenarioName, cloudlets.size(), vmCount, 
-                    avgCpuTime, avgWaitTime, avgFinishTime, maxFinishTime);
-
-            System.out.println(" Metric exportées dans " + CSV_FILE);
-
-        } catch (IOException e) {
-            System.err.println("Erreur d'écriture CSV : " + e.getMessage());
         }
+        System.out.printf("Résultats CSV écrits dans %s (%d scénarios).%n",
+                output.toAbsolutePath(), results.size());
     }
 }

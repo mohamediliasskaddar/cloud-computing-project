@@ -114,7 +114,7 @@ echo "$(date '+%F %T') START cirros-mon-2" | tee -a ~/part4/outage-events.log
 openstack server start cirros-mon-2
 ```
 
-Exact times from `outage-events.log`: STOP at `<paste time>`, START at `<paste time>`.
+Exact times from `outage-events.log`: STOP at `2026-11-07 21:55:13`, START at `2026-11-07 22:10:15`.
 
 ### What the monitor detected (from `monitor-output.txt`)
 
@@ -135,8 +135,9 @@ Exact times from `outage-events.log`: STOP at `<paste time>`, START at `<paste t
 |---|---|---|
 | 3 | `p4-03-outage-detected.png` | Terminal with `cirros-mon-2=DOWN(SHUTOFF)` (cycles 9 to 11) |
 | 4 | `p4-04-horizon-shutoff.png` | Horizon: **Compute, Instances** with `cirros-mon-2` in `Shutoff` state |
-| 5 | `p4-05-recovery.png` | Terminal with `cirros-mon-2` back to `UP` (cycle 13 onwards) |
-| 6 | `p4-06-outage-events-log.png` | `cat outage-events.log` (STOP and START times) |
+| 5 | `p4-05-instances-recovered.png` | Horizon list with the monitored instances `ACTIVE` after recovery |
+| 6 | `p4-06-final-report.png` | Final availability report |
+| 7 | `p4-07-outage-events.png` | `cat outage-events.log` (STOP and START times) |
 
 ### Points to explain orally
 
@@ -211,7 +212,7 @@ The program applies the same formula at any scale. A day has 288 measurements pe
 - [ ] `monitor-output.txt` and `final-report.txt`
 - [ ] `outage-events.log` and `outage.sh`
 - [ ] Screenshot of the detected failure (`DOWN`), plus the recovery and Horizon `Shutoff` screenshots
-- [ ] Exact STOP and START times pasted into section 3
+- [x] Exact STOP and START times recorded in section 3
 - [ ] Section 5 reworded in my own words
 
 ---

@@ -1,5 +1,3 @@
-You've confirmed that the numbers on the site really are what it says, and that the site has inconsistencies. The logical approach is: **don't try to fix the site; build a model on defensible parameters, and document every assumption.** For a simulation we need only three things: the total number of users, how they split across sites, and how they behave at peak. The establishment-level mess only affects the second one, so it's much less serious than it looks.
-
 ## Step 1: Fix the headline total with a cross-check
 
 | Indicator | 2022-2023 press release | uae.ac.ma now | Change |
@@ -8,7 +6,7 @@ You've confirmed that the numbers on the site really are what it says, and that 
 | Teacher-researchers | 1,318 | 1,357 | +3.0% |
 | Administrative staff | 588 | 598 | +1.7% |
 
-Two independent sources, three years apart, with modest and consistent growth. So **N = 130,750 is credible**, and we use it as the headline.
+Two independent sources, three years apart, show modest and consistent growth. Use **130,750 as the published student count**, not as the total platform-user population. For this simulation, include the two published staff categories too: 130,750 students + 1,357 teacher-researchers + 598 administrative staff = **132,705 potential users**. This is still an estimate (not a measured Moodle account count or active-user count). The separate 5% normal and 30% peak concurrency rates are workload assumptions, not facts reported by the university.
 
 ## Step 2: Test every establishment with a simple ratio
 
@@ -43,18 +41,14 @@ I recomputed the shares after applying those rules. The detailed rows sum to abo
 | Al Hoceima | 4.0% |
 | Ksar El Kebir | 1.1% |
 
-Attach each smaller city to the closer datacenter: Tanger side (Tanger, Larache, Ksar El Kebir) **about 55%**, Tétouan side (Tétouan, Al Hoceima) **about 45%**. Applied to N, that is roughly **72,000 users on the Tanger side and 59,000 on the Tétouan side**. Note that my earlier 44/38/16 split used only the open-access rows, so it was too tilted. The two main sites are nearly equal, which supports two datacenters.
+Attach each smaller city to the closer datacenter: Tanger side (Tanger, Larache, Ksar El Kebir) **about 55%**, Tétouan side (Tétouan, Al Hoceima) **about 45%**. Applied to the current estimated total of 132,705 potential users, that is roughly **73,000 users on the Tanger side and 60,000 on the Tétouan side**. Note that my earlier 44/38/16 split used only the open-access rows, so it was too tilted. The two main sites are nearly equal, which supports two datacenters.
 
-## Step 5: Turn the weak data into a strength with a sensitivity analysis
+## Step 5: Sensitivity analysis still needed
 
-Run the simulation on the baseline, then again with **N ±20%** and the site split shifted by **±10 points**. If the conclusion ("the architecture suffices at peak" or "it doesn't") holds across all those runs, it doesn't depend on the shaky numbers. That's a stronger argument than pretending the data was perfect.
+The current four-run benchmark does **not** vary population or site split; those runs only compare scheduling and autoscaling under one synthetic workload. A future sensitivity analysis could vary N by ±20% and the site split by ±10 percentage points, after a defensible mapping from users to requests has been measured. Until then, the current benchmark cannot establish whether the architecture is sufficient for the actual peak population.
 
-## Step 6: Document it in the report
+## Step 6: Use the data carefully in the report
 
-Add a short "Data quality" table: what the site publishes, the problem, the rule applied. It shows the examiner you validated the sources instead of copying them. I can generate that table, with a "value used" column, from your JSON.
-
-## Next
-
-If you agree with these rules, I'll write the fact sheet (with the headline numbers, the cleaned split and the data-quality table), then the architecture with sizing. Tell me if you want the JSON-based table first, or the architecture. Also say if you disagree with any rule, especially the cumulative reading of ENCGT, which is the one I'm least certain of.
+State separately the published student count (130,750), the estimated potential-user total including staff (132,705), and the assumed active-user concurrency. Preserve the unknown reference date and scraping TLS caveat. The code and detailed modeling choices are documented in [`../part1-cloudsim/guide.md`](../part1-cloudsim/guide.md); do not describe the synthetic 50/300 Cloudlets as production requests per second.
 
 Sources: [UAE press release, rentrée 2022-2023](https://www.uae.ma/website/sites/default/files/COMMUNIQUE%20DE%20PRESSE%20RENTREE%20UNIVERSITAIRE%20VF%282%29.pdf)

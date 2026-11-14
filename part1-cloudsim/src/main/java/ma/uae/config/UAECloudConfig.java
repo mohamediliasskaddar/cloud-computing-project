@@ -1,30 +1,36 @@
 package ma.uae.config;
 
-public class UAECloudConfig {
-    
-    // Matériel des Data Centers (Tanger & Tétouan)
-    public static final int HOST_PES = 16;             // 16 cœurs CPU par hôte
-    public static final int HOST_MIPS = 10000;         // Capacité par cœur (MIPS)
-    public static final int HOST_RAM = 64536;          // 64 GB RAM
-    public static final long HOST_BW = 10000;          // 10 Gbps
-    public static final long HOST_STORAGE = 1000000;   // 1 TB
+public final class UAECloudConfig {
+    private UAECloudConfig() {}
 
-    public static final int DC1_HOSTS = 8;             // Tanger (55% de la charge)
-    public static final int DC2_HOSTS = 6;             // Tétouan (45% de la charge)
+    public static final String WEST_DATACENTER = "DC-TANGER";
+    public static final String EAST_DATACENTER = "DC-TETOUAN";
+    public static final double WEST_LOAD_SHARE = 0.55;
 
-    // -------------------------------------------------------------
-    // Configuration des VMs (SaaS Moodle / Inscriptions)
-    // -------------------------------------------------------------
+    public static final int WEST_HOSTS = 8;
+    public static final int EAST_HOSTS = 6;
+    public static final int HOST_PES = 16;
+    public static final int HOST_MIPS_PER_PE = 10_000;
+    public static final long HOST_RAM_MIB = 65_536;
+    public static final long HOST_BW_MBPS = 10_000;
+    public static final long HOST_STORAGE_MB = 1_000_000;
+
     public static final int VM_PES = 4;
-    public static final int VM_MIPS = 2500;
-    public static final int VM_RAM = 8192;             // 8 GB RAM
-    public static final long VM_BW = 1000;
-    public static final long VM_SIZE = 10000;
+    public static final int VM_MIPS_PER_PE = 2_500;
+    public static final long VM_RAM_MIB = 8_192;
+    public static final long VM_BW_MBPS = 1_000;
+    public static final long VM_STORAGE_MB = 50_000;
 
-    // -------------------------------------------------------------
-    // Volumes de charge (Simultanéité)
-    // -------------------------------------------------------------
     public static final int INITIAL_VMS = 10;
-    public static final int NORMAL_CLOUDLETS = 50;     // Période normale (5% d'activité)
-    public static final int PEAK_CLOUDLETS = 300;      // Période de pointe (30% d'activité)
+    public static final int MAX_VMS = 20;
+    public static final double AUTOSCALING_CPU_THRESHOLD = 0.70;
+
+    public static final int NORMAL_CLOUDLETS = 50;
+    public static final int PEAK_CLOUDLETS = 300;
+    public static final int ARRIVAL_BATCH_COUNT = 10;
+    public static final double ARRIVAL_BATCH_INTERVAL_SECONDS = 5.0;
+
+    public static final double COST_PER_VCPU_HOUR_USD = 0.04;
+    public static final double COST_PER_GIB_RAM_HOUR_USD = 0.005;
+    public static final double COST_PER_GIB_STORAGE_HOUR_USD = 0.0001;
 }

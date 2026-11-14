@@ -13,16 +13,16 @@
 
 #### C. Topologie Géographique & Data Centers
 
-Pour couvrir les 6 provinces/préfectures et respecter la répartition 55% / 45% :
+Pour couvrir les six provinces/préfectures, on propose deux pôles. La répartition 55 % / 45 % est une hypothèse de dimensionnement, pas une statistique officielle :
 
 1. **Data Center Principal (DC-1 Tanger - Pôle Ouest) :**
-* **Localisation :** Cité de l'Innovation / FST Tanger.
+* **Localisation :** Cité de l'Innovation / FST Tanger (localisation proposée ; les sources publiques ne confirment pas l'hébergement d'un datacenter cloud ici).
 * **Couverture :** Tanger, Larache, Ksar El Kebir (55% de la charge).
 * **Rôle :** Datacenter Master (héberge le cluster Kubernetes/OpenStack principal).
 
 
 2. **Data Center Secondaire / DRP (DC-2 Tétouan - Pôle Est) :**
-* **Localisation :** Techno-Centre Tétouan.
+* **Localisation :** Techno-Centre Tétouan (localisation proposée ; les sources publiques ne confirment pas l'hébergement d'un datacenter cloud ici).
 * **Couverture :** Tétouan, Al Hoceima (45% de la charge).
 * **Rôle :** Datacenter Réplique & Plan de Reprise d'Activité (Disaster Recovery Plan).
 
@@ -50,7 +50,7 @@ Pour couvrir les 6 provinces/préfectures et respecter la répartition 55% / 45%
 Voici l'architecture sous forme de diagramme explicatif :
 
 ```
-                                  [ UTILISATEURS (132,700) ]
+                                  [ UTILISATEURS POTENTIELS (132 705) ]
                                                |
                                      [ DNS / CDN Global ]
                                                |
@@ -63,14 +63,16 @@ Voici l'architecture sous forme de diagramme explicatif :
       |   DATA CENTER 1 : TANGER    |                     |   DATA CENTER 2 : TÉTOUAN   |
       |-----------------------------|  Lien Dédié Inter-DC|-----------------------------|
       | - 8 Hôtes Physiques         | <-----------------> | - 6 Hôtes Physiques         |
-      | - Cluster VMs Web (SaaS)    |      10 Gbps        | - Cluster VMs Web (SaaS)    |
-      | - Cluster DB Master (Ceph)  |  (Synchronisation)  | - Cluster DB Replica        |
+      | - Cluster VMs Web (SaaS)    |  Liaison inter-DC   | - Cluster VMs Web (SaaS)    |
+      | - Cluster DB Master (Ceph)  | (dimension à étudier)| - Cluster DB Replica       |
       +-----------------------------+                     +-----------------------------+
                      |                                                   |
                      +-------------------------+-------------------------+
                                                | (Débordement en période de pointe)
                                                v
-                                 [ CLOUD PUBLIC (Cloud Bursting) ]
-                                 - Auto-scaling dynamique de VMs
+                                 [ CLOUD PUBLIC (option de bursting) ]
+                                 - À valider hors de la simulation
 
 ```
+
+Les nombres de serveurs, caractéristiques CPU/RAM/disque/réseau, liaison inter-DC, services PaaS et option de bursting sont des choix de conception pour l'exercice ; les pages publiques de l'UAE ne documentent pas l'infrastructure cloud existante. Le simulateur construit bien deux datacenters logiques et répartit les workloads entre eux, mais il ne simule ni les pannes, ni la latence réseau, ni un fournisseur cloud public.
