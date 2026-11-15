@@ -1,0 +1,617 @@
+%% ==========================================================================
+%%  Projet de fin de module -- Cloud Computing
+%%  Compilation : pdflatex (2 passes) ou latexmk -pdf rapport_cloud.tex
+%% ==========================================================================
+\documentclass[11pt,a4paper]{article}
+
+%% ---------- Encodage, langue, police ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\renewcommand{\familydefault}{\sfdefault}
+
+%% ---------- Mise en page ----------
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headheight=14pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{etoolbox}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\emergencystretch=2em
+
+%% ---------- Couleurs ----------
+\usepackage[table]{xcolor}
+\definecolor{primary}{RGB}{0,70,127}
+\definecolor{codebg}{RGB}{246,247,249}
+
+%% ---------- Tableaux ----------
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}   % colonne X centrée
+\newcolumntype{L}{>{\raggedright\arraybackslash}X} % colonne X à gauche
+\newcommand{\tablestyle}{\renewcommand{\arraystretch}{1.3}\rowcolors{2}{white}{gray!10}}
+\newcommand{\hrow}{\rowcolor{primary!15}}          % ligne d'en-tête
+\AtBeginEnvironment{table}{\small}
+
+%% ---------- Figures et légendes ----------
+\usepackage{graphicx}
+\usepackage[font=small,labelfont={bf,color=primary},labelsep=period]{caption}
+\captionsetup[table]{position=above,skip=6pt}
+\captionsetup[figure]{position=below,skip=6pt}
+
+% \capture[hauteur max en fraction de \textheight]{fichier}{légende}
+\newcommand{\capture}[3][0.42]{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth,height=#1\textheight,keepaspectratio]{#2}
+    \caption{#3}
+  \end{figure}}
+
+%% ---------- Code ----------
+\usepackage{listings}
+\lstdefinestyle{shell}{
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{codebg},
+  frame=single, rulecolor=\color{gray!40},
+  breaklines=true, breakatwhitespace=false,
+  columns=flexible, keepspaces=true, showstringspaces=false,
+  xleftmargin=0.5em, xrightmargin=0.5em,
+  aboveskip=0.6em, belowskip=0.6em
+}
+\lstset{style=shell}
+
+%% ---------- Blocs de remarque ----------
+\usepackage[most]{tcolorbox}
+\newtcolorbox{remarque}[1][Remarque]{
+  breakable, enhanced,
+  colback=primary!5, colframe=primary, boxrule=0.4pt, arc=2pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  title=#1, fonttitle=\bfseries\small,
+  before skip=0.8em, after skip=0.8em
+}
+
+%% ---------- Titres, en-têtes, pieds de page ----------
+\titleformat{\section}{\normalfont\Large\bfseries\color{primary}}{\thesection}{0.8em}{}[\vspace{-0.3em}\color{primary}\titlerule]
+\titleformat{\subsection}{\normalfont\large\bfseries\color{primary}}{\thesubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.25em,topsep=0.3em}
+\setlist[enumerate]{leftmargin=2em,itemsep=0.25em,topsep=0.3em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{gray}{Projet Cloud Computing -- UAE / FST Tanger}}
+\fancyhead[R]{\small\textcolor{gray}{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+
+%% ---------- Hyperliens (en dernier) ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true, linkcolor=primary, urlcolor=primary, citecolor=primary,
+  pdftitle={Conception d'une architecture cloud universitaire et laboratoire OpenStack},
+  pdfauthor={Mohamed Iliass KADDAR}
+}
+
+%% ==========================================================================
+\begin{document}
+
+%% ---------- Page de titre ----------
+\begin{titlepage}
+  \thispagestyle{empty}
+  \centering
+  \vspace*{0.5cm}
+  \includegraphics[height=1.7cm,keepaspectratio]{screenshots/other/logo-uae-1536x445.png}\hfill
+  \includegraphics[height=1.7cm,keepaspectratio]{screenshots/other/ministere.png}\hfill
+  \includegraphics[height=1.7cm,keepaspectratio]{screenshots/other/fst-1536x574.png}
+
+  \vspace{2.5cm}
+  {\color{primary}\rule{\textwidth}{1.2pt}}\\[0.6cm]
+  {\large\textcolor{gray}{Projet de fin de module -- Cloud Computing}}\\[0.5cm]
+  {\LARGE\bfseries\color{primary} Conception d'une architecture cloud universitaire\\[0.2cm] et mise en œuvre d'un laboratoire OpenStack}\\[0.6cm]
+  {\color{primary}\rule{\textwidth}{1.2pt}}
+
+  \vspace{2cm}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{@{}rl@{}}
+    \textbf{Étudiant :} & Mohamed Iliass KADDAR \\
+    \textbf{Enseignant :} & C. EL AMRANI \\
+    \textbf{Cycle :} & Cycle d'ingénieur LSI -- S5 \\
+    \textbf{Année universitaire :} & 2026-2027
+  \end{tabular}
+
+  \vfill
+  \begin{minipage}{0.9\textwidth}
+    \centering\small\itshape
+    Ce rapport décrit les quatre parties du projet et leurs résultats dans l'environnement de laboratoire utilisé. Les éléments d'architecture de la partie~1 sont des propositions ; les captures et sorties de commandes montrent le laboratoire réellement exécuté.
+  \end{minipage}
+  \vspace{0.5cm}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+%% ---------- Résumé ----------
+\section*{Résumé}
+\addcontentsline{toc}{section}{Résumé}
+
+Le projet comprend :
+\begin{enumerate}
+  \item une simulation CloudSim Plus d'un service cloud universitaire distribué entre deux datacenters logiques, avec workloads normaux et de pointe, comparaison de deux ordonnanceurs, autoscaling horizontal, mesures de performance et estimation de coût ;
+  \item un laboratoire DevStack local : vérification des services OpenStack, création d'un réseau IaaS, accès SSH à une instance CirrOS et déploiement d'une application Web Flask sur Ubuntu ;
+  \item le provisionnement d'une instance Web par Terraform, puis sa configuration avec Ansible et Nginx ;
+  \item la définition d'un SLA de disponibilité et son contrôle par un script Python utilisant Keystone, Nova et un test TCP/SSH, y compris pendant une panne provoquée.
+\end{enumerate}
+
+La simulation termine les tâches synthétiques dans tous les scénarios. En pointe, l'autoscaling améliore le temps de réponse moyen du modèle, mais augmente son coût estimé.
+
+\begin{remarque}[Portée des résultats]
+La charge n'étant pas calibrée sur des requêtes réellement mesurées, ces résultats ne certifient pas la capacité d'une infrastructure universitaire réelle.
+\end{remarque}
+
+\clearpage
+
+%% ==========================================================================
+\setcounter{section}{-1}
+\section{Environnement de travail et accès au laboratoire}
+
+\subsection{Machine et virtualisation}
+Conformément à la consigne du projet, DevStack est installé dans une machine virtuelle locale, et non chez un fournisseur cloud externe.
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{0.3\textwidth}L@{}}
+    \toprule
+    \hrow Élément & \textbf{Configuration} \\
+    \midrule
+    Machine hôte & Ordinateur personnel sous Ubuntu, utilisé avec VS Code \\
+    Hyperviseur & Oracle VirtualBox \\
+    VM de laboratoire & Ubuntu Server 26.04.1 LTS \\
+    Ressources de la VM & 4 vCPU, 12 Go de RAM, environ 68 Go de disque \\
+    Plateforme OpenStack & DevStack, branche \texttt{stable/2026.2} \\
+    Réseau OpenStack & Neutron avec OVN \\
+    Utilisateur Linux sur la VM & \texttt{stack} pour les commandes DevStack et OpenStack \\
+    Utilisateur depuis l'hôte & \texttt{imk} \\
+    Adresse de gestion de la VM & \texttt{192.168.56.101} sur l'interface Host-only \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Configuration de l'environnement de laboratoire.}
+\end{table}
+
+La VM VirtualBox possède deux interfaces réseau :
+\begin{itemize}
+  \item \textbf{Adaptateur 1 -- NAT :} accès Internet sortant depuis la VM.
+  \item \textbf{Adaptateur 2 -- Host-only :} liaison privée entre Ubuntu hôte et VM. L'adresse IPv4 de gestion de la VM a été fixée à \texttt{192.168.56.101} afin que SSH et Horizon restent accessibles à la même adresse après un redémarrage.
+\end{itemize}
+
+L'adresse \texttt{192.168.56.101} est l'adresse de gestion Host-only de la VM. Elle est distincte du réseau flottant OpenStack \texttt{172.24.4.0/24}. Le script de restauration du réseau ne configure pas l'adresse Host-only : il rétablit, après redémarrage, l'interface externe \texttt{br-ex} de DevStack et le routage/NAT des adresses flottantes.
+
+\capture[0.5]{{screenshots/other/globale architecture of the project.png}}{Architecture globale du projet, résumant l'écosystème cloud universitaire et les éléments couverts par le laboratoire.}
+
+\subsection{Connexion SSH depuis Ubuntu hôte}
+Depuis un terminal de l'ordinateur Ubuntu hôte :
+\begin{lstlisting}[language=bash]
+ssh imk@192.168.56.101
+sudo -u stack -i
+cd ~/devstack
+\end{lstlisting}
+
+La première commande ouvre une session Linux sur la VM. La seconde passe à l'utilisateur \texttt{stack}, qui dispose de l'environnement DevStack. L'environnement d'authentification est ensuite chargé pour la CLI OpenStack. Horizon est accessible depuis l'hôte à \url{http://192.168.56.101/dashboard} avec l'utilisateur OpenStack \texttt{admin}.
+
+Après un redémarrage, la connectivité flottante de DevStack peut nécessiter la restauration du pont réseau externe \texttt{br-ex}. Le script de restauration remet \texttt{172.24.4.1/24} sur \texttt{br-ex}, active l'interface et le forwarding IPv4, puis ajoute une règle de masquerading si elle est absente. Il ne modifie pas l'adresse de gestion \texttt{192.168.56.101}.
+
+\subsection{Accès aux applications Web depuis l'hôte}\label{sec:tunnels}
+Les adresses flottantes de DevStack sont dans un réseau privé au laboratoire. Pour afficher les applications depuis le navigateur de l'hôte, j'ai utilisé des tunnels SSH passant par la VM DevStack :
+\begin{lstlisting}[language=bash]
+# Partie 2 : application Flask de vm-saas
+ssh -L 8080:172.24.4.40:5000 imk@192.168.56.101
+# Navigateur hote : http://localhost:8080
+
+# Partie 3 : Nginx de vm-terraform
+ssh -L 8081:172.24.4.84:80 imk@192.168.56.101
+# Navigateur hote : http://localhost:8081
+\end{lstlisting}
+
+Le tunnel écoute sur le port local choisi (8080 ou 8081) et relaie le trafic à travers SSH vers l'adresse flottante et le port de l'instance concernée.
+
+\clearpage
+
+%% ==========================================================================
+\section{Simulation d'un cloud universitaire avec CloudSim Plus}
+
+\subsection{Recherche sur l'Université Abdelmalek Essaâdi}
+Le relevé utilisé est issu du site officiel de l'UAE et constitue la base de référence pour l'estimation de la charge.
+
+\capture[0.4]{screenshots/other/uae-regions.png}{Répartition géographique des villes et pôles universitaires de l'UAE dans le modèle de référence.}
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{0.8\textwidth}{@{}Lr@{}}
+    \toprule
+    \hrow Indicateur publié & \textbf{Valeur relevée} \\
+    \midrule
+    Étudiants, doctorants inclus & 130\,750 \\
+    Enseignants-chercheurs permanents & 1\,357 \\
+    Personnel administratif et technique & 598 \\
+    Facultés & 10 \\
+    Écoles & 7 \\
+    Provinces/préfectures couvertes selon le site & 6 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Données universitaires publiées de référence.}
+\end{table}
+
+Le nombre d'étudiants est \textbf{130\,750}. Pour le modèle de plateforme, j'ajoute les deux catégories de personnels publiées : $130\,750 + 1\,357 + 598 = 132\,705$ utilisateurs potentiels estimés. Il ne s'agit pas d'un nombre vérifié de comptes Moodle ni d'utilisateurs simultanés.
+
+Les profils d'établissements extraits citent les localités de Tanger, Tétouan, Larache, Al Hoceima et Ksar El Kebir. La page synthétique annonce six provinces/préfectures ; le relevé ne permet pas de confirmer six villes d'implantation. Les données détaillées comportent des valeurs répétées ou difficiles à interpréter et leur somme ne reconstitue pas le total universitaire. Elles ne servent donc pas à établir l'effectif global.
+
+Le site public présente des services ou ressources numériques tels que Moodle, GCDoc pour le doctorat, l'Archive ouverte et des ressources électroniques. Le portail d'inscriptions, la messagerie et les examens en ligne sont considérés dans le présent projet comme des services possibles à héberger, et non comme des systèmes dont la charge de production aurait été mesurée.
+
+\begin{remarque}[Qualité des données]
+Le scrape a été enregistré le 8 novembre 2026 et signale que la vérification TLS était désactivée. Les chiffres universitaires n'ont pas de date de référence affichée. Les valeurs sont donc reprises comme valeurs publiées, à confirmer sur le site officiel avant toute décision de production.
+\end{remarque}
+
+\subsection{Architecture proposée}
+Je propose deux pôles privés, à Tanger et Tétouan, afin de répartir les services et de rapprocher les ressources des établissements. La répartition \textbf{55\,\% Ouest / 45\,\% Est} est une hypothèse de dimensionnement, pas une statistique officielle du trafic.
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth}YY@{}}
+    \toprule
+    \hrow Élément proposé & \textbf{Tanger -- pôle Ouest} & \textbf{Tétouan -- pôle Est} \\
+    \midrule
+    Datacenter logique & 1 & 1 \\
+    Hôtes simulés & 8 & 6 \\
+    Capacité d'un hôte & \multicolumn{2}{Y}{16 PE, 10\,000 MIPS/PE, 64 GiB RAM, 1 TB de stockage, 10 Gbps (identique)} \\
+    VM applicatives initiales & 6 & 4 \\
+    Profil d'une VM applicative & \multicolumn{2}{Y}{4 vCPU à 2\,500 MIPS/PE, 8 GiB RAM, 50 GB de stockage (identique)} \\
+    Part de workload affectée & 55\,\% & 45\,\% \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Architecture logique du modèle CloudSim.}
+\end{table}
+
+Le site Tanger (Cité de l'Innovation/FST) et le site Tétouan (Techno-Centre) sont des \textbf{emplacements proposés} dans les notes d'architecture ; ils ne sont pas présentés comme des datacenters UAE existants. Un répartiteur/DNS distribuerait le trafic entre les pôles. Une base de données répliquée, des sauvegardes et un PRA inter-sites seraient à prévoir dans un déploiement complet. Le profil de VM base de données suggéré dans la note d'architecture est de 8 vCPU, 16 GiB RAM et 200 GB de stockage ; il n'est pas modélisé dans la simulation actuelle.
+
+\paragraph{Modèles de service et de déploiement}
+\begin{itemize}
+  \item \textbf{IaaS :} OpenStack fournit les VM, réseaux, volumes, images, règles de sécurité et capacités de stockage.
+  \item \textbf{PaaS :} des environnements applicatifs et bases de données gérés (par exemple des services conteneurisés) pourraient être mis à disposition des équipes.
+  \item \textbf{SaaS :} Moodle, portail étudiant, messagerie, inscriptions, bibliothèque numérique et examens en ligne seraient utilisés directement par les étudiants et le personnel.
+  \item \textbf{Déploiement hybride proposé :} cloud privé pour les données sensibles et la charge de base ; extension vers un cloud public en période de pointe, sous réserve d'étudier sécurité, coûts, réseau et conformité.
+\end{itemize}
+
+\begin{remarque}[Limite du modèle]
+Le scénario hybride et le bursting public sont des recommandations d'architecture. \textbf{Ils ne sont pas exécutés par CloudSim} : le simulateur représente deux datacenters logiques et leurs VM, sans fournisseur public, liaison inter-datacenter, réplication réelle, latence réseau ou mécanisme de PRA.
+\end{remarque}
+
+\capture[0.45]{screenshots/part1-cloudsim/p1-01-architecture.jpg}{Architecture hybride proposée pour l'UAE, avec les sites, services et composants de base d'un cloud universitaire distribué.}
+
+\subsection{Modélisation de la charge}
+Chaque Cloudlet est une tâche CPU mono-cœur. Les tailles et profils de requêtes sont synthétiques, faute de mesures de production.
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}lYYY@{}}
+    \toprule
+    \hrow Profil & \textbf{Longueur} & \textbf{Entrée / sortie} & \textbf{Durée CPU théorique isolée (2\,500 MIPS)} \\
+    \midrule
+    LIGHT  & 5\,000 MI  & 50 / 150 KiB    & 2 s \\
+    MEDIUM & 20\,000 MI & 300 / 300 KiB   & 8 s \\
+    HEAVY  & 50\,000 MI & 1\,000 / 2\,000 KiB & 20 s \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Profils de charge simulés.}
+\end{table}
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}lYYL@{}}
+    \toprule
+    \hrow Période & \textbf{Simultanéité supposée (sur 132\,705 utilisateurs potentiels)} & \textbf{Échantillon simulé} & \textbf{Mix} \\
+    \midrule
+    Normale & 5\,\%, soit env. 6\,635 personnes   & 50 Cloudlets  & 35 LIGHT, 10 MEDIUM, 5 HEAVY \\
+    Pointe  & 30\,\%, soit env. 39\,812 personnes & 300 Cloudlets & 150 LIGHT, 90 MEDIUM, 60 HEAVY \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Charge supposée et échantillons comparés.}
+\end{table}
+
+Les utilisateurs actifs estimés ne sont \textbf{pas} convertis en autant de Cloudlets. Les 50 et 300 Cloudlets servent uniquement à comparer le comportement du modèle. Ils ne signifient ni 50/300 requêtes par seconde, ni une requête mesurée par utilisateur. Chaque lot est réparti en dix arrivées, espacées de cinq secondes.
+
+\subsection{Scénarios et résultats}\label{sec:resultats}
+Les VM utilisent chacune un ordonnanceur distinct. Le scénario de pointe compare d'abord \texttt{CloudletSchedulerSpaceShared} à \texttt{CloudletSchedulerTimeShared}, puis compare le TimeShared fixe à l'autoscaling horizontal avec seuil CPU de 70\,\% et maximum de 20 VM.
+
+\begin{table}[H]
+  \centering\tablestyle\footnotesize
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.4cm}YYYYYY@{}}
+    \toprule
+    \hrow Scénario & \textbf{Cloudlets terminées} & \textbf{VM créées} & \textbf{Réponse moyenne} & \textbf{Makespan} & \textbf{Util. moy. des hôtes} & \textbf{Coût estimé} \\
+    \midrule
+    Normal -- TimeShared               & 50 / 50   & 10 & 5,10 s  & 56,76 s & 0,54\,\% & 0,032366\,\$ \\
+    Pointe -- SpaceShared, sans scaling & 300 / 300 & 10 & 11,36 s & 81,37 s & 3,57\,\% & 0,046372\,\$ \\
+    Pointe -- TimeShared, sans scaling  & 300 / 300 & 10 & 11,73 s & 76,11 s & 3,72\,\% & 0,043376\,\$ \\
+    Pointe -- TimeShared, avec scaling  & 300 / 300 & 20 & 7,54 s  & 65,40 s & 4,57\,\% & 0,073594\,\$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Résultats synthétiques de la simulation CloudSim.}
+\end{table}
+
+Le dernier scénario crée 10 VM supplémentaires. Par rapport au scénario de pointe TimeShared fixe, il réduit le temps de réponse moyen d'environ \textbf{36\,\%} (de 11,73 à 7,54~s) et le makespan d'environ \textbf{14\,\%} (de 76,11 à 65,40~s), pour un coût estimé supérieur d'environ \textbf{70\,\%}. Les deux ordonnanceurs à capacité fixe ont des résultats différents : SpaceShared a une attente moyenne de file de 3,87~s, alors qu'elle est nulle dans ce run TimeShared, mais son makespan est plus long.
+
+Le coût est illustratif : il applique les tarifs configurés à la durée de vie simulée des VM, sans représenter un devis OpenStack ou fournisseur public. L'utilisation CPU moyenne est calculée sur l'ensemble des 14 hôtes, y compris ceux peu sollicités ; elle ne représente pas uniquement l'utilisation des VM actives.
+
+\begin{remarque}[Conclusion sur la capacité en période de pointe]
+\textbf{Pour le workload synthétique testé}, les 300 Cloudlets finissent dans les deux datacenters et le scaling améliore les métriques de temps au prix d'un coût supérieur. \textbf{Il n'est pas possible de conclure que l'architecture supportera réellement 39\,812 utilisateurs simultanés.} Il faudrait mesurer la fréquence réelle des requêtes, leur intensité CPU et leur répartition, calibrer les Cloudlets sur Moodle ou une application réelle, puis effectuer une analyse de sensibilité.
+\end{remarque}
+
+Les résultats complets et la procédure de reproduction sont regroupés dans le livrable final associé au projet, sous la forme d'une archive dédiée au dépôt de livraison.
+
+\clearpage
+
+%% ==========================================================================
+\section{OpenStack : IaaS et SaaS}
+
+\subsection{Vérification de DevStack}
+Depuis la session SSH ouverte sur la VM :
+\begin{lstlisting}[language=bash]
+cd ~/devstack
+openstack service list
+openstack compute service list
+openstack network agent list
+\end{lstlisting}
+
+Les sorties capturées montrent les services compute, placement, identity, image, block-storage et network. Les rôles principaux sont :
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{0.25\textwidth}L@{}}
+    \toprule
+    \hrow Service & \textbf{Rôle} \\
+    \midrule
+    Keystone & Identité, authentification, autorisation et catalogue des services \\
+    Nova & Création et gestion des instances de calcul \\
+    Glance & Catalogue et stockage des images de VM \\
+    Neutron & Réseaux, sous-réseaux, routeurs, IP flottantes et groupes de sécurité \\
+    Placement & Inventaire et allocation des ressources de calcul \\
+    Cinder & Volumes de stockage bloc persistants \\
+    \texttt{nova\_legacy} & Entrée de compatibilité affichée dans le catalogue, pas un service séparé installé manuellement \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Services OpenStack observés dans le laboratoire.}
+\end{table}
+
+Avec OVN, la sortie des agents réseau affiche notamment \texttt{ovn-controller} et \texttt{neutron-ovn-agent}. Les agents DHCP/L3 classiques de l'ancien backend Neutron ne sont pas attendus dans cette installation. Les services de calcul visibles dans la capture indiquent \texttt{enabled} et \texttt{up}.
+
+\capture{screenshots/part2-openstack/p2-01-horizon-overview.png}{Tableau de bord Horizon -- vue d'ensemble de l'environnement OpenStack DevStack.}
+\capture{screenshots/part2-openstack/p2-02-service-list.png}{Catalogue des services OpenStack avec Keystone, Nova, Neutron, Glance et les autres composants actifs.}
+\capture{screenshots/part2-openstack/p2-03-compute-service-list.png}{Services de calcul Nova, montrant les agents et l'état des nœuds de calcul.}
+\capture{screenshots/part2-openstack/p2-11-network-agent-list.png}{Agents réseau OVN, confirmant le backend réseau virtuel utilisé par l'installation.}
+
+\subsection{IaaS avec CirrOS}
+Le réseau privé \texttt{net-tp} utilise le sous-réseau \texttt{10.10.10.0/24}. Le routeur \texttt{router-tp} relie ce sous-réseau au réseau externe \texttt{public}. Le groupe \texttt{sg-tp} autorise ICMP et TCP/22. Une paire de clés \texttt{key-tp} sert à SSH.
+
+Commandes principales :
+\begin{lstlisting}[language=bash]
+openstack network create net-tp
+openstack subnet create subnet-tp --network net-tp \
+  --subnet-range 10.10.10.0/24 --dns-nameserver 8.8.8.8
+openstack router create router-tp
+openstack router set router-tp --external-gateway public
+openstack router add subnet router-tp subnet-tp
+openstack security group create sg-tp --description "SSH and ICMP"
+openstack security group rule create --proto icmp sg-tp
+openstack security group rule create --proto tcp --dst-port 22 sg-tp
+openstack keypair create key-tp > ~/key-tp.pem
+chmod 600 ~/key-tp.pem
+openstack server create --image cirros-0.6.3-x86_64-disk \
+  --flavor cirros256 --network net-tp --security-group sg-tp \
+  --key-name key-tp vm-cirros
+\end{lstlisting}
+
+Après l'association de l'IP flottante \texttt{172.24.4.201}, le test réalisé depuis la VM DevStack a reçu trois réponses sur trois au ping (0\,\% de perte). La connexion SSH avec \texttt{cirros} a permis de confirmer le nom d'hôte \texttt{vm-cirros} et l'adresse privée \texttt{10.10.10.101/24}.
+
+\begin{itemize}
+  \item Le \textbf{routeur} permet la communication entre le réseau privé et le réseau externe OpenStack.
+  \item L'\textbf{IP flottante} associe une adresse du réseau externe à l'interface réseau privée de l'instance.
+  \item Le \textbf{groupe de sécurité} filtre le trafic entrant ; ICMP et TCP/22 ont été ouverts pour les tests demandés.
+  \item La \textbf{paire de clés} permet une authentification SSH sans mot de passe utilisateur.
+\end{itemize}
+
+\capture{screenshots/part2-openstack/p2-04-network-topology.png}{Topologie réseau OpenStack avec le réseau privé, le routeur et la connectivité externe.}
+\capture{screenshots/part2-openstack/p2-05-instances.png}{Instances CirrOS et SaaS actives dans l'infrastructure OpenStack.}
+\capture{screenshots/part2-openstack/p2-06-ping-ssh-cirros.png}{Validation du réseau via ping et SSH vers l'instance CirrOS.}
+\capture{screenshots/part2-openstack/p2-07-security-group-rule.png}{Règles de sécurité réseau autorisant ICMP et SSH pour les tests de connectivité.}
+
+\subsection{SaaS -- application Flask sur Ubuntu}
+L'instance \texttt{vm-saas} utilise l'image Ubuntu 24.04 \texttt{ubuntu-noble}, le flavor \texttt{m1.saas} (1 vCPU, 1\,536 MB RAM, disque 10 GB) et le réseau \texttt{net-tp}. L'adresse flottante capturée est \texttt{172.24.4.40} ; l'adresse privée est \texttt{10.10.10.62}. Une règle TCP/5000 permet l'accès à l'application Flask.
+
+Le paquet Flask a été installé à partir de paquets \texttt{.deb} téléchargés depuis la VM DevStack puis copiés avec \texttt{scp}, car les téléchargements depuis l'instance Ubuntu expiraient dans le chemin réseau utilisé. Le serveur Flask écoute sur \texttt{0.0.0.0:5000}. Depuis l'hôte, le tunnel SSH de la section~\ref{sec:tunnels} permet de l'afficher dans le navigateur à \url{http://localhost:8080}.
+
+\capture{screenshots/part2-openstack/p2-08-ubuntu-image.png}{Image Ubuntu active dans Glance, utilisée pour le déploiement de la VM SaaS.}
+\capture{screenshots/part2-openstack/p2-09-ssh-vm-saas.png}{Connexion SSH à vm-saas, preuve que l'instance Ubuntu est bien accessible.}
+\capture{screenshots/part2-openstack/p2-10-flask-browser.png}{Application Flask accessible via le navigateur après déploiement sur l'instance Ubuntu.}
+
+Cette application est un exemple SaaS car l'utilisateur final consomme l'application par le navigateur ; l'OS et le service Flask sont gérés dans l'instance. Pour un déploiement réel, le port applicatif et l'accès SSH devraient être restreints aux réseaux nécessaires.
+
+\clearpage
+
+%% ==========================================================================
+\section{Infrastructure as Code avec Terraform et Ansible}
+
+\subsection{Terraform -- provisionner l'infrastructure}
+Terraform 1.17.1 et le provider \texttt{terraform-provider-openstack/openstack} (contrainte $\geq 3.0.0$) ont été utilisés depuis la VM DevStack. Les informations d'accès sont lues depuis la configuration du cloud \texttt{devstack-admin} ; aucun mot de passe n'est inscrit dans les fichiers Terraform.
+
+\capture[0.35]{screenshots/part3-iac/p3-01-terraform-version.png}{Versions des outils Terraform et Ansible utilisés pour l'orchestration de l'infrastructure.}
+
+Les fichiers Terraform décrivent :
+\begin{itemize}
+  \item le groupe de sécurité \texttt{sg-terraform} avec ingress TCP/22 et TCP/80 ;
+  \item le port réseau sur le réseau existant \texttt{net-tp} ;
+  \item l'instance Ubuntu \texttt{vm-terraform}, image \texttt{ubuntu-noble}, flavor \texttt{m1.saas}, clé \texttt{key-tp} ;
+  \item une IP flottante attachée à son port ;
+  \item les outputs du nom d'instance et de l'IP flottante.
+\end{itemize}
+
+Commandes utilisées :
+\begin{lstlisting}[language=bash]
+cd ~/part3/terraform
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+terraform destroy -auto-approve
+\end{lstlisting}
+
+Le plan initial annonce 7 ressources à créer. L'application a terminé avec 7 ressources ajoutées ; l'instance a reçu l'IP flottante \texttt{172.24.4.84}. Après un problème de disque/boot de l'instance, Terraform a remplacé uniquement l'instance avec la commande suivante :
+\begin{lstlisting}[language=bash]
+terraform apply -replace=openstack_compute_instance_v2.vm -auto-approve
+\end{lstlisting}
+Une fois la page vérifiée, \texttt{terraform destroy} a supprimé les 7 ressources gérées.
+
+Le réseau \texttt{net-tp} existant est lu comme une data source, au lieu d'être recréé.
+
+\begin{remarque}[Sécurité]
+Les deux règles SSH et HTTP sont ouvertes à \texttt{0.0.0.0/0} dans cet environnement de démonstration ; en production, elles devraient être limitées au réseau d'administration et aux clients nécessaires.
+\end{remarque}
+
+\capture{screenshots/part3-iac/p3-02-terraform-plan.png}{Plan Terraform détaillant les ressources à créer pour le déploiement OpenStack.}
+\capture{screenshots/part3-iac/p3-03-terraform-apply.png}{Application Terraform avec création de l'instance et attribution de l'IP flottante.}
+\capture{screenshots/part3-iac/p3-04-horizon-instances.png}{Instance vm-terraform visible dans Horizon après provisionnement.}
+\capture{screenshots/part3-iac/p3-05-horizon-secgroup.png}{Groupe de sécurité Terraform ouvert pour SSH et HTTP dans cet environnement de démonstration.}
+\capture{screenshots/part3-iac/p3-06-terraform-destroy.png}{Destruction des ressources Terraform après validation du déploiement.}
+
+\subsection{Ansible -- configurer l'instance}
+Ansible Core 2.20.1 (version montrée dans la capture) a été exécuté depuis la VM DevStack. L'inventaire SSH pointe vers \texttt{vm-terraform} (\texttt{172.24.4.84}) avec l'utilisateur \texttt{ubuntu} et la clé \texttt{key-tp}. Le playbook installe Nginx, active et démarre le service, puis déploie un template HTML avec le nom \textbf{Mohamed Iliass KADDAR}, l'identifiant \textbf{imk25} et le nom de l'instance.
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.35\textwidth}L@{}}
+    \toprule
+    \hrow Exécution & \textbf{Résultat Ansible} \\
+    \midrule
+    Première exécution & \texttt{ok=4 changed=2 unreachable=0 failed=0} \\
+    Deuxième exécution (ajout du proxy APT) & \texttt{ok=5 changed=1 unreachable=0 failed=0} \\
+    Troisième exécution & \texttt{ok=5 changed=0 unreachable=0 failed=0} \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Exécutions du playbook Ansible et résultats.}
+\end{table}
+
+La dernière exécution ne change aucune ressource : c'est la preuve d'idempotence attendue. Le chemin de téléchargement APT direct depuis l'instance posait problème ; un proxy \texttt{apt-cacher-ng} installé sur DevStack a permis d'installer Nginx.
+
+\begin{remarque}[Différence entre les outils]
+Terraform provisionne les ressources cloud via l'API OpenStack et garde un état ; Ansible configure le système d'exploitation via SSH. Terraform « crée la machine » et Ansible « configure les logiciels et fichiers dans la machine ».
+\end{remarque}
+
+\capture{screenshots/part3-iac/p3-07-ansible-ping.png}{Vérification de la connectivité Ansible vers l'instance de calcul.}
+\capture{screenshots/part3-iac/p3-08-playbook-run.png}{Exécution du playbook Ansible et résumé des tâches appliquées.}
+\capture{screenshots/part3-iac/p3-09-playbook-idempotent.png}{Preuve d'idempotence : la seconde exécution ne modifie plus aucun élément.}
+\capture{screenshots/part3-iac/p3-10-deployed-webpage.png}{Page web déployée par Ansible, affichant le nom du projet et l'instance.}
+
+\clearpage
+
+%% ==========================================================================
+\section{SLA et surveillance de disponibilité}
+
+\subsection{Objectif et méthode}
+Le fichier de configuration SLA fixe l'objectif de disponibilité à \textbf{99,5\,\% par journée} pour \texttt{cirros-mon-1}, \texttt{cirros-mon-2} et \texttt{cirros-mon-3}.
+
+Une instance est considérée disponible à une mesure si Nova la déclare \texttt{ACTIVE} \textbf{et} si son port TCP/22 répond dans un délai de trois secondes. Le script de surveillance utilise \texttt{openstacksdk}, s'authentifie auprès de Keystone, consulte Nova, teste SSH et enregistre les mesures.
+
+La fréquence cible est une mesure toutes les cinq minutes :
+\begin{equation}
+  \text{Disponibilité (\%)} = \frac{\text{mesures disponibles}}{\text{mesures totales}} \times 100
+\end{equation}
+
+Un échec de l'API OpenStack fait sauter un cycle avec un message ; il n'est pas compté comme une panne d'instance, car l'état de cette instance n'a pas été mesuré.
+
+\subsection{Panne contrôlée et résultats}
+Le test long a été exécuté pendant environ deux heures, avec 24 mesures par instance (72 lignes au total dans le CSV, hors en-tête). Une panne contrôlée de \texttt{cirros-mon-2} a été provoquée :
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{0.85\textwidth}{@{}LL@{}}
+    \toprule
+    \hrow Événement & \textbf{Heure} \\
+    \midrule
+    Arrêt de \texttt{cirros-mon-2} & 7 novembre 2026, 21:55:13 \\
+    Redémarrage demandé & 7 novembre 2026, 22:10:15 \\
+    Détection de l'état revenu \texttt{UP} & cycle 13, vers 22:15:28 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Chronologie de la panne de test.}
+\end{table}
+
+Au cycle 12, Nova indiquait déjà \texttt{ACTIVE}, mais le test SSH échouait encore ; le moniteur a donc gardé l'état \texttt{DOWN}. Cela illustre pourquoi l'état Nova seul ne suffit pas à vérifier l'accessibilité du service.
+
+\begin{table}[H]
+  \centering\tablestyle
+  \begin{tabularx}{\textwidth}{@{}lYYYYY@{}}
+    \toprule
+    \hrow Instance & \textbf{Mesures} & \textbf{Disponibles} & \textbf{Échecs} & \textbf{Disponibilité (échantillon)} & \textbf{Objectif} \\
+    \midrule
+    \texttt{cirros-mon-1} & 24 & 24 & 0 & 100,00\,\% & Atteint \\
+    \texttt{cirros-mon-2} & 24 & 20 & 4 & 83,33\,\%  & Non atteint \\
+    \texttt{cirros-mon-3} & 24 & 24 & 0 & 100,00\,\% & Atteint \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Disponibilité mesurée pendant la panne contrôlée.}
+\end{table}
+
+Le temps entre la première et la dernière mesure est d'environ 1\,h\,55\,min ; le processus a été lancé avec une durée configurée de deux heures.
+
+\begin{remarque}[Portée du test]
+Il s'agit d'une démonstration du fonctionnement de la mesure et de la détection, \textbf{pas d'une évaluation de SLA sur 24 heures}.
+\end{remarque}
+
+\capture{screenshots/part4-sla/p4-01-instances-active.png}{Instances surveillées actives avant l'activation du test de panne contrôlée.}
+\capture{screenshots/part4-sla/p4-02-monitor-test.png}{Test rapide du moniteur montrant le bon fonctionnement de la logique de contrôle.}
+\capture{screenshots/part4-sla/p4-03-outage-detected.png}{Panne détectée par le moniteur sur l'instance cirros-mon-2.}
+\capture{screenshots/part4-sla/p4-04-horizon-shutoff.png}{Instance cirros-mon-2 en état Shutoff dans Horizon pendant la panne contrôlée.}
+\capture{screenshots/part4-sla/p4-05-instances-recovered.png}{Instances après redémarrage, avec récupération de la disponibilité surveillée.}
+\capture{screenshots/part4-sla/p4-06-final-report.png}{Rapport final de disponibilité synthétisant les résultats du contrôle SLA.}
+\capture{screenshots/part4-sla/p4-07-outage-events.png}{Journal des événements Stop/Start montrant la séquence de panne et de récupération.}
+
+\subsection{Question : combien d'échecs tolérer sur une journée ?}
+Avec un contrôle toutes les cinq minutes :
+\begin{equation}
+  \frac{24 \times 60}{5} = 288\ \text{mesures par jour et par instance}
+\end{equation}
+
+Le seuil de panne correspondant à 99,5\,\% est de 0,5\,\% :
+\begin{itemize}
+  \item 1 échec : $\dfrac{287}{288} \times 100 = 99{,}65\,\%$ -- objectif atteint ;
+  \item 2 échecs : $\dfrac{286}{288} \times 100 = 99{,}31\,\%$ -- objectif non atteint.
+\end{itemize}
+
+On peut donc tolérer \textbf{au plus une mesure en échec par jour} avec cet échantillonnage. Une mesure ratée correspond à environ cinq minutes de panne observée. Le budget temporel théorique de 0,5\,\% d'une journée vaut $24\ \text{h} \times 0{,}005 = 0{,}12\ \text{h}$, soit \textbf{7,2 minutes}. La différence vient de l'échantillonnage discret : une mesure manquée ne localise pas exactement le début et la fin d'une panne et peut manquer une interruption située entre deux contrôles.
+
+\clearpage
+
+%% ==========================================================================
+\section*{Conclusion générale}
+\addcontentsline{toc}{section}{Conclusion générale}
+
+Le travail met en œuvre une chaîne complète de laboratoire cloud :
+\begin{itemize}
+  \item modélisation et comparaison de scénarios avec CloudSim Plus ;
+  \item création d'un réseau, d'instances et d'une application Web dans OpenStack ;
+  \item automatisation du provisionnement avec Terraform et de la configuration avec Ansible ;
+  \item définition et mesure expérimentale d'un SLA de disponibilité.
+\end{itemize}
+
+Les objectifs fonctionnels des parties 2 à 4 ont été démontrés dans la VM DevStack locale : accès réseau/SSH, application Flask, site Nginx automatisé et détection d'une panne d'instance. La partie~1 compare les scénarios simulés et met en évidence un compromis entre performance et coût lorsque l'autoscaling est activé.
+
+\begin{remarque}[Limites]
+Les conclusions restent celles d'un laboratoire et d'hypothèses documentées. La simulation ne prouve pas une capacité réelle pour des dizaines de milliers d'utilisateurs ; le SLA observé pendant deux heures ne prouve pas un objectif quotidien ; les tarifs CloudSim ne sont pas des prix fournisseurs. Pour passer à une étude de production, il faudrait mesurer la charge réelle, effectuer des tests plus longs, analyser les pannes et valider les coûts et les emplacements auprès des parties concernées.
+\end{remarque}
+
+\end{document}

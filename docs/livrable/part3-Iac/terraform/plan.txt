@@ -1,0 +1,143 @@
+[0m[1mdata.openstack_networking_network_v2.private: Reading...[0m[0m
+[0m[1mdata.openstack_networking_network_v2.private: Read complete after 1s [id=ef5dff71-6e9e-4893-8019-d444965e54f3][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # openstack_compute_instance_v2.vm[0m will be created
+[0m  [32m+[0m[0m resource "openstack_compute_instance_v2" "vm" {
+      [32m+[0m[0m access_ip_v4        = (known after apply)
+      [32m+[0m[0m access_ip_v6        = (known after apply)
+      [32m+[0m[0m all_metadata        = (known after apply)
+      [32m+[0m[0m all_tags            = (known after apply)
+      [32m+[0m[0m availability_zone   = (known after apply)
+      [32m+[0m[0m created             = (known after apply)
+      [32m+[0m[0m flavor_id           = (known after apply)
+      [32m+[0m[0m flavor_name         = "m1.saas"
+      [32m+[0m[0m force_delete        = false
+      [32m+[0m[0m hypervisor_hostname = (known after apply)
+      [32m+[0m[0m id                  = (known after apply)
+      [32m+[0m[0m image_id            = (known after apply)
+      [32m+[0m[0m image_name          = "ubuntu-noble"
+      [32m+[0m[0m key_pair            = "key-tp"
+      [32m+[0m[0m name                = "vm-terraform"
+      [32m+[0m[0m power_state         = "active"
+      [32m+[0m[0m region              = (known after apply)
+      [32m+[0m[0m security_groups     = (known after apply)
+      [32m+[0m[0m stop_before_destroy = false
+      [32m+[0m[0m updated             = (known after apply)
+
+      [32m+[0m[0m network {
+          [32m+[0m[0m access_network = false
+          [32m+[0m[0m fixed_ip_v4    = (known after apply)
+          [32m+[0m[0m fixed_ip_v6    = (known after apply)
+          [32m+[0m[0m mac            = (known after apply)
+          [32m+[0m[0m name           = (known after apply)
+          [32m+[0m[0m port           = (known after apply)
+          [32m+[0m[0m uuid           = (known after apply)
+        }
+    }
+
+[1m  # openstack_networking_floatingip_associate_v2.fip_assoc[0m will be created
+[0m  [32m+[0m[0m resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+      [32m+[0m[0m fixed_ip    = (known after apply)
+      [32m+[0m[0m floating_ip = (known after apply)
+      [32m+[0m[0m id          = (known after apply)
+      [32m+[0m[0m port_id     = (known after apply)
+      [32m+[0m[0m region      = (known after apply)
+    }
+
+[1m  # openstack_networking_floatingip_v2.fip[0m will be created
+[0m  [32m+[0m[0m resource "openstack_networking_floatingip_v2" "fip" {
+      [32m+[0m[0m address    = (known after apply)
+      [32m+[0m[0m all_tags   = (known after apply)
+      [32m+[0m[0m dns_domain = (known after apply)
+      [32m+[0m[0m dns_name   = (known after apply)
+      [32m+[0m[0m fixed_ip   = (known after apply)
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m pool       = "public"
+      [32m+[0m[0m port_id    = (known after apply)
+      [32m+[0m[0m region     = (known after apply)
+      [32m+[0m[0m subnet_id  = (known after apply)
+      [32m+[0m[0m tenant_id  = (known after apply)
+    }
+
+[1m  # openstack_networking_port_v2.vm[0m will be created
+[0m  [32m+[0m[0m resource "openstack_networking_port_v2" "vm" {
+      [32m+[0m[0m admin_state_up         = true
+      [32m+[0m[0m all_fixed_ips          = (known after apply)
+      [32m+[0m[0m all_security_group_ids = (known after apply)
+      [32m+[0m[0m all_tags               = (known after apply)
+      [32m+[0m[0m device_id              = (known after apply)
+      [32m+[0m[0m device_owner           = (known after apply)
+      [32m+[0m[0m dns_assignment         = (known after apply)
+      [32m+[0m[0m dns_name               = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m mac_address            = (known after apply)
+      [32m+[0m[0m name                   = "vm-terraform-port"
+      [32m+[0m[0m network_id             = "ef5dff71-6e9e-4893-8019-d444965e54f3"
+      [32m+[0m[0m port_security_enabled  = (known after apply)
+      [32m+[0m[0m qos_policy_id          = (known after apply)
+      [32m+[0m[0m region                 = (known after apply)
+      [32m+[0m[0m security_group_ids     = (known after apply)
+      [32m+[0m[0m tenant_id              = (known after apply)
+
+      [32m+[0m[0m binding (known after apply)
+    }
+
+[1m  # openstack_networking_secgroup_rule_v2.http[0m will be created
+[0m  [32m+[0m[0m resource "openstack_networking_secgroup_rule_v2" "http" {
+      [32m+[0m[0m direction               = "ingress"
+      [32m+[0m[0m ethertype               = "IPv4"
+      [32m+[0m[0m id                      = (known after apply)
+      [32m+[0m[0m port_range_max          = 80
+      [32m+[0m[0m port_range_min          = 80
+      [32m+[0m[0m protocol                = "tcp"
+      [32m+[0m[0m region                  = (known after apply)
+      [32m+[0m[0m remote_address_group_id = (known after apply)
+      [32m+[0m[0m remote_group_id         = (known after apply)
+      [32m+[0m[0m remote_ip_prefix        = "0.0.0.0/0"
+      [32m+[0m[0m security_group_id       = (known after apply)
+      [32m+[0m[0m tenant_id               = (known after apply)
+    }
+
+[1m  # openstack_networking_secgroup_rule_v2.ssh[0m will be created
+[0m  [32m+[0m[0m resource "openstack_networking_secgroup_rule_v2" "ssh" {
+      [32m+[0m[0m direction               = "ingress"
+      [32m+[0m[0m ethertype               = "IPv4"
+      [32m+[0m[0m id                      = (known after apply)
+      [32m+[0m[0m port_range_max          = 22
+      [32m+[0m[0m port_range_min          = 22
+      [32m+[0m[0m protocol                = "tcp"
+      [32m+[0m[0m region                  = (known after apply)
+      [32m+[0m[0m remote_address_group_id = (known after apply)
+      [32m+[0m[0m remote_group_id         = (known after apply)
+      [32m+[0m[0m remote_ip_prefix        = "0.0.0.0/0"
+      [32m+[0m[0m security_group_id       = (known after apply)
+      [32m+[0m[0m tenant_id               = (known after apply)
+    }
+
+[1m  # openstack_networking_secgroup_v2.web[0m will be created
+[0m  [32m+[0m[0m resource "openstack_networking_secgroup_v2" "web" {
+      [32m+[0m[0m all_tags    = (known after apply)
+      [32m+[0m[0m description = "SSH and HTTP (managed by Terraform)"
+      [32m+[0m[0m id          = (known after apply)
+      [32m+[0m[0m name        = "sg-terraform"
+      [32m+[0m[0m region      = (known after apply)
+      [32m+[0m[0m stateful    = (known after apply)
+      [32m+[0m[0m tenant_id   = (known after apply)
+    }
+
+[1mPlan:[0m [0m7 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  [32m+[0m[0m floating_ip   = (known after apply)
+  [32m+[0m[0m instance_name = "vm-terraform"
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
