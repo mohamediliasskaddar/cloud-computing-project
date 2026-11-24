@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101523">
+  <title>Cloud Computing — Présentation interactive</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101523;
+      --panel: #171e2e;
+      --panel-2: #1d2638;
+      --line: #2a354a;
+      --text: #edf2fb;
+      --muted: #a4b0c5;
+      --accent: #9c8cff;
+      --accent-2: #73dfc1;
+      --amber: #f3c879;
+      --red: #ff959c;
+      --radius: 18px;
+      --shadow: 0 18px 50px #05081166;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 70% -20%, #282653 0, transparent 40%),
+        var(--bg);
+      color: var(--text);
+      font: 15px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--accent-2); }
+    button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 3px;
+    }
+    .shell { display: grid; grid-template-columns: 258px minmax(0, 1fr); min-height: 100vh; }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 26px 18px 18px;
+      background: #111827eF;
+      border-right: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      z-index: 3;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; padding: 0 8px 26px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      color: #141626; font-weight: 900; border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 8px 28px #9c8cff35;
+    }
+    .brand strong { display: block; font-size: 13px; letter-spacing: .03em; }
+    .brand span { display: block; color: var(--muted); font-size: 11px; }
+    .nav-label { padding: 8px 10px; color: #748198; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .nav-list { display: grid; gap: 5px; }
+    .nav-item {
+      display: flex; align-items: center; gap: 12px; width: 100%;
+      padding: 11px 12px; border: 1px solid transparent; border-radius: 12px;
+      background: transparent; color: var(--muted); text-align: left; cursor: pointer;
+      transition: .18s ease;
+    }
+    .nav-item:hover { background: #ffffff08; color: var(--text); }
+    .nav-item.active { color: var(--text); border-color: #9c8cff35; background: #9c8cff15; }
+    .nav-number { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 8px; background: #ffffff0b; font-size: 11px; font-weight: 800; }
+    .nav-item.active .nav-number { color: #171629; background: var(--accent); }
+    .nav-name { font-size: 13px; font-weight: 650; }
+    .sidebar-bottom { margin-top: auto; display: grid; gap: 10px; }
+    .side-note { padding: 13px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); font-size: 11px; }
+    .side-note strong { display: block; margin-bottom: 4px; color: var(--text); }
+    .side-link { padding: 10px 12px; border-radius: 11px; background: #ffffff08; text-decoration: none; font-size: 12px; }
+
+    main { min-width: 0; padding: 0 38px 56px; }
+    .topbar {
+      position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 17px 0; background: #101523e8; border-bottom: 1px solid #2a354a99;
+      backdrop-filter: blur(16px); z-index: 2;
+    }
+    .crumb { color: var(--muted); font-size: 12px; }
+    .crumb strong { color: var(--text); font-weight: 700; }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
+    .icon-button, .search-wrap {
+      min-height: 38px; border: 1px solid var(--line); border-radius: 11px; background: #171e2e;
+    }
+    .icon-button { padding: 7px 11px; cursor: pointer; color: var(--muted); font-size: 12px; }
+    .icon-button:hover { border-color: #596786; color: var(--text); }
+    .search-wrap { display: flex; align-items: center; gap: 8px; padding: 0 10px; }
+    .search-wrap span { color: var(--muted); }
+    .search-wrap input { width: 180px; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 12px; }
+    .search-wrap input::placeholder { color: #77839a; }
+
+    .content { width: min(1120px, 100%); margin: 0 auto; }
+    .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 47px 0 24px; }
+    .eyebrow { color: var(--accent-2); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 8px 0 8px; font-size: clamp(30px, 4vw, 46px); line-height: 1.12; letter-spacing: -.04em; }
+    .hero p { max-width: 720px; margin: 0; color: var(--muted); font-size: 15px; }
+    .hero-tools { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
+    .primary-button, .soft-button {
+      border: 0; border-radius: 11px; padding: 10px 14px; cursor: pointer;
+      font-size: 12px; font-weight: 750; transition: .18s ease;
+    }
+    .primary-button { background: var(--accent); color: #171629; }
+    .primary-button:hover { background: #b0a5ff; transform: translateY(-1px); }
+    .soft-button { border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+    .soft-button:hover { border-color: #596786; }
+
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 14px; margin: 30px 0 14px; }
+    .section-heading h2 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+    .section-heading p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+    .section-kicker { color: #7d89a0; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, #1a2233, #151c2a); box-shadow: var(--shadow); }
+    .intro-card { padding: 22px; }
+    .intro-line { display: flex; align-items: flex-start; gap: 14px; }
+    .intro-icon { flex: 0 0 42px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: #73dfc11a; color: var(--accent-2); font-size: 18px; }
+    .intro-card h2 { margin: 1px 0 5px; font-size: 17px; }
+    .intro-card p { margin: 0; color: var(--muted); }
+    .workflow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+    .workflow-step {
+      position: relative; min-height: 132px; padding: 16px; text-align: left; cursor: pointer;
+      border: 1px solid var(--line); border-radius: 15px; background: #171e2e; transition: .18s ease;
+    }
+    .workflow-step:hover { transform: translateY(-2px); border-color: #596786; }
+    .workflow-step.active { border-color: #9c8cff99; background: linear-gradient(145deg, #282342, #191f30); box-shadow: inset 0 0 0 1px #9c8cff22; }
+    .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
+    .step-index { color: var(--accent); font-size: 11px; font-weight: 850; }
+    .step-arrow { color: #62708a; }
+    .workflow-step strong { display: block; font-size: 13px; }
+    .workflow-step small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .workflow-detail { display: grid; grid-template-columns: 1.3fr 1fr; gap: 15px; margin-top: 12px; padding: 17px 19px; }
+    .workflow-detail h3 { margin: 0 0 4px; font-size: 14px; }
+    .workflow-detail p { margin: 0; color: var(--muted); font-size: 13px; }
+    .transition-box { padding-left: 15px; border-left: 2px solid var(--accent-2); }
+    .transition-box span { display: block; margin-bottom: 4px; color: var(--accent-2); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .transition-box p { color: var(--text); }
+
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+    .metric { padding: 16px; }
+    .metric-label { color: var(--muted); font-size: 11px; }
+    .metric-value { margin: 5px 0 2px; font-size: 23px; font-weight: 780; letter-spacing: -.04em; }
+    .metric-note { color: #77839a; font-size: 10px; }
+    .metric.highlight .metric-value { color: var(--accent-2); }
+    .metric.warning .metric-value { color: var(--amber); }
+    .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
+    .panel { padding: 20px; }
+    .panel h3 { margin: 0 0 12px; font-size: 14px; }
+    .panel p { color: var(--muted); }
+    .bullet-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    .bullet-list li { position: relative; padding-left: 17px; color: var(--muted); font-size: 13px; }
+    .bullet-list li::before { content: ""; position: absolute; top: .7em; left: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
+    .callout { padding: 13px 15px; border: 1px solid #f3c87933; border-radius: 13px; background: #f3c8790b; color: #e7d4aa; font-size: 12px; }
+    .callout strong { color: var(--amber); }
+
+    .qa-list { display: grid; gap: 9px; }
+    .qa {
+      overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #171e2e;
+      transition: border-color .2s ease;
+    }
+    .qa[open] { border-color: #9c8cff66; }
+    .qa summary { display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; list-style: none; font-weight: 680; font-size: 13px; }
+    .qa summary::-webkit-details-marker { display: none; }
+    .qa summary::after { content: "+"; margin-left: auto; color: var(--accent); font-size: 19px; font-weight: 400; }
+    .qa[open] summary::after { content: "−"; }
+    .qa-num { flex: 0 0 24px; height: 24px; display: grid; place-items: center; border-radius: 8px; background: #9c8cff1a; color: var(--accent); font-size: 10px; }
+    .qa-answer { padding: 0 17px 16px 52px; color: var(--muted); font-size: 13px; }
+    .qa-answer p { margin: 0; }
+    .answer-tools { display: flex; justify-content: flex-end; margin-top: 9px; }
+    .copy-answer { padding: 5px 9px; border: 1px solid var(--line); border-radius: 8px; background: #ffffff06; color: var(--muted); cursor: pointer; font-size: 10px; }
+    .copy-answer:hover { color: var(--text); }
+    .search-status { display: none; margin: 12px 0; color: var(--muted); font-size: 12px; }
+    .empty-state { display: none; padding: 22px; border: 1px dashed #596786; border-radius: 14px; color: var(--muted); text-align: center; }
+    .closing { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding: 20px; border: 1px solid #73dfc133; border-radius: var(--radius); background: linear-gradient(110deg, #73dfc111, #9c8cff0b); }
+    .closing h3 { margin: 0 0 5px; font-size: 14px; }
+    .closing p { margin: 0; color: var(--muted); font-size: 12px; }
+    .status-tag { padding: 7px 10px; border: 1px solid #73dfc133; border-radius: 99px; color: var(--accent-2); white-space: nowrap; font-size: 10px; font-weight: 800; }
+    .footer { margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); color: #748198; font-size: 10px; }
+    .toast { position: fixed; right: 24px; bottom: 24px; padding: 11px 15px; border: 1px solid var(--line); border-radius: 12px; background: #202a3c; color: var(--text); box-shadow: var(--shadow); opacity: 0; transform: translateY(8px); pointer-events: none; transition: .2s ease; z-index: 5; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .mobile-nav { display: none; }
+
+    @media (max-width: 1000px) {
+      .shell { grid-template-columns: 220px minmax(0, 1fr); }
+      main { padding: 0 24px 40px; }
+      .hero { align-items: flex-start; flex-direction: column; }
+      .workflow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px) {
+      .shell { display: block; }
+      .sidebar { position: fixed; inset: auto 0 0; width: auto; height: auto; padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); border: 0; border-top: 1px solid var(--line); background: #111827f5; }
+      .brand, .nav-label, .sidebar-bottom { display: none; }
+      .nav-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 3px; }
+      .nav-item { justify-content: center; flex-direction: column; gap: 3px; padding: 5px 2px; border-radius: 9px; }
+      .nav-number { width: 21px; height: 21px; font-size: 9px; }
+      .nav-name { max-width: 100%; overflow: hidden; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+      main { padding: 0 16px 105px; }
+      .topbar { padding: 12px 0; }
+      .search-wrap input { width: min(32vw, 150px); }
+      .hero { padding: 31px 0 14px; }
+      .hero p { font-size: 13px; }
+      .section-heading { margin-top: 23px; }
+      .workflow { gap: 8px; }
+      .workflow-step { min-height: 120px; padding: 12px; }
+      .workflow-detail, .two-col { grid-template-columns: 1fr; }
+      .transition-box { padding: 12px 0 0; border-left: 0; border-top: 2px solid var(--accent-2); }
+      .closing { grid-template-columns: 1fr; }
+      .status-tag { justify-self: start; }
+    }
+    @media print {
+      :root { color-scheme: light; --bg: #fff; --panel: #fff; --panel-2: #f6f7fa; --line: #d7dce5; --text: #182033; --muted: #4c586c; --accent: #5142bb; --accent-2: #16785f; --amber: #8a5e00; }
+      body { background: #fff; color: #182033; font-size: 11pt; }
+      .shell { display: block; }
+      .sidebar, .topbar, .hero-tools, .copy-answer, .toast, .footer { display: none !important; }
+      main { padding: 0; }
+      .content { width: 100%; }
+      .card, .qa, .workflow-step { box-shadow: none; background: #fff; }
+      .hero { padding-top: 0; }
+      .qa:not([open]) .qa-answer { display: block; }
+      .qa { break-inside: avoid; }
+      .section-heading { break-after: avoid; }
+      .workflow-step { min-height: auto; }
+      .metric, .panel, .intro-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Navigation du projet">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">CC</div>
+        <div><strong>CLOUD COMPUTING</strong><span>Support de présentation orale</span></div>
+      </div>
+      <div class="nav-label">Parcours du projet</div>
+      <nav class="nav-list" id="navigation"></nav>
+      <div class="sidebar-bottom">
+        <div class="side-note"><strong>Repère oral</strong>Explique le besoin, la méthode, le résultat, puis la limite.</div>
+        <a class="side-link" href="./Preparation_oral_cloud_computing.md" target="_blank" rel="noopener">Ouvrir le guide complet ↗</a>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div class="crumb"><span>Projet de fin de module</span> <span aria-hidden="true">/</span> <strong id="breadcrumb">Vue d’ensemble</strong></div>
+        <div class="top-actions">
+          <label class="search-wrap" aria-label="Rechercher une question ou un mot-clé">
+            <span aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="Chercher une question…" autocomplete="off">
+          </label>
+          <button class="icon-button" id="random-question" type="button" title="Afficher une question au hasard">Surprise</button>
+          <button class="icon-button" id="print" type="button" title="Imprimer ou enregistrer en PDF">Imprimer</button>
+        </div>
+      </header>
+
+      <div class="content" id="content"></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <script>
+    const sections = [
+      {
+        id: "overview", nav: "Vue générale", short: "Intro", number: "01",
+        eyebrow: "Votre fil conducteur",
+        title: "Présenter sans réciter",
+        subtitle: "Un tableau de bord oral pour retrouver rapidement la méthode, les résultats et les limites de chaque partie.",
+        introTitle: "Le projet en une phrase",
+        intro: "J’ai étudié le cycle complet d’un service cloud : concevoir et simuler une architecture, déployer des ressources, automatiser leur configuration, puis vérifier un objectif de disponibilité.",
+        steps: [
+          { title: "Concevoir", short: "Besoin universitaire", detail: "Partir des services numériques de l’université et proposer une architecture distribuée, en séparant les données publiées des hypothèses de dimensionnement.", bridge: "« À partir de ce besoin, j’ai d’abord vérifié le comportement attendu par simulation. »" },
+          { title: "Simuler", short: "CloudSim Plus", detail: "Comparer charge normale et charge de pointe, ordonnanceurs et autoscaling dans un modèle contrôlé.", bridge: "« Ensuite, je suis passé d’un modèle à un laboratoire OpenStack réellement exécuté. »" },
+          { title: "Déployer", short: "OpenStack + IaC", detail: "Créer une infrastructure IaaS, déployer une application, puis séparer le provisionnement (Terraform) de la configuration système (Ansible).", bridge: "« Une fois les services déployés, il fallait aussi définir comment mesurer leur disponibilité. »" },
+          { title: "Mesurer", short: "SLA + supervision", detail: "Définir un indicateur vérifiable, surveiller les instances et provoquer un arrêt pour démontrer la détection d’une panne.", bridge: "« Je termine en distinguant clairement la démonstration de laboratoire d’une garantie de production. »" }
+        ],
+        metrics: [
+          { label: "Parties", value: "4", note: "simulation, OpenStack, IaC, SLA" },
+          { label: "OpenStack", value: "Local", note: "VM VirtualBox, pas de cloud externe", style: "highlight" },
+          { label: "Objectif SLA", value: "99,5 %", note: "par journée, objectif défini" },
+          { label: "Point de vigilance", value: "Limites", note: "modèle et laboratoire ≠ production", style: "warning" }
+        ],
+        methodTitle: "Méthode de réponse si le professeur rebondit",
+        bullets: [
+          "Répondre d’abord en une phrase directe, sans repartir de tout le projet.",
+          "Préciser si l’élément est proposé, supposé, simulé ou observé dans le laboratoire.",
+          "Donner ensuite le chiffre ou la commande qui justifie la réponse.",
+          "Terminer par une limite ou une amélioration si la question porte sur la validité."
+        ],
+        callout: "À ne pas confondre : 39 812 est une estimation de simultanéité ; 300 est le nombre de tâches synthétiques du scénario de pointe.",
+        transitionTitle: "Phrase d’ouverture",
+        transition: "« Mon projet combine une étude de capacité simulée et un laboratoire cloud local pour mettre en pratique le déploiement, l’automatisation et la supervision. »",
+        questions: [
+          ["Quel est l’objectif général du projet ?", "Relier les concepts du cloud à des expériences concrètes : concevoir une architecture, simuler ses performances, déployer des ressources, automatiser leur configuration et mesurer un objectif de disponibilité."],
+          ["Pourquoi quatre parties ?", "Elles suivent des étapes complémentaires : étudier la capacité, exploiter une plateforme IaaS, automatiser avec Terraform et Ansible, puis surveiller un indicateur de SLA."],
+          ["Où avez-vous installé OpenStack ?", "Dans une VM Ubuntu locale sous VirtualBox. C’était une contrainte du sujet : ne pas installer OpenStack dans une VM d’un fournisseur cloud externe."],
+          ["DevStack est-il destiné à la production ?", "Non. DevStack est adapté au développement et aux démonstrations. Mon installation sert de laboratoire pédagogique, pas de plateforme de production haute disponibilité."],
+          ["Quelle est la limite générale de vos conclusions ?", "Les tâches de simulation sont synthétiques et l’environnement OpenStack est un laboratoire. Je démontre les mécanismes, mais ne certifie ni la capacité réelle de l’université ni un SLA de production."],
+          ["Comment répondez-vous si vous ne connaissez pas un détail ?", "Je précise ce qui a été réellement mesuré et ce qui ne l’a pas été, puis j’explique comment je vérifierais le point manquant. Je préfère une limite exacte à une affirmation non démontrée."]
+        ]
+      },
+      {
+        id: "part1", nav: "Partie 1 · Simulation", short: "P1", number: "02",
+        eyebrow: "Partie 1 · CloudSim Plus",
+        title: "Modéliser avant de dimensionner",
+        subtitle: "Architecture universitaire proposée, charge synthétique, comparaison d’ordonnanceurs et compromis performance/coût.",
+        introTitle: "L’idée à expliquer",
+        intro: "J’ai créé deux datacenters logiques pour comparer des scénarios normaux et de pointe. Les résultats servent à comparer les politiques du modèle, pas à certifier une capacité réelle.",
+        steps: [
+          { title: "Références", short: "Besoin & données", detail: "Le rapport cite 130 750 étudiants, 1 357 enseignants-chercheurs et 598 personnels. Le total de 132 705 utilisateurs potentiels est une somme d’effectifs, pas un nombre de comptes actifs.", bridge: "« Ces effectifs donnent un contexte, mais pas la charge technique. J’ai donc explicité mes hypothèses. »" },
+          { title: "Architecture", short: "2 pôles logiques", detail: "Tanger : 8 hôtes et 6 VM initiales. Tétouan : 6 hôtes et 4 VM. La répartition 55 % / 45 % est une hypothèse ; ces lieux ne sont pas présentés comme des datacenters existants.", bridge: "« Une fois les ressources définies, j’ai représenté la demande par des Cloudlets synthétiques. »" },
+          { title: "Charge", short: "50 vs 300 tâches", detail: "Chaque Cloudlet est mono-cœur : 5 000, 20 000 ou 50 000 MI. Les périodes normale et de pointe comportent respectivement 50 et 300 Cloudlets, arrivant en dix lots espacés de cinq secondes.", bridge: "« J’ai ensuite comparé l’ordonnancement fixe, puis l’ajout automatique de VM. »" },
+          { title: "Comparaison", short: "Ordonnanceur & scaling", detail: "Comparer SpaceShared et TimeShared, puis TimeShared fixe à un scaling horizontal déclenché à 70 % CPU, plafonné à 20 VM.", bridge: "« Le résultat principal est un compromis : le scaling accélère les tâches, mais augmente le coût estimé. »" }
+        ],
+        metrics: [
+          { label: "Effectif potentiel estimé", value: "132 705", note: "effectifs publiés additionnés" },
+          { label: "Hôtes / VM initiales", value: "14 / 10", note: "deux datacenters logiques" },
+          { label: "Pointe simulée", value: "300", note: "Cloudlets, pas d’utilisateurs réels" },
+          { label: "Scaling max.", value: "20 VM", note: "seuil CPU de 70 %", style: "highlight" }
+        ],
+        methodTitle: "Lecture des résultats de pointe",
+        bullets: [
+          "TimeShared fixe : réponse moyenne 11,73 s ; makespan 76,11 s ; coût estimé 0,043376 $.",
+          "TimeShared avec scaling : réponse moyenne 7,54 s ; makespan 65,40 s ; coût estimé 0,073594 $.",
+          "Le temps de réponse moyen baisse d’environ 36 % et le makespan d’environ 14 %.",
+          "Le coût estimé augmente d’environ 70 % ; ce n’est pas un devis fournisseur."
+        ],
+        callout: "Les 300 tâches terminées montrent que le scénario synthétique s’achève. Elles ne prouvent pas que l’université peut servir 39 812 utilisateurs simultanés.",
+        transitionTitle: "Transition vers la partie 2",
+        transition: "« La simulation compare des choix sur un modèle. Dans la partie suivante, je montre les services cloud réels que j’ai manipulés dans DevStack. »",
+        questions: [
+          ["Pourquoi CloudSim Plus ?", "Il permet de représenter des ressources et des tâches cloud et de comparer des politiques de planification et de scaling sans déployer physiquement tous les scénarios."],
+          ["Que signifie Cloudlet dans votre modèle ?", "C’est une tâche CPU mono-cœur synthétique. Sa longueur est en MI ; à 2 500 MIPS, 5 000 MI représentent environ deux secondes de calcul CPU isolé dans ce modèle."],
+          ["Les 39 812 utilisateurs ont-ils été simulés ?", "Non. C’est une estimation correspondant à 30 % des utilisateurs potentiels. Le scénario de pointe utilise 300 Cloudlets comme échantillon de comparaison, pas 39 812 requêtes."],
+          ["Pourquoi deux datacenters à Tanger et Tétouan ?", "Ce sont des pôles proposés pour explorer une répartition géographique. Ils sont logiques dans la simulation et ne représentent pas des sites universitaires existants."],
+          ["Quelle différence entre SpaceShared et TimeShared ?", "SpaceShared peut faire attendre une tâche qu’une ressource se libère ; TimeShared répartit le temps CPU entre les tâches actives. Les résultats dépendent du workload et de la configuration."],
+          ["Que gagne-t-on avec l’autoscaling ?", "Dans le scénario testé, le temps moyen passe de 11,73 à 7,54 secondes et le makespan de 76,11 à 65,40 secondes, au prix d’un coût estimé supérieur."],
+          ["Pourquoi le coût n’est-il pas réel ?", "Il est calculé avec les tarifs configurés dans le simulateur et la durée de vie simulée des VM. Il n’inclut pas un devis d’un fournisseur cloud."],
+          ["Comment rendre la simulation plus réaliste ?", "Collecter des mesures de charge applicative, calibrer les Cloudlets, tester plusieurs intensités et distributions, et modéliser les bases de données, le réseau et les dépendances des services."]
+        ]
+      },
+      {
+        id: "part2", nav: "Partie 2 · OpenStack", short: "P2", number: "03",
+        eyebrow: "Partie 2 · IaaS & SaaS",
+        title: "Construire et tester un service cloud",
+        subtitle: "Vérifier DevStack, créer le réseau et l’instance, puis exposer une application Web depuis Ubuntu.",
+        introTitle: "L’idée à expliquer",
+        intro: "OpenStack fournit ici le socle IaaS : réseau, image, calcul, règles et adresse flottante. J’ai validé le chemin de l’instance CirrOS puis servi une petite application Flask.",
+        steps: [
+          { title: "Contrôler", short: "Services OpenStack", detail: "Lister le catalogue, les services Nova et les agents réseau. L’environnement utilise Neutron avec OVN ; les composants visibles ne sont donc pas exactement ceux du backend historique.", bridge: "« Une fois les services vérifiés, j’ai construit la connectivité nécessaire à l’instance. »" },
+          { title: "Réseau", short: "Privé → externe", detail: "Créer `net-tp` et `10.10.10.0/24`, raccorder le routeur `router-tp` au réseau externe `public`, puis autoriser ICMP et SSH dans le groupe de sécurité.", bridge: "« Le réseau en place, j’ai lancé une petite image pour vérifier ping et SSH. »" },
+          { title: "IaaS", short: "CirrOS + floating IP", detail: "Lancer `vm-cirros`, associer la clé SSH et l’IP flottante `172.24.4.201`. Le ping a répondu 3 fois sur 3 et SSH a confirmé le nom d’hôte et l’adresse privée.", bridge: "« Après la validation IaaS, j’ai utilisé une Ubuntu plus adaptée à une application Web. »" },
+          { title: "SaaS démo", short: "Ubuntu + Flask", detail: "`vm-saas` utilise Ubuntu 24.04, le flavor `m1.saas` (1 vCPU, 1 536 MB RAM). Flask écoute sur TCP/5000 ; un tunnel SSH permet d’ouvrir l’application sur `localhost:8080`.", bridge: "« Cette application reste pédagogique : la partie suivante automatise le provisionnement d’une autre instance. »" }
+        ],
+        metrics: [
+          { label: "Réseau privé", value: "10.10.10.0/24", note: "`net-tp`" },
+          { label: "CirrOS", value: "3/3", note: "réponses ping observées", style: "highlight" },
+          { label: "Flask", value: "TCP/5000", note: "port applicatif de la démo" },
+          { label: "Accès navigateur", value: "8080", note: "tunnel SSH depuis l’hôte" }
+        ],
+        methodTitle: "Rôle des composants à rappeler",
+        bullets: [
+          "Keystone : identité et authentification ; Nova : calcul et instances ; Glance : images.",
+          "Neutron : réseaux, routeurs, IP flottantes et groupes de sécurité.",
+          "Placement : inventaire/allocation des ressources ; Cinder : volumes bloc persistants.",
+          "OVN fournit le backend réseau de cette installation DevStack."
+        ],
+        callout: "Une instance en état ACTIVE ne garantit pas que son application répond. Vérifier aussi le réseau, les règles de sécurité et le port/service ciblé.",
+        transitionTitle: "Transition vers la partie 3",
+        transition: "« Les ressources OpenStack peuvent être créées manuellement. Pour les rendre répétables, j’ai séparé le provisionnement Terraform de la configuration Ansible. »",
+        questions: [
+          ["Quel est le rôle de Keystone, Nova et Glance ?", "Keystone gère identité et accès ; Nova orchestre les instances de calcul ; Glance catalogue les images utilisées pour lancer les VM."],
+          ["Quel est le rôle de Neutron ?", "Neutron fournit les réseaux, sous-réseaux, routeurs, IP flottantes et groupes de sécurité."],
+          ["Pourquoi le routeur et l’IP flottante sont-ils deux choses différentes ?", "Le routeur assure le routage entre réseaux. L’IP flottante est une adresse du réseau externe associée à un port d’instance. Les deux jouent des rôles complémentaires."],
+          ["À quoi sert le groupe de sécurité ?", "Il filtre le trafic au niveau des ports d’instance. Pour cette démonstration, il autorise ICMP et TCP/22 pour les tests demandés."],
+          ["Pourquoi CirrOS ?", "C’est une image très légère pratique pour vérifier rapidement le lancement, le réseau et SSH, mais elle n’est pas destinée à héberger une application de production."],
+          ["Que prouve votre test ping/SSH ?", "Trois réponses ping sur trois ont été obtenues depuis DevStack et SSH a confirmé l’hôte `vm-cirros` avec son adresse privée. Cela valide une connectivité de base, pas une application complète."],
+          ["Pourquoi utiliser un tunnel SSH pour Flask ?", "L’IP flottante est accessible depuis le réseau du laboratoire, mais pas directement depuis le navigateur hôte dans cette configuration. Le tunnel relaie `localhost:8080` vers le port 5000 de l’instance."],
+          ["Est-ce un SaaS de production ?", "Non. C’est une application Flask accessible au navigateur pour illustrer le modèle SaaS. Une vraie mise en production demanderait sécurité, HTTPS, sauvegarde, supervision et gestion des utilisateurs."]
+        ]
+      },
+      {
+        id: "part3", nav: "Partie 3 · Automatisation", short: "P3", number: "04",
+        eyebrow: "Partie 3 · Terraform & Ansible",
+        title: "Décrire, créer, configurer",
+        subtitle: "Deux outils, deux couches : Terraform gère les ressources OpenStack ; Ansible configure le système de l’instance.",
+        introTitle: "L’idée à expliquer",
+        intro: "Le déploiement devient reproductible en séparant l’infrastructure de la configuration logicielle. La preuve clé côté Ansible est la relance sans changement.",
+        steps: [
+          { title: "Décrire", short: "Configuration Terraform", detail: "Déclarer le groupe de sécurité, consulter le réseau existant comme data source, puis décrire l’instance Ubuntu, son port et son IP flottante.", bridge: "« La configuration déclarative permet de prévisualiser les changements avant leur application. »" },
+          { title: "Provisionner", short: "Plan → apply", detail: "`terraform init`, `validate`, `plan` puis `apply`. Le plan initial annonçait 7 ressources ; l’instance obtenue était `vm-terraform`, IP `172.24.4.84`.", bridge: "« Une VM créée ne suffit pas : il faut encore installer et configurer son service Web. »" },
+          { title: "Configurer", short: "Playbook Ansible", detail: "Connexion SSH depuis DevStack, installation de Nginx, activation/démarrage du service et déploiement d’un template HTML avec le nom, l’identifiant et le nom de l’instance.", bridge: "« Je vérifie ensuite que le playbook peut être rejoué sans modifier à nouveau le système. »" },
+          { title: "Vérifier", short: "Idempotence & nettoyage", detail: "La troisième exécution Ansible donne `changed=0` et `failed=0`. Après validation de la page, `terraform destroy` supprime les 7 ressources gérées.", bridge: "« Ce cycle de création et de configuration fournit ensuite une cible concrète à superviser. »" }
+        ],
+        metrics: [
+          { label: "Ressources créées", value: "7", note: "puis supprimées par destroy" },
+          { label: "Instance Web", value: "172.24.4.84", note: "`vm-terraform`" },
+          { label: "Dernier playbook", value: "0 changed", note: "idempotence observée", style: "highlight" },
+          { label: "Service", value: "Nginx", note: "page HTML déployée par Ansible" }
+        ],
+        methodTitle: "Qui fait quoi ?",
+        bullets: [
+          "Terraform : décrit et provisionne les ressources via l’API OpenStack ; suit leur état.",
+          "Ansible : se connecte en SSH et configure l’OS, les paquets, le service et les fichiers.",
+          "Le réseau existant est lu par Terraform au lieu d’être recréé.",
+          "Les credentials restent dans la configuration du cloud, pas dans les fichiers Terraform."
+        ],
+        callout: "Dans la démo, SSH et HTTP étaient ouverts à `0.0.0.0/0`. En production, il faut restreindre les sources et privilégier HTTPS.",
+        transitionTitle: "Transition vers la partie 4",
+        transition: "« L’application est déployée automatiquement ; la dernière étape consiste à définir ce que signifie “disponible” et à détecter une interruption. »",
+        questions: [
+          ["Quelle différence entre Terraform et Ansible ?", "Terraform crée et suit les ressources cloud via API ; Ansible configure le système d’exploitation via SSH. Terraform crée la machine, Ansible installe et configure le logiciel."],
+          ["Que font init, plan et apply ?", "`init` prépare le répertoire et récupère le provider ; `plan` prévisualise les changements ; `apply` les applique à OpenStack."],
+          ["À quoi sert terraform destroy ?", "À supprimer les ressources gérées par cette configuration. Dans mon projet, il a supprimé les sept ressources après vérification."],
+          ["Qu’est-ce que l’idempotence ?", "Relancer une configuration idempotente conserve l’état voulu sans refaire de changements inutiles. La troisième exécution Ansible a affiché `changed=0` et `failed=0`."],
+          ["Pourquoi utiliser le réseau en data source ?", "Le réseau `net-tp` existait déjà. Le consulter évite de le recréer ou de modifier une ressource partagée."],
+          ["Pourquoi avez-vous remplacé l’instance Terraform ?", "Après un problème de disque/boot, j’ai utilisé `-replace` pour remplacer uniquement l’instance concernée, plutôt que détruire toutes les ressources."],
+          ["Comment sécuriseriez-vous la configuration ?", "Restreindre SSH au réseau d’administration et HTTP/HTTPS aux clients nécessaires, protéger les clés et credentials, et éviter d’inscrire des secrets dans le code."],
+          ["Pourquoi les identifiants ne sont-ils pas dans le code ?", "Ils sont lus depuis la configuration du cloud `devstack-admin`. Cela évite de mettre des secrets dans les fichiers Terraform, qui peuvent être versionnés ou partagés."]
+        ]
+      },
+      {
+        id: "part4", nav: "Partie 4 · SLA", short: "P4", number: "05",
+        eyebrow: "Partie 4 · Disponibilité",
+        title: "Définir ce que veut dire “disponible”",
+        subtitle: "Un objectif mesurable, deux contrôles complémentaires, un arrêt provoqué et une interprétation prudente des résultats.",
+        introTitle: "L’idée à expliquer",
+        intro: "Je ne me contente pas de l’état Nova : une instance est disponible si Nova la déclare ACTIVE et si le port SSH répond en moins de trois secondes.",
+        steps: [
+          { title: "Définir", short: "Objectif & critère", detail: "Objectif fixé à 99,5 % par jour pour trois instances. Une mesure n’est disponible que si l’état Nova vaut ACTIVE et si TCP/22 répond dans le délai.", bridge: "« J’ai ensuite traduit ce critère en contrôles automatiques et en journal de mesures. »" },
+          { title: "Surveiller", short: "Keystone + Nova", detail: "Le script Python utilise `openstacksdk`, s’authentifie auprès de Keystone, consulte Nova, teste SSH et enregistre date, instance et état.", bridge: "« Pour valider le détecteur, j’ai provoqué une panne au lieu d’attendre un incident naturel. »" },
+          { title: "Provoquer", short: "Stop → Start", detail: "Arrêt contrôlé de `cirros-mon-2`, puis redémarrage. Nova était revenu à ACTIVE avant que SSH réponde : le moniteur a donc conservé l’état DOWN jusqu’à la connectivité.", bridge: "« Enfin, j’ai calculé la disponibilité observée et précisé pourquoi ces deux heures ne sont pas un bilan journalier. »" },
+          { title: "Interpréter", short: "Résultat & limite", detail: "Environ deux heures : 24 mesures par instance. `cirros-mon-2` a 20/24 mesures disponibles, soit 83,33 %. C’est une démonstration de détection, pas une évaluation sur 24 heures.", bridge: "« Le résultat montre le mécanisme ; une période de mesure complète serait nécessaire pour conclure sur l’objectif quotidien. »" }
+        ],
+        metrics: [
+          { label: "Objectif journalier", value: "99,5 %", note: "par instance" },
+          { label: "Fréquence", value: "5 min", note: "soit 288 mesures par jour" },
+          { label: "Échantillon en panne", value: "20 / 24", note: "`cirros-mon-2` : 83,33 %", style: "warning" },
+          { label: "Pannes tolérables", value: "1 mesure", note: "99,65 % ; deux = 99,31 %", style: "highlight" }
+        ],
+        methodTitle: "Calcul à défendre",
+        bullets: [
+          "Disponibilité = mesures disponibles / mesures totales × 100.",
+          "Par jour : 24 × 60 / 5 = 288 mesures par instance.",
+          "Un échec : 287/288 ≈ 99,65 % ; deux échecs : 286/288 ≈ 99,31 %.",
+          "0,5 % d’une journée = 7,2 minutes, mais le sondage toutes les cinq minutes limite la précision."
+        ],
+        callout: "Le moniteur saute un cycle en cas d’erreur API et ne compte pas cela comme panne d’instance : il n’a pas pu mesurer son état. C’est une limite à surveiller séparément.",
+        transitionTitle: "Phrase de conclusion",
+        transition: "« Le projet démontre les mécanismes dans un laboratoire, et ses résultats sont utiles à condition de ne pas les présenter comme des garanties de production. »",
+        questions: [
+          ["Qu’est-ce qu’un SLA ?", "Un accord de niveau de service qui définit un objectif mesurable, sa méthode et sa période de mesure, ainsi que les conséquences si l’objectif n’est pas respecté."],
+          ["Comment définissez-vous la disponibilité ?", "À chaque contrôle, Nova doit indiquer ACTIVE et le port TCP/22 doit répondre en moins de trois secondes. Les deux conditions sont nécessaires."],
+          ["Pourquoi l’état ACTIVE ne suffit-il pas ?", "Nova peut indiquer ACTIVE alors que l’accès ne fonctionne pas encore. Pendant le redémarrage, SSH échouait toujours ; le moniteur a donc gardé l’état DOWN."],
+          ["Quels sont les résultats de la panne ?", "Sur environ deux heures, 24 mesures par instance. `cirros-mon-2` a 20 mesures disponibles sur 24, soit 83,33 %, tandis que les deux autres ont 24/24."],
+          ["Avez-vous démontré le SLA sur une journée ?", "Non. Le test d’environ deux heures prouve que le moniteur détecte une panne contrôlée, mais ne certifie pas l’objectif journalier."],
+          ["Combien d’échecs sont tolérables par jour ?", "Avec 288 mesures, un échec donne environ 99,65 % et deux donnent environ 99,31 %. On tolère donc au plus un échec pour rester au-dessus de 99,5 %."],
+          ["Pourquoi le port SSH n’est-il pas un test applicatif ?", "Il vérifie l’accès à l’instance, pas la réponse de l’application. Un SLA applicatif devrait tester l’endpoint HTTP/HTTPS et une réponse attendue."],
+          ["Le sondage peut-il manquer une panne ?", "Oui. Une panne entre deux mesures espacées de cinq minutes peut ne pas être observée. Une fréquence plus élevée ou une collecte d’événements continue améliorerait la précision."]
+        ]
+      },
+      {
+        id: "conclusion", nav: "Conclusion", short: "Fin", number: "06",
+        eyebrow: "Synthèse · Questions de recul",
+        title: "Démontrer, puis délimiter",
+        subtitle: "La conclusion la plus solide est celle qui explique à la fois ce que vos résultats montrent et ce qu’ils ne permettent pas d’affirmer.",
+        introTitle: "Conclusion à présenter",
+        intro: "Le projet couvre la simulation, le déploiement IaaS/SaaS, l’automatisation et la mesure d’un SLA dans un laboratoire local. Il montre des mécanismes opérationnels, avec des hypothèses et des limites explicites.",
+        steps: [
+          { title: "Ce qui marche", short: "Résultats observés", detail: "Les tâches synthétiques finissent ; OpenStack lance une instance test et une application Flask ; Terraform/Ansible déploient Nginx ; le moniteur détecte un arrêt.", bridge: "« Mais démontrer un mécanisme n’est pas la même chose que certifier une capacité de production. »" },
+          { title: "Ce qui est supposé", short: "Hypothèses", detail: "La répartition 55/45, les taux de simultanéité, les workloads Cloudlet et le coût de simulation sont des hypothèses ou estimations, pas des mesures de trafic réel.", bridge: "« Pour réduire cette incertitude, il faut commencer par obtenir des données représentatives. »" },
+          { title: "Ce qui manque", short: "Validations futures", detail: "Charge réelle, latences et pannes inter-sites, tests plus longs, supervision applicative, sécurité de production et coûts vérifiés.", bridge: "« C’est donc la prochaine étape logique pour transformer le prototype en étude réaliste. »" },
+          { title: "Répondre", short: "Besoin → preuve → limite", detail: "À une question, relier la réponse au besoin, citer la méthode ou la mesure, puis qualifier sa portée. Ne pas confondre hypothèse, simulation et observation.", bridge: "« C’est cette distinction qui permet de défendre les résultats sans les surinterpréter. »" }
+        ],
+        metrics: [
+          { label: "Mécanismes démontrés", value: "4", note: "simulation → SLA" },
+          { label: "Environnement", value: "Laboratoire", note: "DevStack local" },
+          { label: "Suite logique", value: "Mesurer", note: "charge et service réels", style: "highlight" },
+          { label: "À éviter", value: "Surpromettre", note: "ne pas extrapoler sans données", style: "warning" }
+        ],
+        methodTitle: "Axes d’amélioration défendables",
+        bullets: [
+          "Calibrer la simulation avec des métriques et tests de charge d’une application réelle.",
+          "Ajouter des tests applicatifs au SLA et mesurer la disponibilité du système de supervision.",
+          "Réaliser des tests plus longs, de charge et de panne, puis documenter leurs conditions.",
+          "Durcir les règles réseau, gérer les secrets et évaluer sauvegarde, reprise et coût réel."
+        ],
+        callout: "Réponse forte à une critique : reconnaître la limite, expliquer son impact et proposer une méthode de validation concrète.",
+        transitionTitle: "Réponse finale courte",
+        transition: "« J’ai livré une chaîne cohérente de bout en bout dans un laboratoire local. Pour conclure sur la production, je devrais calibrer la charge, prolonger les mesures et valider la sécurité et les coûts. »",
+        questions: [
+          ["Quelle est votre principale contribution ?", "Avoir relié les différentes couches du cloud dans un même projet : modèle de capacité, plateforme OpenStack, automatisation de l’infrastructure et supervision de disponibilité."],
+          ["Quel compromis illustre le mieux la simulation ?", "L’autoscaling réduit les temps moyens dans le scénario de pointe, mais augmente le nombre de VM et le coût estimé."],
+          ["Que feriez-vous en premier pour poursuivre ?", "Collecter des données réalistes de charge et calibrer la simulation, car la qualité des conclusions dépend d’abord de la représentativité du workload."],
+          ["Quelles améliorations de sécurité recommandez-vous ?", "Restreindre les règles réseau, limiter SSH au réseau d’administration, privilégier HTTPS, protéger les clés et secrets, et appliquer le moindre privilège."],
+          ["Votre conclusion en une phrase ?", "Le projet démontre, dans un laboratoire local, une chaîne allant de la simulation et du déploiement cloud à l’automatisation et à la supervision, sans extrapoler abusivement à la production."]
+        ]
+      }
+    ];
+
+    let activeSection = "overview";
+    let activeStep = 0;
+    let toastTimer;
+    const nav = document.getElementById("navigation");
+    const content = document.getElementById("content");
+    const search = document.getElementById("search");
+
+    function renderNav() {
+      nav.innerHTML = sections.map(section => `
+        <button class="nav-item ${section.id === activeSection ? "active" : ""}" type="button" data-section="${section.id}" aria-current="${section.id === activeSection ? "page" : "false"}">
+          <span class="nav-number">${section.short}</span><span class="nav-name">${section.nav}</span>
+        </button>`).join("");
+    }
+
+    function renderSection() {
+      const section = sections.find(item => item.id === activeSection);
+      if (!section) return;
+      document.title = `${section.nav} — Présentation Cloud Computing`;
+      document.getElementById("breadcrumb").textContent = section.nav;
+      const step = section.steps[activeStep] || section.steps[0];
+      content.innerHTML = `
+        <section class="hero">
+          <div>
+            <div class="eyebrow">${section.eyebrow}</div>
+            <h1>${section.title}</h1>
+            <p>${section.subtitle}</p>
+          </div>
+          <div class="hero-tools">
+            <button class="primary-button" id="random-in-section" type="button">Question au hasard</button>
+            <button class="soft-button" id="open-first-answer" type="button">Réponse repère</button>
+          </div>
+        </section>
+
+        <section class="card intro-card" aria-label="Résumé oral">
+          <div class="intro-line"><div class="intro-icon" aria-hidden="true">✦</div><div><h2>${section.introTitle}</h2><p>${section.intro}</p></div></div>
+        </section>
+
+        <div class="section-heading">
+          <div><div class="section-kicker">Parcours à raconter</div><h2>Workflow de cette partie</h2><p>Clique sur une étape pour afficher son explication et la transition orale.</p></div>
+        </div>
+        <section class="workflow" aria-label="Étapes du workflow">
+          ${section.steps.map((item, index) => `
+            <button class="workflow-step ${index === activeStep ? "active" : ""}" type="button" data-step="${index}" aria-pressed="${index === activeStep}">
+              <span class="step-top"><span class="step-index">ÉTAPE 0${index + 1}</span><span class="step-arrow" aria-hidden="true">${index === section.steps.length - 1 ? "●" : "→"}</span></span>
+              <strong>${item.title}</strong><small>${item.short}</small>
+            </button>`).join("")}
+        </section>
+        <section class="card workflow-detail" aria-live="polite">
+          <div><h3>${step.title} · ${step.short}</h3><p>${step.detail}</p></div>
+          <div class="transition-box"><span>Phrase de liaison</span><p>${step.bridge}</p></div>
+        </section>
+
+        <div class="section-heading"><div><div class="section-kicker">Repères chiffrés</div><h2>Les valeurs à retrouver vite</h2></div></div>
+        <section class="metrics" aria-label="Valeurs clés">
+          ${section.metrics.map(metric => `<article class="card metric ${metric.style || ""}"><div class="metric-label">${metric.label}</div><div class="metric-value">${metric.value}</div><div class="metric-note">${metric.note}</div></article>`).join("")}
+        </section>
+
+        <div class="section-heading"><div><div class="section-kicker">Méthode & interprétation</div><h2>${section.methodTitle}</h2></div></div>
+        <section class="two-col">
+          <article class="card panel"><h3>À dire / à rappeler</h3><ul class="bullet-list">${section.bullets.map(item => `<li>${item}</li>`).join("")}</ul></article>
+          <aside class="callout"><strong>Point de vigilance</strong><br>${section.callout}</aside>
+        </section>
+
+        <div class="section-heading" id="qa-heading">
+          <div><div class="section-kicker">Questions probables</div><h2>Si le professeur demande…</h2><p>Ouvre une question pour afficher une réponse courte et défendable.</p></div>
+          <button class="soft-button" id="toggle-answers" type="button">Tout ouvrir</button>
+        </div>
+        <div class="search-status" id="search-status" aria-live="polite"></div>
+        <section class="qa-list" id="qa-list">
+          ${section.questions.map((qa, index) => `
+            <details class="qa" data-question="${escapeAttr(qa[0])}" data-answer="${escapeAttr(qa[1])}">
+              <summary><span class="qa-num">${String(index + 1).padStart(2, "0")}</span><span>${qa[0]}</span></summary>
+              <div class="qa-answer"><p>${qa[1]}</p><div class="answer-tools"><button class="copy-answer" type="button">Copier la réponse</button></div></div>
+            </details>`).join("")}
+        </section>
+        <div class="empty-state" id="empty-state">Aucun résultat dans cette partie. Essaie un autre mot-clé ou change de partie.</div>
+
+        <div class="section-heading"><div><div class="section-kicker">Pour enchaîner</div><h2>${section.transitionTitle}</h2></div></div>
+        <section class="closing"><div><h3>Transition orale</h3><p>${section.transition}</p></div><span class="status-tag">Besoin → méthode → résultat → limite</span></section>
+        <footer class="footer">Support hors ligne · Basé sur le rapport du projet · Appuie sur 1–6 pour naviguer, ← / → pour changer d’étape.</footer>`;
+      renderNav();
+      applySearch();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function escapeAttr(value) {
+      return value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    }
+
+    function switchSection(id) {
+      const section = sections.find(item => item.id === id);
+      if (!section) return;
+      activeSection = id;
+      activeStep = 0;
+      search.value = "";
+      renderSection();
+    }
+
+    function applySearch() {
+      const query = search.value.trim().toLocaleLowerCase("fr");
+      const questions = [...document.querySelectorAll(".qa")];
+      let shown = 0;
+      questions.forEach(card => {
+        const match = !query || `${card.dataset.question} ${card.dataset.answer}`.toLocaleLowerCase("fr").includes(query);
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      const status = document.getElementById("search-status");
+      const empty = document.getElementById("empty-state");
+      if (!status || !empty) return;
+      status.style.display = query ? "block" : "none";
+      status.textContent = query ? `${shown} question${shown > 1 ? "s" : ""} trouvée${shown > 1 ? "s" : ""} pour « ${search.value.trim()} » dans cette partie.` : "";
+      empty.style.display = shown === 0 ? "block" : "none";
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2100);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Réponse copiée.");
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.append(area);
+        area.select();
+        const copied = document.execCommand("copy");
+        area.remove();
+        showToast(copied ? "Réponse copiée." : "Copie impossible dans ce navigateur.");
+      }
+    }
+
+    function openRandomQuestion(sectionId = activeSection) {
+      const section = sections.find(item => item.id === sectionId);
+      if (!section) return;
+      const cards = [...document.querySelectorAll(".qa:not([hidden])")];
+      if (!cards.length) {
+        switchSection(sectionId);
+        return;
+      }
+      const card = cards[Math.floor(Math.random() * cards.length)];
+      card.open = true;
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      card.classList.add("random-focus");
+      setTimeout(() => card.classList.remove("random-focus"), 1100);
+    }
+
+    nav.addEventListener("click", event => {
+      const button = event.target.closest("[data-section]");
+      if (button) switchSection(button.dataset.section);
+    });
+
+    content.addEventListener("click", event => {
+      const stepButton = event.target.closest("[data-step]");
+      if (stepButton) {
+        activeStep = Number(stepButton.dataset.step);
+        renderSection();
+        document.querySelector(".workflow").scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      const copyButton = event.target.closest(".copy-answer");
+      if (copyButton) {
+        const card = copyButton.closest(".qa");
+        copyText(card.dataset.answer);
+        return;
+      }
+      if (event.target.closest("#toggle-answers")) {
+        const cards = [...document.querySelectorAll(".qa:not([hidden])")];
+        const shouldOpen = cards.some(card => !card.open);
+        cards.forEach(card => card.open = shouldOpen);
+        event.target.closest("#toggle-answers").textContent = shouldOpen ? "Tout fermer" : "Tout ouvrir";
+        return;
+      }
+      if (event.target.closest("#random-in-section")) {
+        openRandomQuestion();
+        return;
+      }
+      if (event.target.closest("#open-first-answer")) {
+        const first = document.querySelector(".qa:not([hidden])");
+        if (first) {
+          first.open = true;
+          first.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          document.getElementById("qa-heading").scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+
+    search.addEventListener("input", applySearch);
+    document.getElementById("print").addEventListener("click", () => window.print());
+    document.getElementById("random-question").addEventListener("click", () => openRandomQuestion());
+    document.addEventListener("keydown", event => {
+      if (event.target.matches("input, textarea, select") || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (/^[1-6]$/.test(event.key)) switchSection(sections[Number(event.key) - 1].id);
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+        const section = sections.find(item => item.id === activeSection);
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        activeStep = (activeStep + direction + section.steps.length) % section.steps.length;
+        renderSection();
+        document.querySelector(".workflow").scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+
+    renderSection();
+  </script>
+</body>
+</html>

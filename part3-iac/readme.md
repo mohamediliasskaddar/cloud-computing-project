@@ -193,26 +193,6 @@ openstack server list
 
 Result: `Destroy complete! Resources: 7 destroyed.` Only `vm-saas` and `vm-cirros` (from Part 2) remain.
 
-### 1.5 Screenshots to include
-
-| # | File name | What it must show |
-|---|---|---|
-| 1 | `p3-01-terraform-version.png` | `terraform version` and `ansible --version` |
-| 2 | `p3-02-terraform-plan.png` | End of `terraform plan` (`Plan: 7 to add`) |
-| 3 | `p3-03-terraform-apply.png` | End of `terraform apply` with the outputs (floating IP) |
-| 4 | `p3-04-horizon-instances.png` | Horizon: **Compute, Instances** showing `vm-terraform` with its floating IP |
-| 5 | `p3-05-horizon-secgroup.png` | Horizon: **Network, Networks, vm-terraform-port** with `sg-terraform` rules for SSH 22 and HTTP 80 |
-| 6 | `p3-06-terraform-destroy.png` | `terraform destroy` finished (`7 destroyed`) |
-
-### 1.6 Points to explain orally
-
-- **Declarative:** I describe the desired end state in `.tf` files. Terraform compares it with the real state and works out what to create.
-- **`init`** downloads the OpenStack provider plugin. **`plan`** shows what will change without doing it. **`apply`** executes it. **`destroy`** removes everything it created.
-- **State file** (`terraform.tfstate`): records the resources Terraform manages. That is how `-replace` rebuilt only the instance and left the floating IP, port and security group alone.
-- **Dependencies are implicit:** the instance references the port, which references the security group, so Terraform creates them in the right order (visible in the apply output).
-- **Why a port:** attaching the security group to an explicit port gives a clean link between the instance, the security group and the floating IP.
-- **Data source vs resource:** `net-tp` already existed (created in Part 2), so I read it with a `data` block instead of creating it again.
-
 ---
 
 ## 2. Part 3.2: Ansible (configure the machine)
@@ -312,32 +292,6 @@ ansible-playbook playbook.yml | tee playbook-output-run3.txt
 
 ![Rerun Ansible et preuve d'idempotence](../screenshots/part3-iac/p3-09-playbook-idempotent.png)
 
-### 2.3 Screenshots to include
-
-| # | File name | What it must show |
-|---|---|---|
-| 7 | `p3-07-ansible-ping.png` | `ansible web -m ping` returning `pong` |
-| 8 | `p3-08-playbook-run.png` | `ansible-playbook` output with the `PLAY RECAP` (`failed=0`) |
-| 9 | `p3-09-playbook-idempotent.png` | Re-run showing `changed=0` |
-| 10 | `p3-10-deployed-webpage.png` | **Browser at `http://localhost:8081`** showing the page (name, student ID, instance name, URL bar visible) |
-
-How I opened the page from my host (SSH tunnel, run on the **host**):
-
-```bash
-ssh -L 8081:172.24.4.84:80 imk@192.168.56.101
-# then open http://localhost:8081
-```
-
-### 2.4 Points to explain orally
-
-- **Agentless:** Ansible only needs SSH and Python on the target. Nothing is installed on `vm-terraform` beforehand.
-- **Inventory:** says which machines to manage (`[web]` group, IP, user, key).
-- **Playbook:** an ordered list of tasks, each calling a module (`apt`, `service`, `template`, `copy`).
-- **Idempotence:** running it again changes nothing if the machine is already in the desired state (`changed=0`).
-- **Template (Jinja2):** one HTML file filled with variables, so the page is generated from my name, ID and instance name.
-- **Why the apt proxy task:** see problem 5 below.
-
----
 
 ## 3. Part 3.3: Terraform vs Ansible (answer for the report)
 
@@ -377,11 +331,10 @@ ssh -L 8081:172.24.4.84:80 imk@192.168.56.101
 
 ## 6. Deliverables checklist
 
-- [ ] `main.tf`, `variables.tf`, `outputs.tf` (no passwords)
-- [ ] `inventory.ini`, `playbook.yml`, `templates/index.html.j2`, `ansible.cfg`
-- [ ] Output of `terraform apply` (`apply.txt`), plus `plan.txt`, `destroy.txt`, `apply-rebuild.txt`
-- [ ] `playbook-output.txt` (and the idempotent re-run)
-- [ ] Screenshot of the web page (name, student ID, instance name, URL bar visible)
-- [ ] Do **not** submit `clouds.yaml` (it contains passwords)
+- [x] `main.tf`, `variables.tf`, `outputs.tf` (no passwords)
+- [x] `inventory.ini`, `playbook.yml`, `templates/index.html.j2`, `ansible.cfg`
+- [x] Output of `terraform apply` (`apply.txt`), plus `plan.txt`, `destroy.txt`, `apply-rebuild.txt`
+- [x] `playbook-output.txt` (and the idempotent re-run)
+- [x] Screenshot of the web page (name, student ID, instance name, URL bar visible)
 - [x] Record Terraform/Ansible versions and run 2/run 3 recaps.
-- [ ] Section 3 reworded in my own words
+- [x] Section 3 reworded in my own words

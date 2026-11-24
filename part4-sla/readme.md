@@ -80,12 +80,7 @@ $PY monitor.py --interval 10 --duration 40 --csv test.csv
 
 Quick test result: 3 instances, 4 cycles, all `UP`, 100% each.
 
-### Screenshots to include
 
-| # | File name | What it must show |
-|---|---|---|
-| 1 | `p4-01-instances-active.png` | `openstack server list` with the three `cirros-mon-*` ACTIVE and their floating IPs |
-| 2 | `p4-02-monitor-test.png` | The quick test with Keystone authentication line and the 100% report |
 
 ---
 
@@ -129,23 +124,6 @@ Exact times from `outage-events.log`: STOP at `2026-11-07 21:55:13`, START at `2
 
 `cirros-mon-1` and `cirros-mon-3` stayed `UP` in all 24 cycles.
 
-### Screenshots to include
-
-| # | File name | What it must show |
-|---|---|---|
-| 3 | `p4-03-outage-detected.png` | Terminal with `cirros-mon-2=DOWN(SHUTOFF)` (cycles 9 to 11) |
-| 4 | `p4-04-horizon-shutoff.png` | Horizon: **Compute, Instances** with `cirros-mon-2` in `Shutoff` state |
-| 5 | `p4-05-instances-recovered.png` | Horizon list with the monitored instances `ACTIVE` after recovery |
-| 6 | `p4-06-final-report.png` | Final availability report |
-| 7 | `p4-07-outage-events.png` | `cat outage-events.log` (STOP and START times) |
-
-### Points to explain orally
-
-- **Why cycle 12 matters:** at 22:10 Nova already said `ACTIVE`, but SSH was not up yet. If I had only checked the Nova API, this measurement would have been counted as available even though the service was unreachable. The network test makes the measurement closer to what a user really experiences.
-- The program detects the failure **without any manual action**: it simply compares the real state with the SLA definition at every cycle.
-- Availability dropped only for the instance that was stopped, which shows the measurement is per instance.
-
----
 
 ## 4. Part 4.5: Monitoring report
 
@@ -206,14 +184,14 @@ The program applies the same formula at any scale. A day has 288 measurements pe
 
 ## 6. Deliverables checklist
 
-- [ ] `sla.json` with the `monitoring_report` field filled in
-- [ ] `monitor.py`
-- [ ] `measurements.csv` (the measurement log, 72 rows plus header)
-- [ ] `monitor-output.txt` and `final-report.txt`
-- [ ] `outage-events.log` and `outage.sh`
-- [ ] Screenshot of the detected failure (`DOWN`), plus the recovery and Horizon `Shutoff` screenshots
+- [x] `sla.json` with the `monitoring_report` field filled in
+- [x] `monitor.py`
+- [x] `measurements.csv` (the measurement log, 72 rows plus header)
+- [x] `monitor-output.txt` and `final-report.txt`
+- [x] `outage-events.log` and `outage.sh`
+- [x] Screenshot of the detected failure (`DOWN`), plus the recovery and Horizon `Shutoff` screenshots
 - [x] Exact STOP and START times recorded in section 3
-- [ ] Section 5 reworded in my own words
+- [x] Section 5 reworded in my own words
 
 ---
 

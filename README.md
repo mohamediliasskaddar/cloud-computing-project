@@ -94,12 +94,4 @@ rapport final et captures de la panne et de la récupération.
 | `scrapping-uae-data/` | Données et notes de recherche sur l'UAE |
 | `Rapport_Global_Cloud_Intelligence.md` | Rapport détaillé en Markdown |
 
-## À retenir
 
-- CloudSim Plus est une simulation : ses résultats ne constituent pas une mesure
-  de capacité réelle.
-- OpenStack est exécuté dans une VM locale.
-- Les IP flottantes et ressources indiquées dans le rapport correspondent au
-  laboratoire et peuvent changer lors d'une nouvelle installation.
-- Ne jamais publier de mots de passe, clés privées, fichiers `clouds.yaml` ou
-  autres identifiants.
